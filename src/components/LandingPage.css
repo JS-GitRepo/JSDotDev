@@ -1,0 +1,56 @@
+/* - - - - - - - lINKS AND FONTS - - - - - - - - - - */
+@font-face {
+  font-family: "munro";
+  src: url("/src/img/munro/munro.ttf");
+}
+/* - - - - - - - RESETS - - - - - - - - - - */
+
+/* - - - - - - - SPECIFICS - - - - - - - - - - */
+.LandingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/src/img/pixelBGWide.png");
+  background-position: center;
+  background-size: cover;
+  /* font-family: "VT323", monospace; */
+  font-family: "munro";
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 4px;
+  font-smooth: never;
+}
+
+.LandingPage a {
+  text-decoration: none;
+  color: rgb(208, 247, 239);
+}
+
+.LandingPage .header-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.LandingPage .link-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  /* margin-top: 80px; */
+  width: 100%;
+}
+
+.LandingPage .lp-link h1,
+.LandingPage .lp-link h2 {
+  padding: 40px;
+}
