@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated } from "react-spring";
+import { animated, useTransition } from "react-spring";
+import HomeView from "./HomeView";
 
 const LandingPage = () => {
   // - - - - - STATES / FUNCTIONALITY - - - - -
@@ -15,19 +16,48 @@ const LandingPage = () => {
   const [link2Path, setLink2Path] = useState<string>("");
   const currentPath = useLocation().pathname;
   const navigate = useNavigate();
-  // const transitionUp = useTransition(isActivePage, {
-  //   initial: {},
-  //   // from: { opacity: 1, transform: "translate(0,0)" },
-  //   // leave: { opacity: 1, transform: "translate(0,100%)" },
-  // });
+  const transDuration = 200;
+  const transitionUp = useTransition(isActivePage, {
+    initial: {
+      opacity: 1,
+      marginBottom: "0%",
+      config: { duration: transDuration },
+    },
+    from: {
+      opacity: 1,
+      marginBottom: "0%",
+      config: { duration: transDuration },
+    },
+    leave: {
+      opacity: 0.5,
+      marginBottom: "100%",
+      config: { duration: transDuration },
+    },
+  });
+  const transitionDown = useTransition(isActivePage, {
+    initial: {
+      opacity: 1,
+      marginTop: "0%",
+      config: { duration: transDuration },
+    },
+    from: { opacity: 1, marginTop: "0%", config: { duration: transDuration } },
+    leave: {
+      opacity: 0.5,
+      marginTop: "100%",
+      config: { duration: transDuration },
+    },
+  });
 
   useEffect(() => {
     if (firstRender) {
       setFirstRender(false);
-    } else {
+    } else if (
+      currentPath.endsWith("/gamedev") ||
+      currentPath.endsWith("/webdev")
+    ) {
       setIsActivePage(false);
     }
-  }, []);
+  }, [currentPath]);
 
   useEffect(() => {
     if (currentPath === "/") {
@@ -41,45 +71,59 @@ const LandingPage = () => {
     } else if (currentPath === "/landing/portfolio") {
       setCurrentDisplay("Portfolio");
       setLink1Text("Web Dev");
-      setLink1Path("/home/portfolio/webdev");
+      setLink1Path("/landing/portfolio/webdev");
       setLink2Text("Game Dev");
-      setLink2Path("/home/portfolio/gamedev");
+      setLink2Path("/landing/portfolio/gamedev");
     } else if (currentPath === "/landing/blog") {
       setCurrentDisplay("Blog");
       setLink1Text("Web Dev");
-      setLink1Path("/home/blog/webdev");
+      setLink1Path("/landing/blog/webdev");
       setLink2Text("Game Dev");
-      setLink2Path("/home/blog/gamedev");
+      setLink2Path("/landing/blog/gamedev");
+    } else if (currentPath === "/home/:location/:content") {
+      console.log("made it here");
     }
   }, [currentPath]);
 
   return (
     <div className="LandingPage">
-      <animated.div className={"header-container"}>
-        <LandingPageLink
-          currentDisplay={currentDisplay}
-          linkText={currentDisplay}
-          pathName={"/"}
-          className={"lp-link"}
-          isH1={true}
-        />
-      </animated.div>
-      <animated.div className="link-container">
-        <LandingPageLink
-          currentDisplay={currentDisplay}
-          linkText={link1Text}
-          pathName={link1Path}
-          className={"lp-link"}
-          isH1={false}
-        />
-        <LandingPageLink
-          currentDisplay={currentDisplay}
-          linkText={link2Text}
-          pathName={link2Path}
-          className={"lp-link"}
-          isH1={false}
-        />
-      </animated.div>
+      {transitionUp((style, item) =>
+        item ? (
+          <animated.div className={"header-container"} style={style}>
+            <LandingPageLink
+              currentDisplay={currentDisplay}
+              linkText={currentDisplay}
+              pathName={"/"}
+              className={"lp-link"}
+              isH1={true}
+            />
+          </animated.div>
+        ) : (
+          <HomeView />
+        )
+      )}
+      {transitionDown((style, item) =>
+        item ? (
+          <animated.div className="link-container" style={style}>
+            <LandingPageLink
+              currentDisplay={currentDisplay}
+              linkText={link1Text}
+              pathName={link1Path}
+              className={"lp-link"}
+              isH1={false}
+            />
+            <LandingPageLink
+              currentDisplay={currentDisplay}
+              linkText={link2Text}
+              pathName={link2Path}
+              className={"lp-link"}
+              isH1={false}
+            />
+          </animated.div>
+        ) : (
+          ""
+        )
+      )}
     </div>
   );
 };
