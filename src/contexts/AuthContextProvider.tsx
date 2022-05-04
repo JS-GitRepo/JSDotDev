@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 import UserAccount from "../models/UserAcount";
 import { createNewUser, getUserById } from "../services/userService";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
@@ -11,6 +12,7 @@ interface Props {
 
 const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(null);
+  const [currentPathContext, setCurrentPathContext] = useState<string>("");
 
   const generateDateInfo = () => {
     const currentDate: Date = new Date();
@@ -34,6 +36,10 @@ const AuthContextProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
+    console.log(currentPathContext);
+  }, [currentPathContext]);
+
+  useEffect(() => {
     if (user) {
       getUserById(user.uid).then((response) => {
         if (!response) {
@@ -50,7 +56,10 @@ const AuthContextProvider = ({ children }: Props) => {
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ user, currentPathContext, setCurrentPathContext }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

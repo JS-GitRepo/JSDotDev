@@ -7,6 +7,14 @@
 
 /* - - - - - - - SPECIFICS - - - - - - - - - - */
 .LandingPage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.LandingPage .LandingPage-container {
+  /* . . . Positioning . . . */
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,20 +22,41 @@
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
-  /* font-family: "VT323", monospace; */
+  z-index: 1;
+  /* . . . Background . . . */
+  background-position: center;
+  backdrop-filter: hue-rotate(190);
+  -webkit-backdrop-filter: hue-rotate(190);
+  background-size: auto 100vh;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Chrome / Safari */
+  image-rendering: pixelated; /* Chrome as of 2019 */
+  image-rendering: optimize-contrast; /* CSS3 Proposed */
+  -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+  /* . . . Fonts . . . */
   font-family: "munro";
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 4px;
   font-smooth: never;
 }
 
-.LandingPage a {
+.LandingPage .static-bg {
+  background-image: url("/src/img/pixelBG_LowRes.png");
+}
+
+.LandingPage .fade-bg {
+  background-image: url("/src/img/animated-14fps-delay.png");
+  z-index: 2;
+}
+
+.LandingPage-container a {
   text-decoration: none;
   color: rgb(208, 247, 239);
 }
 
-.LandingPage .header-container {
+.LandingPage-container .header-container {
   display: flex;
   flex: 1;
   align-items: center;
@@ -35,26 +64,33 @@
   box-sizing: border-box;
   margin-bottom: 0%;
   width: 100%;
-  background-image: url("/src/img/pixelBGWide.png");
-  background-origin: content-box;
-  background-size: auto 100vh;
 }
 
-.LandingPage .link-container {
+.LandingPage-container .link-container {
   display: flex;
   flex: 1;
   flex-direction: row;
   justify-content: space-evenly;
   box-sizing: border-box;
-  /* margin-top: 80px; */
   width: 100%;
-  background-image: url("/src/img/pixelBGWide.png");
-  background-origin: content-box;
-  background-size: auto 100vh;
-  background-position: 0% -100%;
 }
 
-.LandingPage .lp-link h1,
-.LandingPage .lp-link h2 {
+.LandingPage-container .lp-link h1,
+.LandingPage-container .lp-link h2 {
   padding: 40px;
+}
+
+.LandingPage .HomeView-container {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.LandingPage .hide {
+  display: none;
 }
