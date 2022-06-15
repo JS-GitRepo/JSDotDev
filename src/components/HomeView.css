@@ -4,8 +4,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  border: dashed black 10px;
   box-sizing: border-box;
+  /* FONTS */
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: rgb(75, 75, 75);
+  font-smooth: never;
+}
+
+.HomeView h1 {
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.HomeView h2 {
+  font-weight: 400;
+  font-size: 22px;
+}
+
+/* - - - - - HomeView Background Image - - - - -  */
+
+/* - - - MEDIA QUERIES - - -*/
+@media only screen and (min-width: 768px) {
+  .HomeView {
+    font-weight: 400;
+    font-size: 1.5vh;
+  }
+
+  .HomeView h1 {
+    font-weight: 300;
+    font-size: 2.5vh;
+  }
 }

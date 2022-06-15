@@ -1,0 +1,59 @@
+/* - - - RESETS - - -*/
+.HomeViewFooter h1,
+.HomeViewFooter h2,
+.HomeViewFooter a,
+.HomeViewFooter p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* - - - GENERAL - - -*/
+.HomeViewFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.HomeViewFooter h2 {
+  font-weight: 400;
+}
+
+.HomeViewFooter .project-nav-ctr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.HomeViewFooter .project-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.HomeViewFooter .project-nav-type-cat {
+  display: flex;
+  justify-content: center;
+}
+
+.HomeViewFooter .project-nav-type-cat a {
+  margin: 6px;
+}
+
+/* - - - MEDIA QUERIES - - -*/
+
+@media only screen and (min-width: 768px) {
+  .HomeViewFooter {
+    height: 80px;
+  }
+
+  .HomeViewFooter .project-nav-ctr {
+    display: none;
+  }
+}

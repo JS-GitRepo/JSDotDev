@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { animated, SpringValue, useSpring } from "react-spring";
 import "./LandingPageLink.css";
@@ -29,14 +29,31 @@ const LandingPageLink = ({
     onChange: (): number => (opacityRef.current = hoverOn.opacity.get()),
   });
   const hoverOff = useSpring({
-    to: { opacity: 1 },
+    to: {
+      opacity: 1,
+    },
     from: { opacity: opacityRef.current },
     reset: true,
     loop: false,
   });
+  const hoverStart = useSpring({
+    from: { opacity: 1 },
+    reset: true,
+  });
   const [animState, setAnimState] = useState<{ opacity: SpringValue<number> }>(
-    hoverOff
+    hoverStart
   );
+
+  useEffect(() => {
+    let fromVal = animState.opacity.animation.from;
+    let timeout;
+
+    if (fromVal > 0 && fromVal < 1) {
+      setTimeout(() => setAnimState(hoverStart), 400);
+    } else {
+      clearTimeout(timeout);
+    }
+  }, [animState]);
 
   return (
     <Link to={pathName} className={className}>
