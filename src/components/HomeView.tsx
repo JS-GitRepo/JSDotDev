@@ -1,16 +1,19 @@
 import "./HomeView.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import HomeViewHeader from "./HomeViewHeader";
+import HomeViewFooter from "./HomeViewFooter";
+import HomeViewContent from "./HomeViewContent";
 
 const HomeView = () => {
   const currentPath = useLocation().pathname;
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
-
   return (
     <div className="HomeView">
-      <p>HomeView works</p>
+      <HomeViewHeader pathname={currentPath} />
+      <HomeViewContent pathname={currentPath} />
+      <HomeViewFooter pathname={currentPath} />
     </div>
   );
 };

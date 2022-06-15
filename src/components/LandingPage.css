@@ -1,4 +1,4 @@
-/* - - - - - - - lINKS AND FONTS - - - - - - - - - - */
+/* - - - - - lINKS AND FONTS - - - - - - - - */
 @font-face {
   font-family: "munro";
   src: url("/src/img/munro/munro.ttf");
@@ -8,8 +8,9 @@
 /* - - - - - - - SPECIFICS - - - - - - - - - - */
 .LandingPage {
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .LandingPage .LandingPage-container {
@@ -20,35 +21,39 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   z-index: 1;
-  /* . . . Background . . . */
-  background-position: center;
-  backdrop-filter: hue-rotate(190);
-  -webkit-backdrop-filter: hue-rotate(190);
-  background-size: auto 100vh;
+  /* . . . Fonts . . . */
+  font-family: "munro";
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 4px;
+  font-smooth: never;
+}
+
+.LandingPage .bg-img-container {
+  display: flex;
+  align-items: center; /* vertical */
+  justify-content: center; /* horizontal */
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.LandingPage .bg-img {
+  height: 100vh;
+  min-width: 100%;
+  object-fit: cover;
+  /* . . . Image Rendering . . . */
   image-rendering: -moz-crisp-edges; /* Firefox */
   image-rendering: -o-crisp-edges; /* Opera */
   image-rendering: -webkit-optimize-contrast; /* Chrome / Safari */
   image-rendering: pixelated; /* Chrome as of 2019 */
   image-rendering: optimize-contrast; /* CSS3 Proposed */
   -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
-  /* . . . Fonts . . . */
-  font-family: "munro";
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 4px;
-  font-smooth: never;
-}
-
-.LandingPage .static-bg {
-  background-image: url("/src/img/pixelBG_LowRes.png");
-}
-
-.LandingPage .fade-bg {
-  background-image: url("/src/img/animated-14fps-delay.png");
-  z-index: 2;
+  z-index: 0;
 }
 
 .LandingPage-container a {
@@ -64,6 +69,7 @@
   box-sizing: border-box;
   margin-bottom: 0%;
   width: 100%;
+  z-index: 1;
 }
 
 .LandingPage-container .link-container {
@@ -73,11 +79,13 @@
   justify-content: space-evenly;
   box-sizing: border-box;
   width: 100%;
+  z-index: 1;
 }
 
 .LandingPage-container .lp-link h1,
 .LandingPage-container .lp-link h2 {
-  padding: 40px;
+  padding: 30px 20px;
+  z-index: 1;
 }
 
 .LandingPage .HomeView-container {
@@ -89,6 +97,7 @@
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
 }
 
 .LandingPage .hide {

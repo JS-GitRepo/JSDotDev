@@ -1,0 +1,91 @@
+/* - - - RESETS - - -*/
+.HomeViewHeader h1,
+.HomeViewHeader h2,
+.HomeViewHeader a,
+.HomeViewHeader p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* - - - GENERAL - - -*/
+.HomeViewHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 80px;
+}
+
+.HomeViewHeader h1 {
+  margin: 2px 0px;
+}
+
+.HomeViewHeader .title-ctr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 120px;
+}
+
+.HomeViewHeader .project-nav-ctr {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.HomeViewHeader .project-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.HomeViewHeader .project-nav-type-cat {
+  display: flex;
+  justify-content: center;
+}
+
+.HomeViewHeader .project-nav-type-cat a {
+  margin: 6px 6px 0px 6px;
+}
+
+.HomeViewHeader .nav-ctr {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.HomeViewHeader .nav-ctr ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0px;
+}
+
+.HomeViewHeader .nav-ctr ul li {
+  margin: 0px 10px;
+}
+
+/* - - - MEDIA QUERIES - - -*/
+@media only screen and (min-width: 768px) {
+  .HomeViewHeader {
+    justify-content: space-between;
+  }
+
+  .HomeViewHeader .title-ctr {
+    width: 230px;
+  }
+
+  .HomeViewHeader .nav-ctr {
+    width: 230px;
+  }
+
+  .HomeViewHeader .project-nav-ctr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

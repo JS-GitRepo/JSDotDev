@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated, useTransition } from "react-spring";
+import { animated, useSpring, useTransition } from "react-spring";
 import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
+import pixelBG from "../img/pixelBG_LowRes.png";
+import pixelFadeBG from "../img/animated-14fps.png";
 
 const LandingPage = () => {
   // - - - - - LINK FUNCTIONALITY - - - - -
@@ -22,8 +24,12 @@ const LandingPage = () => {
   const [hideLP, setHideLP] = useState<string>("");
   const [hideHV, setHideHV] = useState<string>("hide");
   const [isActivePage, setIsActivePage] = useState<boolean>(true);
-  const [bgImgClass, setBgImgClass] = useState<string>("static-bg");
-  const transDuration = 200;
+  const [currBG, setCurrBG] = useState<string>(pixelBG);
+  const [hueFlip, setHueFlip] = useState<boolean>(false);
+  const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
+
+  // - - - - - BG TRANSITION - - - - -
+  const transDuration = 500;
   const fadeOut = useTransition(isActivePage, {
     initial: {
       opacity: 1,
@@ -38,19 +44,35 @@ const LandingPage = () => {
       config: { duration: transDuration },
     },
   });
+  const bgHueRotation = useSpring({
+    to: {
+      filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
+    },
+    from: {
+      filter: "hue-rotate(0deg) saturate(100%) sepia(0%)",
+    },
+    reset: false,
+    cancel: bgAnimOff,
+    reverse: hueFlip,
+    delay: 2000,
+    config: { duration: 4000, tension: 280, friction: 60 },
+    onRest: () => setHueFlip(!hueFlip),
+  });
 
+  // - - - - - useEffects - - - - -
   useEffect(() => {
     setCurrentPathContext(currentPath);
     if (firstRender) {
       setFirstRender(false);
     } else if (
-      currentPath.endsWith("/gamedev") ||
-      currentPath.endsWith("/webdev")
+      currentPath.endsWith("/portfolio") ||
+      currentPath.endsWith("/blog")
     ) {
+      setCurrBG(pixelFadeBG);
       setIsActivePage(false);
       setHideHV("");
-      setTimeout(() => setBgImgClass("fade-bg"), 100);
       setTimeout(() => setHideLP("hide"), 2000);
+      setTimeout(() => setBgAnimOff(true), 2000);
     }
   }, [currentPath]);
 
@@ -59,29 +81,29 @@ const LandingPage = () => {
       navigate("/landing");
     } else if (currentPath === "/landing") {
       setCurrentDisplay("jakesnyder.dev");
+      setLink1Text("Web Dev");
+      setLink1Path("/landing/webdev");
+      setLink2Text("Game Dev");
+      setLink2Path("/landing/gamedev");
+    } else if (currentPath === "/landing/webdev") {
+      setCurrentDisplay("Web Development");
       setLink1Text("Portfolio");
-      setLink1Path("/landing/portfolio");
+      setLink1Path("/landing/webdev/portfolio");
       setLink2Text("Blog");
-      setLink2Path("/landing/blog");
-    } else if (currentPath === "/landing/portfolio") {
-      setCurrentDisplay("Portfolio");
-      setLink1Text("Web Dev");
-      setLink1Path("/landing/portfolio/webdev");
-      setLink2Text("Game Dev");
-      setLink2Path("/landing/portfolio/gamedev");
-    } else if (currentPath === "/landing/blog") {
-      setCurrentDisplay("Blog");
-      setLink1Text("Web Dev");
-      setLink1Path("/landing/blog/webdev");
-      setLink2Text("Game Dev");
-      setLink2Path("/landing/blog/gamedev");
+      setLink2Path("/landing/webdev/blog");
+    } else if (currentPath === "/landing/gamedev") {
+      setCurrentDisplay("Game Development");
+      setLink1Text("Portfolio");
+      setLink1Path("/landing/webdev/portfolio");
+      setLink2Text("Blog");
+      setLink2Path("/landing/gamedev/blog");
     }
   }, [currentPath]);
 
   return (
-    <div className="LandingPage">
-      <div className={`LandingPage-container ${bgImgClass} ${hideLP}`}>
-        {fadeOut((style, item) =>
+    <div className={`LandingPage`}>
+      <div className={`LandingPage-container ${hideLP}`}>
+        {fadeOut((style: any, item: any) =>
           item ? (
             <animated.div className={"header-container"} style={style}>
               <LandingPageLink
@@ -96,9 +118,9 @@ const LandingPage = () => {
             ""
           )
         )}
-        {fadeOut((style, item) =>
+        {fadeOut((style: any, item: any) =>
           item ? (
-            <div className="link-container">
+            <animated.div className="link-container" style={style}>
               <LandingPageLink
                 currentDisplay={currentDisplay}
                 linkText={link1Text}
@@ -113,11 +135,19 @@ const LandingPage = () => {
                 className={"lp-link"}
                 isH1={false}
               />
-            </div>
+            </animated.div>
           ) : (
             ""
           )
         )}
+        <div className="bg-img-container">
+          <animated.img
+            style={bgHueRotation}
+            className={`bg-img`}
+            src={currBG}
+            alt=""
+          />
+        </div>
       </div>
       <div className={`HomeView-container ${hideHV}`}>
         <HomeView />

@@ -36,10 +36,6 @@ const AuthContextProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    console.log(currentPathContext);
-  }, [currentPathContext]);
-
-  useEffect(() => {
     if (user) {
       getUserById(user.uid).then((response) => {
         if (!response) {

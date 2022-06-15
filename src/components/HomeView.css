@@ -4,23 +4,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  border: dashed black 10px;
   box-sizing: border-box;
-  /* z-index: 1; */
+  /* FONTS */
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: rgb(75, 75, 75);
+  font-smooth: never;
+}
+
+.HomeView h1 {
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.HomeView h2 {
+  font-weight: 400;
+  font-size: 22px;
 }
 
 /* - - - - - HomeView Background Image - - - - -  */
-.HomeView {
-  background: grey;
-  background-position: center;
-  background-size: auto 100vh;
-  image-rendering: optimizeSpeed; /*                     */
-  image-rendering: -moz-crisp-edges; /* Firefox             */
-  image-rendering: -o-crisp-edges; /* Opera               */
-  image-rendering: -webkit-optimize-contrast; /* Chrome (and Safari) */
-  image-rendering: pixelated; /* Chrome as of 2019   */
-  image-rendering: optimize-contrast; /* CSS3 Proposed       */
-  -ms-interpolation-mode: nearest-neighbor; /* IE8+                */
+
+/* - - - MEDIA QUERIES - - -*/
+@media only screen and (min-width: 768px) {
+  .HomeView {
+    font-weight: 400;
+    font-size: 1.5vh;
+  }
+
+  .HomeView h1 {
+    font-weight: 300;
+    font-size: 2.5vh;
+  }
 }
