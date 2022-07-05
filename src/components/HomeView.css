@@ -1,3 +1,13 @@
+/* - - - - RESETS - - - -*/
+.HomeViewHeader h1,
+.HomeViewHeader h2,
+.HomeViewHeader a,
+.HomeViewHeader p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* - - - - GENERAL - - - -*/
 .HomeView {
   position: absolute;
   display: flex;
@@ -8,18 +18,18 @@
   width: 100vw;
   box-sizing: border-box;
   /* FONTS */
-  font-family: "Fira Sans", sans-serif;
+  font-family: "munro";
+  font-size: 16px;
   font-weight: 300;
-  font-style: italic;
-  font-size: 18px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
   letter-spacing: 1px;
   color: rgb(75, 75, 75);
-  font-smooth: never;
 }
 
 .HomeView h1 {
   font-weight: 300;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .HomeView h2 {
@@ -27,17 +37,60 @@
   font-size: 22px;
 }
 
-/* - - - - - HomeView Background Image - - - - -  */
+.HomeView a {
+  text-decoration: none;
+  color: rgb(75, 75, 75);
+}
 
-/* - - - MEDIA QUERIES - - -*/
+.HomeView a:hover {
+  color: rgb(64, 210, 236);
+  text-decoration: none;
+}
+
+.HomeView .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  display: none;
+}
+
+.HomeView .highlighted-link {
+  color: rgb(0, 175, 166);
+}
+
+.HomeView .emoji {
+  font-family: "Noto Emoji", sans-serif;
+  font-style: normal;
+  font-size: 12px;
+}
+
+/* - - - - MEDIA QUERIES - - - -*/
 @media only screen and (min-width: 768px) {
   .HomeView {
-    font-weight: 400;
-    font-size: 1.5vh;
+    font-size: 18px;
   }
 
   .HomeView h1 {
-    font-weight: 300;
-    font-size: 2.5vh;
+    font-weight: 200;
+    font-size: 24px;
+  }
+
+  .HomeView h2 {
+    font-weight: 200;
+    font-size: 26px;
+  }
+
+  .HomeView .subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "munro";
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 300px;
+  }
+
+  .HomeView .emoji {
+    font-size: 10px;
+    font-weight: 700;
   }
 }

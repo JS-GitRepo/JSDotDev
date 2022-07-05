@@ -10,14 +10,13 @@
 /* - - - GENERAL - - -*/
 .HomeViewFooter {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 240, 240);
   width: 100vw;
   height: 100px;
   font-size: 16px;
-  font-weight: 300;
 }
 
 .HomeViewFooter h2 {
@@ -40,10 +39,15 @@
 .HomeViewFooter .project-nav-type-cat {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .HomeViewFooter .project-nav-type-cat a {
   margin: 6px;
+}
+
+.HomeViewFooter .rights-ctr {
+  font-size: 10px;
 }
 
 /* - - - MEDIA QUERIES - - -*/
@@ -55,5 +59,9 @@
 
   .HomeViewFooter .project-nav-ctr {
     display: none;
+  }
+
+  .HomeViewFooter .rights-ctr {
+    font-size: 14px;
   }
 }
