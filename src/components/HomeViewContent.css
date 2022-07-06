@@ -1,3 +1,4 @@
+/* - - - - GENERAL - - - -*/
 .HomeViewContent {
   position: relative;
   display: flex;
@@ -8,13 +9,23 @@
   overflow: hidden;
 }
 
+.HomeViewContent .media-ctr {
+  height: 100%;
+  width: 100%;
+}
+
 .HomeViewContent video {
-  /* position: absolute; */
   height: 100%;
   object-fit: cover;
   min-width: 100%;
 }
+.HomeViewContent img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
 
+/* - - - - MEDIA QUERIES - - - -*/
 @media only screen and (min-width: 768px) {
   .HomeViewContent video {
     height: 110%;

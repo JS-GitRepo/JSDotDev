@@ -2,13 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated, useSpring, useTransition } from "react-spring";
+import { animated, SpringValue, useSpring, useTransition } from "react-spring";
 import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
 
-const LandingPage = () => {
+interface Props {
+  hueRotation: {
+    filter: SpringValue<string>;
+  };
+  setHueDuration: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
   // - - - - - LINK FUNCTIONALITY - - - - -
   const [currentDisplay, setCurrentDisplay] = useState<string>("");
   const [firstRender, setFirstRender] = useState<boolean>(true);
@@ -25,8 +32,6 @@ const LandingPage = () => {
   const [hideHV, setHideHV] = useState<string>("hide");
   const [isActivePage, setIsActivePage] = useState<boolean>(true);
   const [currBG, setCurrBG] = useState<string>(pixelBG);
-  const [hueFlip, setHueFlip] = useState<boolean>(false);
-  const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
 
   // - - - - - BG TRANSITION - - - - -
   const transDuration = 500;
@@ -44,27 +49,15 @@ const LandingPage = () => {
       config: { duration: transDuration },
     },
   });
-  const bgHueRotation = useSpring({
-    to: {
-      filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
-    },
-    from: {
-      filter: "hue-rotate(0deg) saturate(100%) sepia(0%)",
-    },
-    reset: false,
-    cancel: bgAnimOff,
-    reverse: hueFlip,
-    delay: 2000,
-    config: { duration: 4000, tension: 280, friction: 60 },
-    onRest: () => setHueFlip(!hueFlip),
-  });
 
   // - - - - - useEffects - - - - -
+
   useEffect(() => {
     setCurrentPathContext(currentPath);
     if (firstRender) {
       setFirstRender(false);
     } else if (
+      // If current path is 'complete', transition to HomeView
       currentPath.endsWith("/portfolio") ||
       currentPath.endsWith("/blog")
     ) {
@@ -72,19 +65,23 @@ const LandingPage = () => {
       setIsActivePage(false);
       setHideHV("");
       setTimeout(() => setHideLP("hide"), 2000);
-      setTimeout(() => setBgAnimOff(true), 2000);
+      setHueDuration(12000);
     }
-  }, [currentPath]);
 
-  useEffect(() => {
     if (currentPath === "/") {
       navigate("/landing");
+      setCurrBG(pixelBG);
+      setIsActivePage(true);
+      setHideHV("hide");
+      setHideLP("");
+      setHueDuration(4000);
     } else if (currentPath === "/landing") {
       setCurrentDisplay("jakesnyder.dev");
       setLink1Text("Web Dev");
       setLink1Path("/landing/webdev");
       setLink2Text("Game Dev");
       setLink2Path("/landing/gamedev");
+      setHueDuration(4000);
     } else if (currentPath === "/landing/webdev") {
       setCurrentDisplay("Web Development");
       setLink1Text("Portfolio");
@@ -142,7 +139,7 @@ const LandingPage = () => {
         )}
         <div className="bg-img-container">
           <animated.img
-            style={bgHueRotation}
+            style={hueRotation}
             className={`bg-img`}
             src={currBG}
             alt=""
@@ -150,7 +147,7 @@ const LandingPage = () => {
         </div>
       </div>
       <div className={`HomeView-container ${hideHV}`}>
-        <HomeView />
+        <HomeView hueRotation={hueRotation} setHueDuration={setHueDuration} />
       </div>
     </div>
   );
