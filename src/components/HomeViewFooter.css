@@ -43,7 +43,8 @@
 }
 
 .HomeViewFooter .project-nav-type-cat a {
-  margin: 6px;
+  font-size: 18px;
+  margin: 4px;
 }
 
 .HomeViewFooter .rights-ctr {

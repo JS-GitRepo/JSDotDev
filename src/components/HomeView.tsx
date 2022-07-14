@@ -14,11 +14,14 @@ interface Props {
 }
 
 const HomeView = ({ hueRotation, setHueDuration }: Props) => {
-  // - - - - - Titles and Text - - - - -
+  // - - - - GENERAL STATES - - - -
+  const [firstRender, setFirstRender] = useState<boolean>(true);
+  // - - - - - TITLES AND TEXT - - - - -
+  const [currentProject, setCurrentProject] = useState<string>("Deerfall");
   const [title, setTitle] = useState<string>("Dev Blog");
   const [subtitle, setSubtitle] = useState<string>("Welcome! ");
   const [subEmoji, setSubEmoji] = useState<string>(" 🙂");
-  // - - - - - Links - - - - -
+  // - - - - - LINKS - - - - -
   const [gameDevLink, setGameDevLink] = useState<string>("");
   const [webDevLink, setWebDevLink] = useState<string>("");
   const [portfolioLink, setPortfolioLink] = useState<string>("");
@@ -27,10 +30,9 @@ const HomeView = ({ hueRotation, setHueDuration }: Props) => {
   const [isGameDev, setIsGameDev] = useState<boolean>(true);
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
-  // - - - - - Projects - - - - -
+  // - - - - - PROJECTS - - - - -
   const gameDevProjList = ["Deerfall"];
   const webDevProjList = ["MediaMatchup"];
-  const [currentProject, setCurrentProject] = useState<string>("");
 
   useEffect(() => {
     if (currentPath.includes("/gamedev/")) {
@@ -42,29 +44,37 @@ const HomeView = ({ hueRotation, setHueDuration }: Props) => {
 
   useEffect(() => {
     if (currentPath.includes("/gamedev/portfolio")) {
+      if (currentPath.includes("home/")) {
+        navigate(`/home/gamedev/portfolio/${currentProject}`);
+      }
       setTitle("GameDev Portfolio");
-      navigate(`/home/gamedev/portfolio/${currentProject}`);
       setWebDevLink(`/home/webdev/portfolio/${currentProject}`);
       setBlogLink(`/home/gamedev/blog/${currentProject}`);
       setIsPortfolio(true);
       setIsGameDev(true);
     } else if (currentPath.includes("/gamedev/blog")) {
+      if (currentPath.includes("home/")) {
+        navigate(`/home/gamedev/blog/${currentProject}`);
+      }
       setTitle("GameDev Blog");
-      navigate(`/home/gamedev/blog/${currentProject}`);
       setWebDevLink(`/home/webdev/blog/${currentProject}`);
       setPortfolioLink(`/home/gamedev/portfolio/${currentProject}`);
       setIsPortfolio(false);
       setIsGameDev(true);
     } else if (currentPath.includes("/webdev/portfolio")) {
+      if (currentPath.includes("home/")) {
+        navigate(`/home/webdev/portfolio/${currentProject}`);
+      }
       setTitle("WebDev Portfolio");
-      navigate(`/home/webdev/portfolio/${currentProject}`);
       setGameDevLink(`/home/gamedev/portfolio/${currentProject}`);
       setBlogLink(`/home/webdev/blog/${currentProject}`);
       setIsPortfolio(true);
       setIsGameDev(false);
     } else if (currentPath.includes("/webdev/blog")) {
+      if (currentPath.includes("home/")) {
+        navigate(`/home/webdev/blog/${currentProject}`);
+      }
       setTitle("WebDev Blog");
-      navigate(`/home/webdev/blog/${currentProject}`);
       setGameDevLink(`/home/gamedev/blog/${currentProject}`);
       setPortfolioLink(`/home/webdev/portfolio/${currentProject}`);
       setIsPortfolio(false);

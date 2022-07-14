@@ -4,6 +4,7 @@
 .LandingPage {
   position: relative;
   height: 100%;
+  max-height: 100%;
   width: 100%;
   overflow: hidden;
 }
@@ -17,6 +18,7 @@
   justify-content: center;
   box-sizing: border-box;
   height: 100%;
+  max-height: 100%;
   width: 100%;
   z-index: 1;
   /* . . . Fonts . . . */
@@ -28,17 +30,19 @@
 }
 
 .LandingPage .bg-img-container {
+  height: 100%;
+  max-height: 100%;
+  width: 100vw;
   display: flex;
   align-items: center; /* vertical */
   justify-content: center; /* horizontal */
   position: absolute;
-  width: 100vw;
-  height: 100vh;
   z-index: 0;
 }
 
 .LandingPage .bg-img {
-  height: 100vh;
+  height: 100%;
+  max-height: 100%;
   min-width: 100%;
   object-fit: cover;
   /* . . . Image Rendering . . . */
@@ -91,7 +95,8 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  max-height: 100%;
   z-index: 0;
 }
 

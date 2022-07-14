@@ -1,22 +1,15 @@
-import ProjectContents from "./ProjectContents";
-import DeerfallVid from "../../img/MainBanner-H264.mp4";
-import { useEffect, useState } from "react";
-import { animated, config, useTransition } from "react-spring";
+import ProjVideo from "./ProjVideo";
+import DeerfallVidAV1 from "../../img/Projects/Deerfall/DeerfallProRes_AV1.mp4";
+import DeerfallVidH265 from "../../img/Projects/Deerfall/DeerfallProRes_H265.mp4";
+import DeerfallVidH264 from "../../img/Projects/Deerfall/DeerfallProRes_H264.mp4";
+import DeerfallPosterJPG from "../../img/Projects/Deerfall/DeerfallBannerPoster.jpg";
+import { animated } from "react-spring";
 
 interface Props {
   isPortfolio: boolean;
 }
 
 const Deerfall = ({ isPortfolio }: Props) => {
-  // - - - - Transition - - - -
-  // const transitions = useTransition(transition, {
-  //   from: { opacity: 0 },
-  //   enter: { opacity: 1 },
-  //   update: { opacity: 0 },
-  //   leave: { opacity: 0 },
-  //   config: config.molasses,
-  // });
-
   // - - - - Tech and Skills - - - -
   const technologies: string[] = [
     "Unreal Engine",
@@ -32,14 +25,20 @@ const Deerfall = ({ isPortfolio }: Props) => {
     "Locomotion",
     "Inventory Systems",
   ];
+  const desc: string = "";
 
   return (
     <animated.div className="Deerfall">
-      <ProjectContents
-        vidSrc={DeerfallVid}
+      <ProjVideo
+        vidSrc={DeerfallVidAV1}
         isPortfolio={isPortfolio}
         tech={technologies}
         skills={skills}
+        title={"Deerfall"}
+        desc={desc}
+        vidPoster={DeerfallPosterJPG}
+        vidSrc_Fallback={DeerfallVidH265}
+        vidSrc_Fallback2={DeerfallVidH264}
       />
     </animated.div>
   );

@@ -108,8 +108,11 @@ function App() {
         </Routes>
       </Router>
       <div className={"wip-disclaimer"}>
-        <p>{`[Website Under Construction / Active Development]`}</p>
-        <p>{`At the moment, some features may be incomplete, buggy, or site-breaking. Please re-visit when able to see how things change and how far they have come since last time!`}</p>
+        <h2>
+          <span className="emoji">🛠</span> Website Under Construction{" "}
+          <span className="emoji">🛠</span>
+        </h2>
+        <p>{`Some features may be incomplete, buggy, or site-breaking. Feel free to explore and please re-visit soon!`}</p>
       </div>
     </div>
   );
