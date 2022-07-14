@@ -1,7 +1,7 @@
 import ProjVideo from "./ProjVideo";
-import DeerfallVidAV1 from "../../img/Projects/Deerfall/DeerfallProRes_AV1.mp4";
-import DeerfallVidH265 from "../../img/Projects/Deerfall/DeerfallProRes_H265.mp4";
-import DeerfallVidH264 from "../../img/Projects/Deerfall/DeerfallProRes_H264.mp4";
+import DeerfallVidAV1 from "../../img/Projects/Deerfall/DeerfallBanner_AV1.mp4";
+import DeerfallVidH265 from "../../img/Projects/Deerfall/DeerfallBanner_H265.mp4";
+import DeerfallVidH264 from "../../img/Projects/Deerfall/DeerfallBanner_H264.mp4";
 import DeerfallPosterJPG from "../../img/Projects/Deerfall/DeerfallBannerPoster.jpg";
 import { animated } from "react-spring";
 

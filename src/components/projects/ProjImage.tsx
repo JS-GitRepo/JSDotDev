@@ -26,8 +26,10 @@ const ProjImage = ({
   return (
     <div className="ProjImage">
       <div className="img-ctr">
-        <img src={imgSrc} alt={imgAltTxt} />
-        <img src={imgSrc_Fallback} alt={imgAltTxt} />
+        <picture>
+          <source srcSet={imgSrc} />
+          <img src={imgSrc_Fallback} alt={imgAltTxt} />
+        </picture>
       </div>
       <div className="desc-ctr">
         {isPortfolio ? (
