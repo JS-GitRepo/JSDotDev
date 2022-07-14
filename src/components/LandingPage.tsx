@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated, SpringValue, useSpring, useTransition } from "react-spring";
+import { animated, SpringValue, useTransition } from "react-spring";
 import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";

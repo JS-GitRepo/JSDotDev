@@ -1,21 +1,13 @@
-import ProjectImage from "./ProjectImage";
-import mediaMatchupMain from "../../img/Projects/MediaMatchup/MediaMatchupMain.png";
-import { animated, config, useTransition } from "react-spring";
-import { useEffect, useState } from "react";
+import ProjImage from "./ProjImage";
+import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
+import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
+import { animated } from "react-spring";
 
 interface Props {
   isPortfolio: boolean;
 }
 
 const MediaMatchup = ({ isPortfolio }: Props) => {
-  // - - - - Transitions - - - -
-  // const transitions = useTransition(transition, {
-  //   from: { opacity: 0 },
-  //   enter: { opacity: 1 },
-  //   leave: { opacity: 0 },
-  //   reverse: transition,
-  //   config: config.molasses,
-  // });
   // - - - - Tech and Skills - - - -
   const technologies: string[] = [
     "JavaScript",
@@ -32,15 +24,19 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
     "Software Engineering",
     "Hosting",
   ];
+  const desc: string = "";
 
   return (
     <animated.div className="MediaMatchup">
-      <ProjectImage
-        imgSrc={mediaMatchupMain}
+      <ProjImage
+        imgSrc={mediaMatchupMainAVIF}
+        imgSrc_Fallback={mediaMatchupMainJPG}
         isPortfolio={isPortfolio}
         imgAltTxt={"MediaMatchup Demo"}
         tech={technologies}
         skills={skills}
+        title={"Media Matchup"}
+        desc={desc}
       />
     </animated.div>
   );
