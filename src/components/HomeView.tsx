@@ -35,14 +35,6 @@ const HomeView = ({ hueRotation, setHueDuration }: Props) => {
   const webDevProjList = ["MediaMatchup"];
 
   useEffect(() => {
-    if (currentPath.includes("/gamedev/")) {
-      setCurrentProject(gameDevProjList[0]);
-    } else if (currentPath.includes("/webdev/")) {
-      setCurrentProject(webDevProjList[0]);
-    }
-  }, [isGameDev]);
-
-  useEffect(() => {
     if (currentPath.includes("/gamedev/portfolio")) {
       if (currentPath.includes("home/")) {
         navigate(`/home/gamedev/portfolio/${currentProject}`);
@@ -80,11 +72,18 @@ const HomeView = ({ hueRotation, setHueDuration }: Props) => {
       setIsPortfolio(false);
       setIsGameDev(false);
     }
+    if (currentPath.includes("/gamedev/")) {
+      setCurrentProject(gameDevProjList[0]);
+    } else if (currentPath.includes("/webdev/")) {
+      setCurrentProject(webDevProjList[0]);
+    }
+    console.log(currentPath);
+
     setHueDuration(12000);
-  }, [currentPath, currentProject]);
+  }, [currentPath]);
 
   return (
-    <div className="HomeView">
+    <div className='HomeView'>
       <HomeViewHeader
         isPortfolio={isPortfolio}
         gamedevOrWebdev={isGameDev}
