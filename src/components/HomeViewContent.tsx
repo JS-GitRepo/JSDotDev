@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { animated, config, useTransition } from "react-spring";
+import { animated, useTransition } from "react-spring";
 import "./HomeViewContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
@@ -15,20 +15,19 @@ const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
   // - - - - Projects - - - -
+  const allProjList = {
+    Deerfall: <Deerfall isPortfolio={isPortfolio} />,
+    MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
+  };
   const gameDevProjList = {
     Deerfall: <Deerfall isPortfolio={isPortfolio} />,
   };
   const webDevProjList = {
     MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
   };
-  const [projQueue1, setProjQueue1] = useState<JSX.Element>(
-    <Deerfall isPortfolio={isPortfolio} />
-  );
-  const [projQueue2, setProjQueue2] = useState<JSX.Element>(
-    <Deerfall isPortfolio={isPortfolio} />
-  );
+  const [currProjArray, setCurrProjArray] = useState<JSX.Element[]>([]);
   // - - - - Transitions - - - -
-  const transitions = useTransition(toggleQueue, {
+  const transition = useTransition(currProjArray, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -36,32 +35,19 @@ const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
     exitBeforeEnter: true,
   });
 
-  const checkQueue = (project: JSX.Element) => {
-    if (toggleQueue === true) {
-      setProjQueue2(project);
-      setToggleQueue(!toggleQueue);
-    } else {
-      setProjQueue1(project);
-      setToggleQueue(!toggleQueue);
-    }
-  };
-
   useEffect(() => {
-    if (currentProject === "Deerfall") {
-      checkQueue(gameDevProjList.Deerfall);
-    } else if (currentProject === "MediaMatchup") {
-      checkQueue(webDevProjList.MediaMatchup);
-    }
+    setCurrProjArray([eval(`allProjList.${currentProject}`)]);
   }, [currentProject]);
 
   return (
-    <div className="HomeViewContent">
-      {transitions((styles, item) =>
-        item ? (
-          <animated.div style={styles}>{projQueue1}</animated.div>
-        ) : (
-          <animated.div style={styles}>{projQueue2}</animated.div>
-        )
+    <div className='HomeViewContent'>
+      {transition(
+        (styles, item) =>
+          item && (
+            <animated.div className={`media-ctr`} style={styles}>
+              {item}
+            </animated.div>
+          )
       )}
     </div>
   );

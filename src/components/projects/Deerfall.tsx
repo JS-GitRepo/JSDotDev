@@ -28,17 +28,17 @@ const Deerfall = ({ isPortfolio }: Props) => {
   const desc: string = "";
 
   return (
-    <animated.div className="Deerfall">
+    <animated.div className="Deerfall media-ctr">
       <ProjVideo
-        vidSrc={DeerfallVidAV1}
+        vidSrc={DeerfallVidH265}
+        vidSrc_Fallback={DeerfallVidAV1}
+        vidSrc_Fallback2={DeerfallVidH264}
         isPortfolio={isPortfolio}
         tech={technologies}
         skills={skills}
         title={"Deerfall"}
         desc={desc}
         vidPoster={DeerfallPosterJPG}
-        vidSrc_Fallback={DeerfallVidH265}
-        vidSrc_Fallback2={DeerfallVidH264}
       />
     </animated.div>
   );
