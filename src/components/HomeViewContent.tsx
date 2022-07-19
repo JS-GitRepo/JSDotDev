@@ -43,7 +43,11 @@ const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
     <div className='HomeViewContent'>
       {transition(
         (styles, item) =>
-          item && <animated.div style={styles}>{item}</animated.div>
+          item && (
+            <animated.div className={`media-ctr`} style={styles}>
+              {item}
+            </animated.div>
+          )
       )}
     </div>
   );
