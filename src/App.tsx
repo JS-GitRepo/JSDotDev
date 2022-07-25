@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import HomeView from "./components/HomeView";
 import { useSpring } from "react-spring";
 import { useState } from "react";
+import WIPDisclaimer from "./components/WIPDisclaimer";
 
 function App() {
   const [hueFlip, setHueFlip] = useState<boolean>(false);
@@ -30,11 +31,11 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <LandingPage
                 hueRotation={hueRotation}
@@ -43,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="/landing"
+            path='/landing'
             element={
               <LandingPage
                 hueRotation={hueRotation}
@@ -52,7 +53,7 @@ function App() {
             }
           />
           <Route
-            path="/landing/:location"
+            path='/landing/:location'
             element={
               <LandingPage
                 hueRotation={hueRotation}
@@ -61,7 +62,7 @@ function App() {
             }
           />
           <Route
-            path="/landing/:category/:content"
+            path='/landing/:category/:content'
             element={
               <LandingPage
                 hueRotation={hueRotation}
@@ -70,7 +71,7 @@ function App() {
             }
           />
           <Route
-            path="/landing/:category/:content/:project"
+            path='/landing/:category/:content/:project'
             element={
               <LandingPage
                 hueRotation={hueRotation}
@@ -79,7 +80,7 @@ function App() {
             }
           />
           <Route
-            path="/home"
+            path='/home'
             element={
               <HomeView
                 hueRotation={hueRotation}
@@ -88,7 +89,7 @@ function App() {
             }
           />
           <Route
-            path="/home/:category/:content"
+            path='/home/:category/:content'
             element={
               <HomeView
                 hueRotation={hueRotation}
@@ -97,7 +98,7 @@ function App() {
             }
           />
           <Route
-            path="/home/:category/:content/:project"
+            path='/home/:category/:content/:project'
             element={
               <HomeView
                 hueRotation={hueRotation}
@@ -107,13 +108,7 @@ function App() {
           />
         </Routes>
       </Router>
-      <div className={"wip-disclaimer"}>
-        <h2>
-          <span className="emoji">🛠</span> Website Under Construction{" "}
-          <span className="emoji">🛠</span>
-        </h2>
-        <p>{`Some features may be incomplete, buggy, or site-breaking. Feel free to explore and please re-visit soon!`}</p>
-      </div>
+      <WIPDisclaimer />
     </div>
   );
 }
