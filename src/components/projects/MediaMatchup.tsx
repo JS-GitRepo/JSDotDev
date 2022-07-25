@@ -27,7 +27,7 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
   const desc: string = "";
 
   return (
-    <animated.div className="MediaMatchup">
+    <animated.div className='MediaMatchup media-ctr'>
       <ProjImage
         imgSrc={mediaMatchupMainAVIF}
         imgSrc_Fallback={mediaMatchupMainJPG}
