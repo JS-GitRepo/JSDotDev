@@ -1,0 +1,11 @@
+.ProjImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 100%;
+}
+
+.ProjImage .img-ctr {
+  max-width: 100%;
+}

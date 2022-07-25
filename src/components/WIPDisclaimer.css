@@ -1,0 +1,48 @@
+.WIPDisclaimer {
+  font-family: "munro";
+  color: white;
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 100;
+  border: solid white 2px;
+  background-color: rgba(96, 96, 96, 0.348);
+  padding: 0px 10px;
+  width: 90%;
+}
+
+.WIPDisclaimer h2 {
+  margin: 10px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.WIPDisclaimer .wip-text {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.WIPDisclaimer .close-ctr {
+  position: absolute;
+  border: solid white 1px;
+  left: 5px;
+  top: 5px;
+}
+
+.WIPDisclaimer .close-ctr p {
+  margin: 0px;
+  padding: 1px;
+  width: 18px;
+  height: 18px;
+}
+
+/* - - - - MEDIA QUERIES - - - - */
+@media only screen and (min-width: 768px) {
+  .WIPDisclaimer {
+    bottom: 100px;
+    padding: 10px;
+    width: 80%;
+  }
+}
