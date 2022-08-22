@@ -7,6 +7,7 @@ import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
+import PersonalIntro from "./PersonalIntro";
 
 interface Props {
   hueRotation: {
@@ -99,10 +100,10 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
 
   return (
     <div className={`LandingPage`}>
-      <div className={`LandingPage-container ${hideLP}`}>
+      <div className={`lp-content-ctr ${hideLP}`}>
         {fadeOut((style: any, item: any) =>
           item ? (
-            <animated.div className={"header-container"} style={style}>
+            <animated.div className={"header-ctr"} style={style}>
               <LandingPageLink
                 currentDisplay={currentDisplay}
                 linkText={currentDisplay}
@@ -115,9 +116,10 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
             ""
           )
         )}
+        <PersonalIntro />
         {fadeOut((style: any, item: any) =>
           item ? (
-            <animated.div className="link-container" style={style}>
+            <animated.div className='nav-ctr' style={style}>
               <LandingPageLink
                 currentDisplay={currentDisplay}
                 linkText={link1Text}
@@ -137,16 +139,16 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
             ""
           )
         )}
-        <div className="bg-img-container">
+        <div className='bg-img-ctr'>
           <animated.img
             style={hueRotation}
             className={`bg-img`}
             src={currBG}
-            alt=""
+            alt=''
           />
         </div>
       </div>
-      <div className={`HomeView-container ${hideHV}`}>
+      <div className={`HomeView-ctr ${hideHV}`}>
         <HomeView hueRotation={hueRotation} setHueDuration={setHueDuration} />
       </div>
     </div>
