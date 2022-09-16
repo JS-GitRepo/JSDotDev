@@ -5,7 +5,7 @@ const PersonalIntro = () => {
   return (
     <div className='PersonalIntro'>
       <img src={headshot} alt='jake-headshot-img' />
-      <p>Hi I'm Jake</p>
+      <p>Hello! I'm Jake</p>
     </div>
   );
 };
