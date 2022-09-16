@@ -25,7 +25,7 @@ function App() {
     reset: false,
     cancel: bgAnimOff,
     reverse: hueFlip,
-    delay: 2000,
+    delay: 1000,
     config: { duration: hueDuration, tension: 280, friction: 60 },
     onRest: () => setHueFlip(!hueFlip),
   });
