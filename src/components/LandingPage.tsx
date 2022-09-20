@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./LandingPage.css";
+import "./styles/LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
 import { animated, SpringValue, useTransition } from "react-spring";
 import HomeView from "./HomeView";
@@ -8,15 +8,11 @@ import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
 import PersonalIntro from "./PersonalIntro";
+import StyleContext from "../contexts/StyleContext";
 
-interface Props {
-  hueRotation: {
-    filter: SpringValue<string>;
-  };
-  setHueDuration: React.Dispatch<React.SetStateAction<number>>;
-}
+interface Props {}
 
-const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
+const LandingPage = ({}: Props) => {
   // - - - - - LINK FUNCTIONALITY - - - - -
   const [currentDisplay, setCurrentDisplay] = useState<string>("");
   const [firstRender, setFirstRender] = useState<boolean>(true);
@@ -25,6 +21,7 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
   const [link2Text, setLink2Text] = useState<string>("");
   const [link2Path, setLink2Path] = useState<string>("");
   const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
+  const { hueRotation, setHueDuration } = useContext(StyleContext);
   const currentPath = useLocation().pathname;
   const navigate = useNavigate();
 
@@ -108,7 +105,6 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
                 currentDisplay={currentDisplay}
                 linkText={currentDisplay}
                 pathName={"/"}
-                className={"lp-link"}
                 isH1={true}
               />
             </animated.div>
@@ -116,7 +112,7 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
             ""
           )
         )}
-        <PersonalIntro />
+        {/* <PersonalIntro /> */}
         {fadeOut((style: any, item: any) =>
           item ? (
             <animated.div className='nav-ctr' style={style}>
@@ -124,14 +120,12 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
                 currentDisplay={currentDisplay}
                 linkText={link1Text}
                 pathName={link1Path}
-                className={"lp-link"}
                 isH1={false}
               />
               <LandingPageLink
                 currentDisplay={currentDisplay}
                 linkText={link2Text}
                 pathName={link2Path}
-                className={"lp-link"}
                 isH1={false}
               />
             </animated.div>
@@ -149,7 +143,7 @@ const LandingPage = ({ hueRotation, setHueDuration }: Props) => {
         </div>
       </div>
       <div className={`HomeView-ctr ${hideHV}`}>
-        <HomeView hueRotation={hueRotation} setHueDuration={setHueDuration} />
+        <HomeView />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { animated, SpringValue } from "react-spring";
-import "./HomeViewFooter.css";
+import "./styles/HomeViewFooter.css";
 
 interface Props {
   pathname: string;
@@ -24,15 +24,15 @@ const HomeViewFooter = ({
   const currentYear = new Date();
 
   return (
-    <div className="HomeViewFooter">
-      <div className="project-nav-ctr">
-        <div className="project-nav">
-          <span className="material-symbols-outlined">chevron_left</span>
+    <div className='HomeViewFooter'>
+      <div className='project-nav-ctr'>
+        <div className='project-nav'>
+          <span className='material-symbols-outlined'>chevron_left</span>
           <h2>{currentProject}</h2>
-          <span className="material-symbols-outlined">chevron_right</span>
+          <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
-        <div className="project-nav-type-cat">
+        <div className='project-nav-type-cat'>
           <Link
             to={gameDevLink}
             className={gamedevOrWebdev ? "highlighted-link" : ""}>
@@ -50,7 +50,7 @@ const HomeViewFooter = ({
         </div>
       </div>
 
-      <div className="rights-ctr">
+      <div className='rights-ctr'>
         <p>
           <animated.span
             className={"highlighted-link"}

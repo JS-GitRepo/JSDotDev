@@ -4,7 +4,6 @@ import { ReactNode, useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 import UserAccount from "../models/UserAcount";
 import { createNewUser, getUserById } from "../services/userService";
-import { useLocation } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
@@ -29,6 +28,7 @@ const AuthContextProvider = ({ children }: Props) => {
     return { currentDate, detailedDate, simpleDate };
   };
 
+  // Monitors login state
   useEffect(() => {
     return auth.onAuthStateChanged((newUser) => {
       setUser(newUser);

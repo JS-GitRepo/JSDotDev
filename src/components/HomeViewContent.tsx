@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
-import "./HomeViewContent.css";
+import "./styles/HomeViewContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 

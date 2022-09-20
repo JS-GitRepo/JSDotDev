@@ -1,21 +1,18 @@
-import "./HomeView.css";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import "./styles/HomeView.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import HomeViewHeader from "./HomeViewHeader";
 import HomeViewFooter from "./HomeViewFooter";
 import HomeViewContent from "./HomeViewContent";
 import { SpringValue } from "react-spring";
+import StyleContext from "../contexts/StyleContext";
 
-interface Props {
-  hueRotation: {
-    filter: SpringValue<string>;
-  };
-  setHueDuration: React.Dispatch<React.SetStateAction<number>>;
-}
+interface Props {}
 
-const HomeView = ({ hueRotation, setHueDuration }: Props) => {
+const HomeView = ({}: Props) => {
   // - - - - GENERAL STATES - - - -
   const [firstRender, setFirstRender] = useState<boolean>(true);
+  const { hueRotation, setHueDuration } = useContext(StyleContext);
   // - - - - - TITLES AND TEXT - - - - -
   const [currentProject, setCurrentProject] = useState<string>("Deerfall");
   const [title, setTitle] = useState<string>("Dev Blog");
