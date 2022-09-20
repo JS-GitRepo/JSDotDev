@@ -29,7 +29,7 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
   return (
     <animated.div className='MediaMatchup media-ctr'>
       <ProjImage
-        imgSrc={mediaMatchupMainAVIF}
+        imgSrc={mediaMatchupMainJPG}
         imgSrc_Fallback={mediaMatchupMainJPG}
         isPortfolio={isPortfolio}
         imgAltTxt={"MediaMatchup Demo"}

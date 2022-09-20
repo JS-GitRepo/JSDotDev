@@ -1,4 +1,4 @@
-import "./PersonalIntro.css";
+import "./styles/PersonalIntro.css";
 import headshot from "../img/Headshot-PurpleFlannel.png";
 
 const PersonalIntro = () => {

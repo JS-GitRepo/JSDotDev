@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./WIPDisclaimer.css";
+import "./styles/WIPDisclaimer.css";
 
 const WIPDisclaimer = () => {
   const [closeClass, setCloseClass] = useState<string>("WIPDisclaimer");

@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { animated, SpringValue, useSpring } from "react-spring";
-import "./LandingPageLink.css";
+import StyleContext from "../contexts/StyleContext";
+import "./styles/LandingPageLink.css";
 
 interface Props {
   currentDisplay: string;
   linkText: string;
   pathName: string;
-  className: string;
   isH1: boolean;
 }
 
@@ -15,11 +15,11 @@ const LandingPageLink = ({
   currentDisplay,
   linkText,
   pathName,
-  className,
   isH1,
 }: Props) => {
+  const { isMobile } = useContext(StyleContext);
   const opacityRef = useRef(0);
-  const hoverOn = useSpring({
+  const hoverOn: any = useSpring({
     to: { opacity: 0 },
     from: { opacity: 1 },
     reset: true,
@@ -28,7 +28,7 @@ const LandingPageLink = ({
     loop: { reverse: true },
     onChange: (): number => (opacityRef.current = hoverOn.opacity.get()),
   });
-  const hoverOff = useSpring({
+  const hoverOff: any = useSpring({
     to: {
       opacity: 1,
     },
@@ -36,39 +36,47 @@ const LandingPageLink = ({
     reset: true,
     loop: false,
   });
-  const hoverStart = useSpring({
+  const hoverNone: any = useSpring({
     from: { opacity: 1 },
     reset: true,
   });
   const [animState, setAnimState] = useState<{ opacity: SpringValue<number> }>(
-    hoverStart
+    hoverNone
   );
+
+  const checkIsMobile = (hoverState: { opacity: SpringValue<number> }) => {
+    if (isMobile) {
+      setAnimState(hoverNone);
+    } else if (!isMobile) {
+      setAnimState(hoverState);
+    }
+  };
 
   useEffect(() => {
     let fromVal = animState.opacity.animation.from;
     let timeout;
 
     if (fromVal > 0 && fromVal < 1) {
-      setTimeout(() => setAnimState(hoverStart), 400);
+      setTimeout(() => setAnimState(hoverNone), 400);
     } else {
       clearTimeout(timeout);
     }
   }, [animState]);
 
   return (
-    <Link to={pathName} className={className}>
+    <Link to={pathName} className={"lp-link"}>
       {isH1 ? (
         <animated.h1
           style={animState}
-          onMouseEnter={() => setAnimState(hoverOn)}
-          onMouseLeave={() => setAnimState(hoverOff)}>
+          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseLeave={() => checkIsMobile(hoverOff)}>
           {currentDisplay}
         </animated.h1>
       ) : (
         <animated.h2
           style={animState}
-          onMouseEnter={() => setAnimState(hoverOn)}
-          onMouseLeave={() => setAnimState(hoverOff)}>
+          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseLeave={() => checkIsMobile(hoverOff)}>
           {linkText}
         </animated.h2>
       )}
