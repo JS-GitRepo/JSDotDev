@@ -20,10 +20,12 @@ const LandingPage = ({}: Props) => {
   const [link1Path, setLink1Path] = useState<string>("");
   const [link2Text, setLink2Text] = useState<string>("");
   const [link2Path, setLink2Path] = useState<string>("");
-  const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
-  const { hueRotation, setHueDuration } = useContext(StyleContext);
   const currentPath = useLocation().pathname;
   const navigate = useNavigate();
+
+  // - - - - - CONTEXT - - - - -
+  const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
+  const { hueRotation, setHueDuration } = useContext(StyleContext);
 
   // - - - - - BG TRANSITION - - - - -
   const [hideLP, setHideLP] = useState<string>("");

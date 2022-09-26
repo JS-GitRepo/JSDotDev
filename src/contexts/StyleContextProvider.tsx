@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import StyleContext from "./StyleContext";
 import { ReactNode, useEffect, useState } from "react";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 
 interface Props {
   children: ReactNode;
@@ -15,18 +15,17 @@ const StyleContextProvider = ({ children }: Props) => {
   const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
   const [hueDuration, setHueDuration] = useState<number>(4500);
   const hueRotation = useSpring({
+    loop: { reverse: true },
+    delay: 1000,
+    reset: true,
     to: {
       filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
     },
     from: {
       filter: "hue-rotate(0deg) saturate(100%) sepia(0%)",
     },
-    reset: false,
     cancel: bgAnimOff,
-    reverse: hueFlip,
-    delay: 1000,
-    config: { duration: hueDuration, tension: 280, friction: 60 },
-    onRest: () => setHueFlip(!hueFlip),
+    config: { duration: hueDuration },
   });
 
   const checkWindowSize = () => {
