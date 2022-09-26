@@ -10,6 +10,7 @@ interface Props {
 const StyleContextProvider = ({ children }: Props) => {
   // GENERAL
   const [isMobile, setIsMobile] = useState<boolean>(true);
+
   // ANIMATIONS / REACT SPRING
   const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
   const [hueDuration, setHueDuration] = useState<number>(4500);
