@@ -2,8 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import HomeView from "./components/HomeView";
-import { useSpring } from "react-spring";
-import { useState } from "react";
 import WIPDisclaimer from "./components/WIPDisclaimer";
 
 function App() {
