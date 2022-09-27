@@ -1,6 +1,7 @@
 import StyleContext from "./StyleContext";
 import { ReactNode, useEffect, useState } from "react";
 import { useSpring } from "react-spring";
+import AppConfig from "../AppConfig.json";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +13,9 @@ const StyleContextProvider = ({ children }: Props) => {
 
   // ANIMATIONS / REACT SPRING
   const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
-  const [hueDuration, setHueDuration] = useState<number>(4000);
+  const [hueDuration, setHueDuration] = useState<number>(
+    AppConfig.hueAnimDuration
+  );
   const hueRotation = useSpring({
     loop: { reverse: true, config: { duration: hueDuration } },
     delay: 1000,
