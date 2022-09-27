@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import HomeViewHeader from "./HomeViewHeader";
 import HomeViewFooter from "./HomeViewFooter";
 import HomeViewContent from "./HomeViewContent";
-import { SpringValue } from "react-spring";
 import StyleContext from "../contexts/StyleContext";
 import AppConfig from "../AppConfig.json";
 
