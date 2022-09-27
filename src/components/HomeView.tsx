@@ -76,7 +76,7 @@ const HomeView = ({}: Props) => {
     }
     console.log(currentPath);
 
-    setHueDuration(12000);
+    // setHueDuration(12000);
   }, [currentPath]);
 
   return (
