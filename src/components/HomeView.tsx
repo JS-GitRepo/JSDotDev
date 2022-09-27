@@ -6,12 +6,12 @@ import HomeViewFooter from "./HomeViewFooter";
 import HomeViewContent from "./HomeViewContent";
 import { SpringValue } from "react-spring";
 import StyleContext from "../contexts/StyleContext";
+import AppConfig from "../AppConfig.json";
 
 interface Props {}
 
 const HomeView = ({}: Props) => {
   // - - - - GENERAL STATES - - - -
-  const [firstRender, setFirstRender] = useState<boolean>(true);
   const { hueRotation, setHueDuration } = useContext(StyleContext);
   // - - - - - TITLES AND TEXT - - - - -
   const [currentProject, setCurrentProject] = useState<string>("Deerfall");
@@ -76,7 +76,9 @@ const HomeView = ({}: Props) => {
     }
     console.log(currentPath);
 
-    // setHueDuration(12000);
+    if (hueRotation != AppConfig.hueAnimDuration_Slow) {
+      setHueDuration(AppConfig.hueAnimDuration_Slow);
+    }
   }, [currentPath]);
 
   return (

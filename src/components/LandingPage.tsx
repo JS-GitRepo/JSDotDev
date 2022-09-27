@@ -9,6 +9,7 @@ import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
 import PersonalIntro from "./PersonalIntro";
 import StyleContext from "../contexts/StyleContext";
+import AppConfig from "../AppConfig.json";
 
 interface Props {}
 
@@ -65,7 +66,7 @@ const LandingPage = ({}: Props) => {
       setIsActivePage(false);
       setHideHV("");
       setTimeout(() => setHideLP("hide"), 2000);
-      setHueDuration(12000);
+      setHueDuration(AppConfig.hueAnimDuration_Slow);
     }
 
     if (currentPath === "/") {
@@ -81,21 +82,21 @@ const LandingPage = ({}: Props) => {
       setLink1Path("/landing/webdev");
       setLink2Text("Game Dev");
       setLink2Path("/landing/gamedev");
-      setHueDuration(4000);
+      setHueDuration(AppConfig.hueAnimDuration);
     } else if (currentPath === "/landing/webdev") {
       setCurrentDisplay("Web Development");
       setLink1Text("Portfolio");
       setLink1Path("/landing/webdev/portfolio");
       setLink2Text("Blog");
       setLink2Path("/landing/webdev/blog");
-      setHueDuration(4000);
+      setHueDuration(AppConfig.hueAnimDuration);
     } else if (currentPath === "/landing/gamedev") {
       setCurrentDisplay("Game Development");
       setLink1Text("Portfolio");
       setLink1Path("/landing/webdev/portfolio");
       setLink2Text("Blog");
       setLink2Path("/landing/gamedev/blog");
-      setHueDuration(4000);
+      setHueDuration(AppConfig.hueAnimDuration);
     }
   }, [currentPath]);
 
