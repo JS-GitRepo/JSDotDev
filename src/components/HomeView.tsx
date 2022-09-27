@@ -74,7 +74,6 @@ const HomeView = ({}: Props) => {
     } else if (currentPath.includes("/webdev/")) {
       setCurrentProject(webDevProjList[0]);
     }
-    console.log(currentPath);
 
     if (hueRotation != AppConfig.hueAnimDuration_Slow) {
       setHueDuration(AppConfig.hueAnimDuration_Slow);
