@@ -88,12 +88,14 @@ const LandingPage = ({}: Props) => {
       setLink1Path("/landing/webdev/portfolio");
       setLink2Text("Blog");
       setLink2Path("/landing/webdev/blog");
+      setHueDuration(4000);
     } else if (currentPath === "/landing/gamedev") {
       setCurrentDisplay("Game Development");
       setLink1Text("Portfolio");
       setLink1Path("/landing/webdev/portfolio");
       setLink2Text("Blog");
       setLink2Path("/landing/gamedev/blog");
+      setHueDuration(4000);
     }
   }, [currentPath]);
 
