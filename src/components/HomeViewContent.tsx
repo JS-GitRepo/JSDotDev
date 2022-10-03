@@ -7,10 +7,10 @@ import MediaMatchup from "./projects/MediaMatchup";
 interface Props {
   pathname: string;
   isPortfolio: boolean;
-  currentProject: string;
+  currentContent: string;
 }
 
-const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
+const HomeViewContent = ({ pathname, isPortfolio, currentContent }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
@@ -36,8 +36,8 @@ const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
   });
 
   useEffect(() => {
-    setCurrProjArray([eval(`allProjList.${currentProject}`)]);
-  }, [currentProject]);
+    setCurrProjArray([eval(`allProjList.${currentContent}`)]);
+  }, [currentContent]);
 
   return (
     <div className='HomeViewContent'>

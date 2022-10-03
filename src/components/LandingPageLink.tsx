@@ -68,14 +68,14 @@ const LandingPageLink = ({
       {isH1 ? (
         <animated.h1
           style={animState}
-          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseOver={() => checkIsMobile(hoverOn)}
           onMouseLeave={() => checkIsMobile(hoverOff)}>
           {currentDisplay}
         </animated.h1>
       ) : (
         <animated.h2
           style={animState}
-          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseOver={() => checkIsMobile(hoverOn)}
           onMouseLeave={() => checkIsMobile(hoverOff)}>
           {linkText}
         </animated.h2>

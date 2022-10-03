@@ -1,4 +1,5 @@
 {
-  "hueAnimDuration": 4000,
-  "hueAnimDuration_Slow": 10000
+  "hueAnimDuration": 7000,
+  "hueAnimDuration_Slow": 10000,
+  "projectURL_Params": ["deerfall", "mediamatchup"]
 }

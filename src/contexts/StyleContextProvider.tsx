@@ -18,7 +18,6 @@ const StyleContextProvider = ({ children }: Props) => {
   );
   const hueRotation = useSpring({
     loop: { reverse: true, config: { duration: hueDuration } },
-    delay: 1000,
     to: {
       filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
     },

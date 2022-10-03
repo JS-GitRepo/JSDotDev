@@ -13,7 +13,7 @@ const HomeView = ({}: Props) => {
   // - - - - GENERAL STATES - - - -
   const { hueRotation, setHueDuration } = useContext(StyleContext);
   // - - - - - TITLES AND TEXT - - - - -
-  const [currentProject, setCurrentProject] = useState<string>("Deerfall");
+  const [currentContent, setCurrentContent] = useState<string>("Deerfall");
   const [title, setTitle] = useState<string>("Dev Blog");
   const [subtitle, setSubtitle] = useState<string>("Welcome! ");
   const [subEmoji, setSubEmoji] = useState<string>(" 🙂");
@@ -33,45 +33,47 @@ const HomeView = ({}: Props) => {
   useEffect(() => {
     if (currentPath.includes("/gamedev/portfolio")) {
       if (currentPath.includes("home/")) {
-        navigate(`/home/gamedev/portfolio/${currentProject}`);
+        navigate(`/home/gamedev/portfolio/${currentContent}`);
       }
       setTitle("GameDev Portfolio");
-      setWebDevLink(`/home/webdev/portfolio/${currentProject}`);
-      setBlogLink(`/home/gamedev/blog/${currentProject}`);
+      setWebDevLink(`/home/webdev/portfolio/${currentContent}`);
+      setBlogLink(`/home/gamedev/blog/${currentContent}`);
       setIsPortfolio(true);
       setIsGameDev(true);
     } else if (currentPath.includes("/gamedev/blog")) {
       if (currentPath.includes("home/")) {
-        navigate(`/home/gamedev/blog/${currentProject}`);
+        navigate(`/home/gamedev/blog/${currentContent}`);
       }
       setTitle("GameDev Blog");
-      setWebDevLink(`/home/webdev/blog/${currentProject}`);
-      setPortfolioLink(`/home/gamedev/portfolio/${currentProject}`);
+      setWebDevLink(`/home/webdev/blog/${currentContent}`);
+      setPortfolioLink(`/home/gamedev/portfolio/${currentContent}`);
       setIsPortfolio(false);
       setIsGameDev(true);
     } else if (currentPath.includes("/webdev/portfolio")) {
       if (currentPath.includes("home/")) {
-        navigate(`/home/webdev/portfolio/${currentProject}`);
+        navigate(`/home/webdev/portfolio/${currentContent}`);
       }
       setTitle("WebDev Portfolio");
-      setGameDevLink(`/home/gamedev/portfolio/${currentProject}`);
-      setBlogLink(`/home/webdev/blog/${currentProject}`);
+      setGameDevLink(`/home/gamedev/portfolio/${currentContent}`);
+      setBlogLink(`/home/webdev/blog/${currentContent}`);
       setIsPortfolio(true);
       setIsGameDev(false);
     } else if (currentPath.includes("/webdev/blog")) {
       if (currentPath.includes("home/")) {
-        navigate(`/home/webdev/blog/${currentProject}`);
+        navigate(`/home/webdev/blog/${currentContent}`);
       }
       setTitle("WebDev Blog");
-      setGameDevLink(`/home/gamedev/blog/${currentProject}`);
-      setPortfolioLink(`/home/webdev/portfolio/${currentProject}`);
+      setGameDevLink(`/home/gamedev/blog/${currentContent}`);
+      setPortfolioLink(`/home/webdev/portfolio/${currentContent}`);
       setIsPortfolio(false);
       setIsGameDev(false);
     }
     if (currentPath.includes("/gamedev/")) {
-      setCurrentProject(gameDevProjList[0]);
+      setCurrentContent(gameDevProjList[0]);
     } else if (currentPath.includes("/webdev/")) {
-      setCurrentProject(webDevProjList[0]);
+      setCurrentContent(webDevProjList[0]);
+    } else if (currentPath.includes("/introduction/")) {
+      setCurrentContent("Introduction");
     }
 
     if (hueRotation != AppConfig.hueAnimDuration_Slow) {
@@ -82,22 +84,16 @@ const HomeView = ({}: Props) => {
   return (
     <div className='HomeView'>
       <HomeViewHeader
-        isPortfolio={isPortfolio}
-        gamedevOrWebdev={isGameDev}
-        hueRotation={hueRotation}
-        title={title}
         subtitle={subtitle}
         subEmoji={subEmoji}
         gameDevLink={gameDevLink}
         webDevLink={webDevLink}
-        portfolioLink={portfolioLink}
-        currentProject={currentProject}
-        blogLink={blogLink}
+        currentContent={currentContent}
       />
       <HomeViewContent
         pathname={currentPath}
         isPortfolio={isPortfolio}
-        currentProject={currentProject}
+        currentContent={currentContent}
       />
       <HomeViewFooter
         pathname={currentPath}
@@ -105,7 +101,10 @@ const HomeView = ({}: Props) => {
         hueRotation={hueRotation}
         gameDevLink={gameDevLink}
         webDevLink={webDevLink}
-        currentProject={currentProject}
+        currentContent={currentContent}
+        portfolioLink={portfolioLink}
+        blogLink={blogLink}
+        isPortfolio={isPortfolio}
       />
     </div>
   );

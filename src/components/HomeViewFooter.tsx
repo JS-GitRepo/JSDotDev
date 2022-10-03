@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { animated, SpringValue } from "react-spring";
 import "./styles/HomeViewFooter.css";
 
@@ -7,7 +7,10 @@ interface Props {
   gamedevOrWebdev: boolean;
   gameDevLink: string;
   webDevLink: string;
-  currentProject: string;
+  portfolioLink: string;
+  blogLink: string;
+  isPortfolio: boolean;
+  currentContent: string;
   hueRotation: {
     filter: SpringValue<string>;
   };
@@ -19,7 +22,10 @@ const HomeViewFooter = ({
   hueRotation,
   gameDevLink,
   webDevLink,
-  currentProject,
+  currentContent,
+  portfolioLink,
+  blogLink,
+  isPortfolio,
 }: Props) => {
   const currentYear = new Date();
 
@@ -28,25 +34,30 @@ const HomeViewFooter = ({
       <div className='project-nav-ctr'>
         <div className='project-nav'>
           <span className='material-symbols-outlined'>chevron_left</span>
-          <h2>{currentProject}</h2>
+          <h2>{currentContent}</h2>
           <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
         <div className='project-nav-type-cat'>
-          <Link
-            to={gameDevLink}
-            className={gamedevOrWebdev ? "highlighted-link" : ""}>
-            <animated.p style={gamedevOrWebdev ? hueRotation : {}}>
-              Game Dev
+          <NavLink
+            to={portfolioLink}
+            className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
+            <animated.p style={isPortfolio ? hueRotation : {}}>
+              Portfolio
             </animated.p>
-          </Link>
-          <Link
-            to={webDevLink}
-            className={gamedevOrWebdev ? "" : "highlighted-link"}>
-            <animated.p style={gamedevOrWebdev ? {} : hueRotation}>
-              Web Dev
+          </NavLink>
+          <NavLink
+            to={blogLink}
+            className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
+            <animated.p style={isPortfolio ? {} : hueRotation}>Blog</animated.p>
+          </NavLink>
+          <NavLink
+            to={blogLink}
+            className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
+            <animated.p style={isPortfolio ? {} : hueRotation}>
+              Intro
             </animated.p>
-          </Link>
+          </NavLink>
         </div>
       </div>
 

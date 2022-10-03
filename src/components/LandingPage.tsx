@@ -2,12 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated, SpringValue, useTransition } from "react-spring";
+import { animated, useTransition } from "react-spring";
 import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
-import PersonalIntro from "./PersonalIntro";
 import StyleContext from "../contexts/StyleContext";
 import AppConfig from "../AppConfig.json";
 
@@ -143,7 +142,7 @@ const LandingPage = ({}: Props) => {
             style={hueRotation}
             className={`bg-img`}
             src={currBG}
-            alt=''
+            alt='pixelart background image'
           />
         </div>
       </div>
