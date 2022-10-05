@@ -1,112 +1,106 @@
 import "./styles/HomeView.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import HomeViewHeader from "./HomeViewHeader";
 import HomeViewFooter from "./HomeViewFooter";
-import HomeViewContent from "./HomeViewContent";
-import StyleContext from "../contexts/StyleContext";
+import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
+import LandingPage from "./LandingPage";
 
 interface Props {}
 
 const HomeView = ({}: Props) => {
-  // - - - - GENERAL STATES - - - -
-  const { hueRotation, setHueDuration } = useContext(StyleContext);
+  // - - - - - NAVIGATION - - - - -
+  const location = useLocation();
+  const navigate = useNavigate();
+  // Valid URL Parameter Options to check against
+  let { landingOrHome, category1, gameOrWeb, project } = useParams();
+  const param1_Opts = ["landing", "home"];
+  const param2_Opts = ["portfolio", "blog", "introduction", "intro"];
+  const param3_Opts = ["gamedev", "webdev"];
+  const param4_Opts = AppConfig.projectURL_Params;
+  // useStates for Interfacing with URL Params
+  const [param1, setParam1] = useState<string>("");
+  const [param2, setParam2] = useState<string>("");
+  const [param3, setParam3] = useState<string>("");
+  const [param4, setParam4] = useState<string>("");
+  const [allParamsObj, setAllParamsObj] = useState<any>({
+    param1,
+    param2,
+    param3,
+    param4,
+  });
+  const setParamsArray = [setParam1, setParam2, setParam3, setParam4];
+  // check if this is the landing page
+  const [isLanding, setIsLanding] = useState<boolean>(false);
+  // - - - - CONTEXT - - - -
+  const { hueRotation, setHueDuration } = useContext(AppContext);
   // - - - - - TITLES AND TEXT - - - - -
-  const [currentProject, setCurrentProject] = useState<string>("Deerfall");
+  const [currentContent, setCurrentContent] = useState<string>("Deerfall");
   const [title, setTitle] = useState<string>("Dev Blog");
   const [subtitle, setSubtitle] = useState<string>("Welcome! ");
   const [subEmoji, setSubEmoji] = useState<string>(" 🙂");
-  // - - - - - LINKS - - - - -
-  const [gameDevLink, setGameDevLink] = useState<string>("");
-  const [webDevLink, setWebDevLink] = useState<string>("");
-  const [portfolioLink, setPortfolioLink] = useState<string>("");
-  const [blogLink, setBlogLink] = useState<string>("");
-  const [isPortfolio, setIsPortfolio] = useState<boolean>(true);
-  const [isGameDev, setIsGameDev] = useState<boolean>(true);
-  const navigate = useNavigate();
-  const currentPath = useLocation().pathname;
   // - - - - - PROJECTS - - - - -
   const gameDevProjList = ["Deerfall"];
   const webDevProjList = ["MediaMatchup"];
 
+  // - - - - - FUNCTIONS - - - - -
+  const checkURL = () => {
+    let URLSegments = [landingOrHome, category1, gameOrWeb, project];
+    let paramArray = [param1_Opts, param2_Opts, param3_Opts, param4_Opts];
+    if (location.pathname === "/") {
+      navigate("/landing");
+      setIsLanding(true);
+    } else if (location.pathname === "/landing") {
+      setIsLanding(true);
+    }
+    for (let i = 0; i < URLSegments.length; i++) {
+      if (URLSegments[i]) {
+        let found = paramArray[i].find((item) => item === URLSegments[i]);
+        if (found === undefined) {
+          navigate("/404NotFound");
+        } else {
+          setParamsArray[i](found);
+        }
+      }
+    }
+  };
+
+  // - - - - - useEffects - - - - -
   useEffect(() => {
-    if (currentPath.includes("/gamedev/portfolio")) {
-      if (currentPath.includes("home/")) {
-        navigate(`/home/gamedev/portfolio/${currentProject}`);
-      }
-      setTitle("GameDev Portfolio");
-      setWebDevLink(`/home/webdev/portfolio/${currentProject}`);
-      setBlogLink(`/home/gamedev/blog/${currentProject}`);
-      setIsPortfolio(true);
-      setIsGameDev(true);
-    } else if (currentPath.includes("/gamedev/blog")) {
-      if (currentPath.includes("home/")) {
-        navigate(`/home/gamedev/blog/${currentProject}`);
-      }
-      setTitle("GameDev Blog");
-      setWebDevLink(`/home/webdev/blog/${currentProject}`);
-      setPortfolioLink(`/home/gamedev/portfolio/${currentProject}`);
-      setIsPortfolio(false);
-      setIsGameDev(true);
-    } else if (currentPath.includes("/webdev/portfolio")) {
-      if (currentPath.includes("home/")) {
-        navigate(`/home/webdev/portfolio/${currentProject}`);
-      }
-      setTitle("WebDev Portfolio");
-      setGameDevLink(`/home/gamedev/portfolio/${currentProject}`);
-      setBlogLink(`/home/webdev/blog/${currentProject}`);
-      setIsPortfolio(true);
-      setIsGameDev(false);
-    } else if (currentPath.includes("/webdev/blog")) {
-      if (currentPath.includes("home/")) {
-        navigate(`/home/webdev/blog/${currentProject}`);
-      }
-      setTitle("WebDev Blog");
-      setGameDevLink(`/home/gamedev/blog/${currentProject}`);
-      setPortfolioLink(`/home/webdev/portfolio/${currentProject}`);
-      setIsPortfolio(false);
-      setIsGameDev(false);
-    }
-    if (currentPath.includes("/gamedev/")) {
-      setCurrentProject(gameDevProjList[0]);
-    } else if (currentPath.includes("/webdev/")) {
-      setCurrentProject(webDevProjList[0]);
-    }
+    setAllParamsObj({ param1, param2, param3, param4 });
+  }, [param1, param2, param3, param4]);
 
-    if (hueRotation != AppConfig.hueAnimDuration_Slow) {
-      setHueDuration(AppConfig.hueAnimDuration_Slow);
+  useEffect(() => {
+    if (!isLanding) {
+      checkURL();
+      if (hueRotation != AppConfig.hueAnimDuration_Slow) {
+        setHueDuration(AppConfig.hueAnimDuration_Slow);
+      }
     }
-  }, [currentPath]);
+    console.log(category1);
+  }, [location]);
 
+  // - - - - - JSX - - - - -
   return (
     <div className='HomeView'>
+      {isLanding ? (
+        <LandingPage
+          setIsLanding={setIsLanding}
+          setParamsArray={setParamsArray}
+        />
+      ) : (
+        ""
+      )}
       <HomeViewHeader
-        isPortfolio={isPortfolio}
-        gamedevOrWebdev={isGameDev}
-        hueRotation={hueRotation}
-        title={title}
         subtitle={subtitle}
         subEmoji={subEmoji}
-        gameDevLink={gameDevLink}
-        webDevLink={webDevLink}
-        portfolioLink={portfolioLink}
-        currentProject={currentProject}
-        blogLink={blogLink}
+        currentContent={currentContent}
+        allParamsObj={allParamsObj}
+        isLanding={isLanding}
       />
-      <HomeViewContent
-        pathname={currentPath}
-        isPortfolio={isPortfolio}
-        currentProject={currentProject}
-      />
-      <HomeViewFooter
-        pathname={currentPath}
-        gamedevOrWebdev={isGameDev}
-        hueRotation={hueRotation}
-        gameDevLink={gameDevLink}
-        webDevLink={webDevLink}
-        currentProject={currentProject}
-      />
+      <Outlet />
+      <HomeViewFooter currentContent={"deerfall"} allParamsObj={allParamsObj} />
     </div>
   );
 };

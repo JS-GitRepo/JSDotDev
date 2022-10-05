@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { animated, SpringValue, useSpring } from "react-spring";
-import StyleContext from "../contexts/StyleContext";
+import AppContext from "../contexts/AppContext";
 import "./styles/LandingPageLink.css";
 
 interface Props {
@@ -17,7 +17,7 @@ const LandingPageLink = ({
   pathName,
   isH1,
 }: Props) => {
-  const { isMobile } = useContext(StyleContext);
+  const { isMobile } = useContext(AppContext);
   const opacityRef = useRef(0);
   const hoverOn: any = useSpring({
     to: { opacity: 0 },
@@ -68,14 +68,14 @@ const LandingPageLink = ({
       {isH1 ? (
         <animated.h1
           style={animState}
-          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseOver={() => checkIsMobile(hoverOn)}
           onMouseLeave={() => checkIsMobile(hoverOff)}>
           {currentDisplay}
         </animated.h1>
       ) : (
         <animated.h2
           style={animState}
-          onMouseEnter={() => checkIsMobile(hoverOn)}
+          onMouseOver={() => checkIsMobile(hoverOn)}
           onMouseLeave={() => checkIsMobile(hoverOff)}>
           {linkText}
         </animated.h2>

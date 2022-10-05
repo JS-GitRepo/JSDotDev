@@ -5,25 +5,23 @@ import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 
 interface Props {
-  pathname: string;
-  isPortfolio: boolean;
-  currentProject: string;
+  currentContent: string;
 }
 
-const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
+const HomeViewContent = ({ currentContent }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
   // - - - - Projects - - - -
   const allProjList = {
-    Deerfall: <Deerfall isPortfolio={isPortfolio} />,
-    MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
+    Deerfall: <Deerfall isPortfolio={true} />,
+    MediaMatchup: <MediaMatchup isPortfolio={true} />,
   };
   const gameDevProjList = {
-    Deerfall: <Deerfall isPortfolio={isPortfolio} />,
+    Deerfall: <Deerfall isPortfolio={true} />,
   };
   const webDevProjList = {
-    MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
+    MediaMatchup: <MediaMatchup isPortfolio={true} />,
   };
   const [currProjArray, setCurrProjArray] = useState<JSX.Element[]>([]);
   // - - - - Transitions - - - -
@@ -36,8 +34,8 @@ const HomeViewContent = ({ pathname, isPortfolio, currentProject }: Props) => {
   });
 
   useEffect(() => {
-    setCurrProjArray([eval(`allProjList.${currentProject}`)]);
-  }, [currentProject]);
+    setCurrProjArray([eval(`allProjList.${currentContent}`)]);
+  }, [currentContent]);
 
   return (
     <div className='HomeViewContent'>

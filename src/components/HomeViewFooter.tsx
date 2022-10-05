@@ -1,52 +1,62 @@
-import { Link } from "react-router-dom";
-import { animated, SpringValue } from "react-spring";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { animated } from "react-spring";
+import AppContext from "../contexts/AppContext";
 import "./styles/HomeViewFooter.css";
 
 interface Props {
-  pathname: string;
-  gamedevOrWebdev: boolean;
-  gameDevLink: string;
-  webDevLink: string;
-  currentProject: string;
-  hueRotation: {
-    filter: SpringValue<string>;
+  currentContent: string;
+  allParamsObj: {
+    param1: string;
+    param2: string;
+    param3: string;
+    param4: string;
   };
 }
 
-const HomeViewFooter = ({
-  pathname,
-  gamedevOrWebdev,
-  hueRotation,
-  gameDevLink,
-  webDevLink,
-  currentProject,
-}: Props) => {
+const HomeViewFooter = ({ currentContent, allParamsObj }: Props) => {
   const currentYear = new Date();
+  const { hueRotation } = useContext(AppContext);
 
   return (
     <div className='HomeViewFooter'>
       <div className='project-nav-ctr'>
         <div className='project-nav'>
           <span className='material-symbols-outlined'>chevron_left</span>
-          <h2>{currentProject}</h2>
+          <h2>{currentContent}</h2>
           <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
-        <div className='project-nav-type-cat'>
-          <Link
-            to={gameDevLink}
-            className={gamedevOrWebdev ? "highlighted-link" : ""}>
-            <animated.p style={gamedevOrWebdev ? hueRotation : {}}>
-              Game Dev
-            </animated.p>
-          </Link>
-          <Link
-            to={webDevLink}
-            className={gamedevOrWebdev ? "" : "highlighted-link"}>
-            <animated.p style={gamedevOrWebdev ? {} : hueRotation}>
-              Web Dev
-            </animated.p>
-          </Link>
+        <div className='nav-ctr'>
+          <ul>
+            <li>
+              <NavLink
+                to={`/${allParamsObj.param1}/portfolio/${allParamsObj.param3}`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>portfolio</animated.p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`/${allParamsObj.param1}/blog/${allParamsObj.param3}`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>blog</animated.p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`/${allParamsObj.param1}/introduction`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>intro</animated.p>
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
 

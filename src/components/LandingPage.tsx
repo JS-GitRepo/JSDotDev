@@ -2,18 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
-import { animated, SpringValue, useTransition } from "react-spring";
-import HomeView from "./HomeView";
+import { animated, useTransition } from "react-spring";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
-import PersonalIntro from "./PersonalIntro";
-import StyleContext from "../contexts/StyleContext";
+import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
 
-interface Props {}
+interface Props {
+  setIsLanding: React.Dispatch<React.SetStateAction<boolean>>;
+  setParamsArray: React.Dispatch<React.SetStateAction<string>>[];
+}
 
-const LandingPage = ({}: Props) => {
+const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
   // - - - - - LINK FUNCTIONALITY - - - - -
   const [currentDisplay, setCurrentDisplay] = useState<string>("");
   const [firstRender, setFirstRender] = useState<boolean>(true);
@@ -26,7 +27,7 @@ const LandingPage = ({}: Props) => {
 
   // - - - - - CONTEXT - - - - -
   const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
-  const { hueRotation, setHueDuration } = useContext(StyleContext);
+  const { hueRotation, setHueDuration } = useContext(AppContext);
 
   // - - - - - BG TRANSITION - - - - -
   const [hideLP, setHideLP] = useState<string>("");
@@ -59,13 +60,14 @@ const LandingPage = ({}: Props) => {
       setFirstRender(false);
     } else if (
       // If current path is 'complete', transition to HomeView
-      currentPath.endsWith("/portfolio") ||
-      currentPath.endsWith("/blog")
+      currentPath.endsWith("/gamedev") ||
+      currentPath.endsWith("/webdev")
     ) {
       setCurrBG(pixelFadeBG);
       setIsActivePage(false);
       setHideHV("");
-      setTimeout(() => setHideLP("hide"), 2000);
+      setTimeout(() => setIsLanding(false), 1500);
+      setParamsArray[0]("home");
       setHueDuration(AppConfig.hueAnimDuration_Slow);
     }
 
@@ -78,25 +80,32 @@ const LandingPage = ({}: Props) => {
       setHueDuration(4000);
     } else if (currentPath === "/landing") {
       setCurrentDisplay("jakesnyder.dev");
+      setParamsArray[0]("landing");
+      setLink1Text("Portfolio");
+      setLink1Path("/landing/portfolio");
+      setLink2Text("Blog");
+      setLink2Path("/landing/blog");
+      setHueDuration(AppConfig.hueAnimDuration);
+    } else if (currentPath === "/landing/portfolio") {
+      setParamsArray[1]("portfolio");
+      setCurrentDisplay("Portfolio");
       setLink1Text("Web Dev");
-      setLink1Path("/landing/webdev");
+      setLink1Path("/home/portfolio/webdev");
       setLink2Text("Game Dev");
-      setLink2Path("/landing/gamedev");
+      setLink2Path("/home/portfolio/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
-    } else if (currentPath === "/landing/webdev") {
-      setCurrentDisplay("Web Development");
-      setLink1Text("Portfolio");
-      setLink1Path("/landing/webdev/portfolio");
-      setLink2Text("Blog");
-      setLink2Path("/landing/webdev/blog");
+    } else if (currentPath === "/landing/blog") {
+      setParamsArray[1]("blog");
+      setCurrentDisplay("Blog");
+      setLink1Text("Web Dev");
+      setLink1Path("/home/blog/webdev");
+      setLink2Text("Game Dev");
+      setLink2Path("/home/blog/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
-    } else if (currentPath === "/landing/gamedev") {
-      setCurrentDisplay("Game Development");
-      setLink1Text("Portfolio");
-      setLink1Path("/landing/webdev/portfolio");
-      setLink2Text("Blog");
-      setLink2Path("/landing/gamedev/blog");
-      setHueDuration(AppConfig.hueAnimDuration);
+    } else if (currentPath.endsWith("/gamedev")) {
+      setParamsArray[2]("gamedev");
+    } else if (currentPath.endsWith("/webdev")) {
+      setParamsArray[2]("webdev");
     }
   }, [currentPath]);
 
@@ -143,12 +152,9 @@ const LandingPage = ({}: Props) => {
             style={hueRotation}
             className={`bg-img`}
             src={currBG}
-            alt=''
+            alt='pixelart background image'
           />
         </div>
-      </div>
-      <div className={`HomeView-ctr ${hideHV}`}>
-        <HomeView />
       </div>
     </div>
   );
