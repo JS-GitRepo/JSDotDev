@@ -5,6 +5,7 @@ import HomeView from "./components/HomeView";
 import WIPDisclaimer from "./components/WIPDisclaimer";
 import HomeViewHeader from "./components/HomeViewHeader";
 import ErrorNotFound from "./components/ErrorNotFound";
+import HomeViewContent from "./components/HomeViewContent";
 
 // 9-28-22
 // Refactoring routes, and general way this 'web app' works. Making HomeView the default route, with a 'modal' over it which will be Landing Page. Instead of all this weird routing form Landing Page to Homeview, landing page will be an overlay that exists within HomeView, that is only present when the user is at /landing. Thinking of actually making the LandingPage an option for "HomeViewContent" that steels the entire viewport, so that HomeView is always there behind it.
@@ -18,17 +19,29 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<HomeView />}>
-          <Route path='/:landingOrHome' element={<HomeView />}>
-            <Route path='introduction' element={<HomeView />} />
-            <Route path=':category1' element={<HomeView />}>
-              <Route path=':gameOrWeb' element={<HomeView />}>
-                <Route path=':project' element={<HomeView />} />
+          <Route
+            path='/:landingOrHome'
+            element={<HomeViewContent currentContent={"Deerfall"} />}>
+            <Route
+              path='introduction'
+              element={<HomeViewContent currentContent={"Deerfall"} />}
+            />
+            <Route
+              path=':category1'
+              element={<HomeViewContent currentContent={"Deerfall"} />}>
+              <Route
+                path=':gameOrWeb'
+                element={<HomeViewContent currentContent={"Deerfall"} />}>
+                <Route
+                  path=':project'
+                  element={<HomeViewContent currentContent={"Deerfall"} />}
+                />
               </Route>
             </Route>
           </Route>
+          <Route path='404NotFound' element={<ErrorNotFound />} />
+          <Route path='*' element={<ErrorNotFound />} />
         </Route>
-        <Route path='404NotFound' element={<ErrorNotFound />} />
-        <Route path='*' element={<ErrorNotFound />} />
       </Routes>
       <WIPDisclaimer />
     </div>

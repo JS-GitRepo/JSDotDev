@@ -1,16 +1,24 @@
 /* - - - GENERAL - - -*/
 .HomeViewHeader {
+  /* Position and Sizing */
+  width: 100vw;
+  height: 90px;
+  z-index: 1;
+  /* Flex */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgb(240, 240, 240);
-  width: 100%;
-  height: 100px;
+  /* Style */
+  background-color: rgb(250, 250, 250);
   text-decoration: none;
 }
 
 .HomeViewHeader h1 {
   margin: 2px 0px;
+}
+
+.HomeViewHeader a {
+  color: rgb(58, 58, 58);
 }
 
 .HomeViewHeader .title-ctr {

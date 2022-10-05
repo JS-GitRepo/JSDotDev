@@ -7,7 +7,7 @@ import HomeView from "./HomeView";
 import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
-import StyleContext from "../contexts/StyleContext";
+import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
 
 interface Props {}
@@ -25,7 +25,7 @@ const LandingPage = ({}: Props) => {
 
   // - - - - - CONTEXT - - - - -
   const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
-  const { hueRotation, setHueDuration } = useContext(StyleContext);
+  const { hueRotation, setHueDuration } = useContext(AppContext);
 
   // - - - - - BG TRANSITION - - - - -
   const [hideLP, setHideLP] = useState<string>("");

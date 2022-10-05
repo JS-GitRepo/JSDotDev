@@ -1,13 +1,14 @@
-import StyleContext from "./StyleContext";
+import AppContext from "./AppContext";
 import { ReactNode, useEffect, useState } from "react";
 import { useSpring } from "react-spring";
 import AppConfig from "../AppConfig.json";
+import { useLocation, useParams } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
 }
 
-const StyleContextProvider = ({ children }: Props) => {
+const AppContextProvider = ({ children }: Props) => {
   // GENERAL
   const [isMobile, setIsMobile] = useState<boolean>(true);
 
@@ -42,10 +43,10 @@ const StyleContextProvider = ({ children }: Props) => {
   });
 
   return (
-    <StyleContext.Provider value={{ isMobile, hueRotation, setHueDuration }}>
+    <AppContext.Provider value={{ isMobile, hueRotation, setHueDuration }}>
       {children}
-    </StyleContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default StyleContextProvider;
+export default AppContextProvider;

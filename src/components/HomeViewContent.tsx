@@ -5,25 +5,23 @@ import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 
 interface Props {
-  pathname: string;
-  isPortfolio: boolean;
   currentContent: string;
 }
 
-const HomeViewContent = ({ pathname, isPortfolio, currentContent }: Props) => {
+const HomeViewContent = ({ currentContent }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
   // - - - - Projects - - - -
   const allProjList = {
-    Deerfall: <Deerfall isPortfolio={isPortfolio} />,
-    MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
+    Deerfall: <Deerfall isPortfolio={true} />,
+    MediaMatchup: <MediaMatchup isPortfolio={true} />,
   };
   const gameDevProjList = {
-    Deerfall: <Deerfall isPortfolio={isPortfolio} />,
+    Deerfall: <Deerfall isPortfolio={true} />,
   };
   const webDevProjList = {
-    MediaMatchup: <MediaMatchup isPortfolio={isPortfolio} />,
+    MediaMatchup: <MediaMatchup isPortfolio={true} />,
   };
   const [currProjArray, setCurrProjArray] = useState<JSX.Element[]>([]);
   // - - - - Transitions - - - -

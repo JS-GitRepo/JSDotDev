@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./contexts/AuthContextProvider";
-import StyleContextProvider from "./contexts/StyleContextProvider";
+import AppContextProvider from "./contexts/AppContextProvider";
 import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -12,13 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <StyleContextProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <AppContextProvider>
           <App />
-        </BrowserRouter>
-      </StyleContextProvider>
-    </AuthContextProvider>
+        </AppContextProvider>
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
