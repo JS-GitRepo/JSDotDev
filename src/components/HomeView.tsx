@@ -5,6 +5,7 @@ import HomeViewHeader from "./HomeViewHeader";
 import HomeViewFooter from "./HomeViewFooter";
 import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
+import LandingPage from "./LandingPage";
 
 interface Props {}
 
@@ -19,11 +20,19 @@ const HomeView = ({}: Props) => {
   const param3_Opts = ["gamedev", "webdev"];
   const param4_Opts = AppConfig.projectURL_Params;
   // useStates for Interfacing with URL Params
-  const [param1, setParam1] = useState("home");
-  const [param2, setParam2] = useState("portfolio");
-  const [param3, setParam3] = useState("gamedev");
-  const [param4, setParam4] = useState("deerfall");
-  const [paramObj, setParamObj] = useState({ param1, param2, param3, param4 });
+  const [param1, setParam1] = useState<string>("home");
+  const [param2, setParam2] = useState<string>("portfolio");
+  const [param3, setParam3] = useState<string>("gamedev");
+  const [param4, setParam4] = useState<string>("deerfall");
+  const [allParamsObj, setAllParamsObj] = useState<any>({
+    param1,
+    param2,
+    param3,
+    param4,
+  });
+  const setParamsArray = [setParam1, setParam2, setParam3, setParam4];
+  // check if this is the landing page
+  const [isLanding, setIsLanding] = useState<boolean>(false);
   // - - - - CONTEXT - - - -
   const { hueRotation, setHueDuration } = useContext(AppContext);
   // - - - - - TITLES AND TEXT - - - - -
@@ -39,7 +48,12 @@ const HomeView = ({}: Props) => {
   const checkURL = () => {
     let URLSegments = [landingOrHome, category1, gameOrWeb, project];
     let paramArray = [param1_Opts, param2_Opts, param3_Opts, param4_Opts];
-    let setParamsArray = [setParam1, setParam2, setParam3, setParam4];
+    if (location.pathname === "/") {
+      navigate("/landing");
+      setIsLanding(true);
+    } else if (location.pathname === "/landing") {
+      setIsLanding(true);
+    }
     for (let i = 0; i < URLSegments.length; i++) {
       if (URLSegments[i]) {
         let found = paramArray[i].find((item) => item === URLSegments[i]);
@@ -52,28 +66,40 @@ const HomeView = ({}: Props) => {
     }
   };
 
+  // - - - - - useEffects - - - - -
   useEffect(() => {
-    setParamObj({ param1, param2, param3, param4 });
+    setAllParamsObj({ param1, param2, param3, param4 });
   }, [param1, param2, param3, param4]);
 
   useEffect(() => {
-    checkURL();
-
-    if (hueRotation != AppConfig.hueAnimDuration_Slow) {
-      setHueDuration(AppConfig.hueAnimDuration_Slow);
+    if (!isLanding) {
+      checkURL();
+      if (hueRotation != AppConfig.hueAnimDuration_Slow) {
+        setHueDuration(AppConfig.hueAnimDuration_Slow);
+      }
     }
+    console.log(category1);
   }, [location]);
 
+  // - - - - - JSX - - - - -
   return (
     <div className='HomeView'>
+      {isLanding ? (
+        <LandingPage
+          setIsLanding={setIsLanding}
+          setParamsArray={setParamsArray}
+        />
+      ) : (
+        ""
+      )}
       <HomeViewHeader
         subtitle={subtitle}
         subEmoji={subEmoji}
         currentContent={currentContent}
-        paramObj={paramObj}
+        allParamsObj={allParamsObj}
       />
       <Outlet />
-      <HomeViewFooter currentContent={"deerfall"} paramObj={paramObj} />
+      <HomeViewFooter currentContent={"deerfall"} allParamsObj={allParamsObj} />
     </div>
   );
 };

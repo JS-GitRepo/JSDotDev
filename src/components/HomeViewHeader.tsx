@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { animated } from "react-spring";
 import AppContext from "../contexts/AppContext";
@@ -8,7 +8,7 @@ interface Props {
   subtitle: string;
   subEmoji: string;
   currentContent: string;
-  paramObj: {
+  allParamsObj: {
     param1: string;
     param2: string;
     param3: string;
@@ -20,20 +20,35 @@ const HomeViewHeader = ({
   subtitle,
   subEmoji,
   currentContent,
-  paramObj,
+  allParamsObj,
 }: Props) => {
   // GENERAL
   const { hueRotation } = useContext(AppContext);
+  const [isIntro, setIsIntro] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (allParamsObj.param2 === "introduction") {
+      setIsIntro(true);
+    } else {
+      setIsIntro(false);
+    }
+  }, [allParamsObj.param2]);
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
   return (
     <div className='HomeViewHeader'>
       <Link className='title-ctr' to={{ pathname: "/" }}>
         <h1>
-          {`jake's `}
+          {`${isIntro ? "who is " : ""}`}
+          <animated.span
+            style={isIntro ? hueRotation : {}}
+            className={isIntro ? "highlighted-link" : ""}>
+            jake
+            {`${isIntro ? "?" : "'s"} `}
+          </animated.span>
           <animated.span style={hueRotation} className='highlighted-link'>
-            {`${paramObj.param3}`}
-            {` ${paramObj.param2}`}
+            {isIntro ? "" : `${allParamsObj.param3}`}
+            {isIntro ? "" : ` ${allParamsObj.param2}`}
           </animated.span>
         </h1>
         <p className='subtitle'>
@@ -51,12 +66,12 @@ const HomeViewHeader = ({
 
         <div className='project-nav-type-cat'>
           <NavLink
-            to={`/home/${paramObj.param2}/gamedev`}
+            to={`/${allParamsObj.param1}/${allParamsObj.param2}/gamedev`}
             className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
             <animated.p style={hueRotation}>gamedev</animated.p>
           </NavLink>
           <NavLink
-            to={`/home/${paramObj.param2}/webdev`}
+            to={`/${allParamsObj.param1}/${allParamsObj.param2}/webdev`}
             className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
             <animated.p style={hueRotation}>webdev</animated.p>
           </NavLink>
@@ -67,7 +82,7 @@ const HomeViewHeader = ({
         <ul>
           <li>
             <NavLink
-              to={`/home/${paramObj.param2}/gamedev`}
+              to={`/${allParamsObj.param1}/${allParamsObj.param2}/gamedev`}
               className={({ isActive }) =>
                 isActive ? "highlighted-link" : ""
               }>
@@ -76,7 +91,7 @@ const HomeViewHeader = ({
           </li>
           <li>
             <NavLink
-              to={`/home/${paramObj.param2}/webdev`}
+              to={`/${allParamsObj.param1}/${allParamsObj.param2}/webdev`}
               className={({ isActive }) =>
                 isActive ? "highlighted-link" : ""
               }>

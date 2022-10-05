@@ -23,10 +23,6 @@ function App() {
             path='/:landingOrHome'
             element={<HomeViewContent currentContent={"Deerfall"} />}>
             <Route
-              path='introduction'
-              element={<HomeViewContent currentContent={"Deerfall"} />}
-            />
-            <Route
               path=':category1'
               element={<HomeViewContent currentContent={"Deerfall"} />}>
               <Route

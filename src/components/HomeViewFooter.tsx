@@ -6,7 +6,7 @@ import "./styles/HomeViewFooter.css";
 
 interface Props {
   currentContent: string;
-  paramObj: {
+  allParamsObj: {
     param1: string;
     param2: string;
     param3: string;
@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-const HomeViewFooter = ({ currentContent, paramObj }: Props) => {
+const HomeViewFooter = ({ currentContent, allParamsObj }: Props) => {
   const currentYear = new Date();
   const { hueRotation } = useContext(AppContext);
 
@@ -31,7 +31,7 @@ const HomeViewFooter = ({ currentContent, paramObj }: Props) => {
           <ul>
             <li>
               <NavLink
-                to={`/home/portfolio/${paramObj.param3}`}
+                to={`/${allParamsObj.param1}/portfolio/${allParamsObj.param3}`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>
@@ -40,7 +40,7 @@ const HomeViewFooter = ({ currentContent, paramObj }: Props) => {
             </li>
             <li>
               <NavLink
-                to={`/home/blog/${paramObj.param3}`}
+                to={`/${allParamsObj.param1}/blog/${allParamsObj.param3}`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>
@@ -49,7 +49,7 @@ const HomeViewFooter = ({ currentContent, paramObj }: Props) => {
             </li>
             <li>
               <NavLink
-                to={`/home/introduction`}
+                to={`/${allParamsObj.param1}/introduction`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>
