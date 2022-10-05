@@ -20,10 +20,10 @@ const HomeView = ({}: Props) => {
   const param3_Opts = ["gamedev", "webdev"];
   const param4_Opts = AppConfig.projectURL_Params;
   // useStates for Interfacing with URL Params
-  const [param1, setParam1] = useState<string>("home");
-  const [param2, setParam2] = useState<string>("portfolio");
-  const [param3, setParam3] = useState<string>("gamedev");
-  const [param4, setParam4] = useState<string>("deerfall");
+  const [param1, setParam1] = useState<string>("");
+  const [param2, setParam2] = useState<string>("");
+  const [param3, setParam3] = useState<string>("");
+  const [param4, setParam4] = useState<string>("");
   const [allParamsObj, setAllParamsObj] = useState<any>({
     param1,
     param2,
@@ -97,6 +97,7 @@ const HomeView = ({}: Props) => {
         subEmoji={subEmoji}
         currentContent={currentContent}
         allParamsObj={allParamsObj}
+        isLanding={isLanding}
       />
       <Outlet />
       <HomeViewFooter currentContent={"deerfall"} allParamsObj={allParamsObj} />

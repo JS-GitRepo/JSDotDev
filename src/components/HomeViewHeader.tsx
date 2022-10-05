@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { animated } from "react-spring";
 import AppContext from "../contexts/AppContext";
@@ -8,6 +8,7 @@ interface Props {
   subtitle: string;
   subEmoji: string;
   currentContent: string;
+  isLanding: boolean;
   allParamsObj: {
     param1: string;
     param2: string;
@@ -20,11 +21,13 @@ const HomeViewHeader = ({
   subtitle,
   subEmoji,
   currentContent,
+  isLanding,
   allParamsObj,
 }: Props) => {
   // GENERAL
   const { hueRotation } = useContext(AppContext);
   const [isIntro, setIsIntro] = useState<boolean>(false);
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     if (allParamsObj.param2 === "introduction") {
@@ -33,6 +36,10 @@ const HomeViewHeader = ({
       setIsIntro(false);
     }
   }, [allParamsObj.param2]);
+
+  useEffect(() => {
+    forceUpdate();
+  }, [isLanding]);
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
   return (

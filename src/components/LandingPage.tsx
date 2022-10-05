@@ -90,18 +90,22 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
       setParamsArray[1]("portfolio");
       setCurrentDisplay("Portfolio");
       setLink1Text("Web Dev");
-      setLink1Path("/landing/portfolio/webdev");
+      setLink1Path("/home/portfolio/webdev");
       setLink2Text("Game Dev");
-      setLink2Path("/landing/portfolio/gamedev");
+      setLink2Path("/home/portfolio/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
     } else if (currentPath === "/landing/blog") {
       setParamsArray[1]("blog");
       setCurrentDisplay("Blog");
       setLink1Text("Web Dev");
-      setLink1Path("/landing/blog/webdev");
+      setLink1Path("/home/blog/webdev");
       setLink2Text("Game Dev");
-      setLink2Path("/landing/blog/gamedev");
+      setLink2Path("/home/blog/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
+    } else if (currentPath.endsWith("/gamedev")) {
+      setParamsArray[2]("gamedev");
+    } else if (currentPath.endsWith("/webdev")) {
+      setParamsArray[2]("webdev");
     }
   }, [currentPath]);
 
