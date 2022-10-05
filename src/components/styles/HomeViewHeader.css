@@ -54,7 +54,6 @@
 .HomeViewHeader .nav-ctr {
   display: flex;
   justify-content: center;
-  width: 120px;
 }
 
 .HomeViewHeader .nav-ctr ul {

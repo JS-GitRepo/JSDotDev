@@ -10,26 +10,6 @@
   z-index: 5;
 }
 
-.LandingPage .lp-content-ctr {
-  /* . . . Positioning . . . */
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  height: 100%;
-  max-height: 100%;
-  width: 100%;
-  /* . . . Fonts . . . */
-  font-family: "munro";
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 4px;
-  font-smooth: never;
-  z-index: 1;
-}
-
 .LandingPage .bg-img-ctr {
   height: 100%;
   max-height: 100%;
@@ -56,6 +36,25 @@
   z-index: 0;
 }
 
+.LandingPage .lp-content-ctr {
+  /* . . . Positioning . . . */
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  /* . . . Fonts . . . */
+  font-family: "munro";
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 4px;
+  font-smooth: never;
+  z-index: 1;
+}
+
 .LandingPage .lp-content-ctr a {
   text-decoration: none;
   color: rgb(208, 247, 239);
@@ -63,18 +62,18 @@
 
 .LandingPage .lp-content-ctr .header-ctr {
   display: flex;
-  flex: 1;
+  flex: 6;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   margin-bottom: 0%;
   width: 100%;
+  height: fit-content;
   z-index: 1;
 }
 
 .LandingPage .lp-content-ctr .PersonalIntro {
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -91,12 +90,19 @@
 
 .LandingPage .lp-content-ctr .nav-ctr {
   display: flex;
-  flex: 1;
+  flex: 5;
   flex-direction: row;
   justify-content: space-evenly;
   box-sizing: border-box;
   width: 100%;
   z-index: 1;
+}
+
+.LandingPage .lp-content-ctr .lp-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
 }
 
 .LandingPage .lp-content-ctr .lp-link h1,
