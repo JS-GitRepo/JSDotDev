@@ -6,6 +6,7 @@ import HomeViewFooter from "./HomeViewFooter";
 import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
 import LandingPage from "./LandingPage";
+import HomeViewContent from "./HomeViewContent";
 
 interface Props {}
 
@@ -36,24 +37,50 @@ const HomeView = ({}: Props) => {
   // - - - - CONTEXT - - - -
   const { hueRotation, setHueDuration } = useContext(AppContext);
   // - - - - - TITLES AND TEXT - - - - -
-  const [currentContent, setCurrentContent] = useState<string>("Deerfall");
-  const [title, setTitle] = useState<string>("Dev Blog");
   const [subtitle, setSubtitle] = useState<string>("Welcome! ");
   const [subEmoji, setSubEmoji] = useState<string>(" 🙂");
   // - - - - - PROJECTS - - - - -
-  const gameDevProjList = ["Deerfall"];
-  const webDevProjList = ["MediaMatchup"];
+  const gameDevProjList = ["deerfall"];
+  const webDevProjList = ["mediamatchup"];
+  const [currentContent, setCurrentContent] = useState<string | undefined>();
 
   // - - - - - FUNCTIONS - - - - -
-  const checkURL = () => {
+  const checkDefaultProject = () => {
+    let isGameDev = param3 === "gamedev";
+    let isWebDev = param3 === "webdev";
+    let isGameDevProj = gameDevProjList.includes(param4);
+    let isWebDevProj = webDevProjList.includes(param4);
+    // checks location and
+    if (isGameDev && !isGameDevProj) {
+      setParam4(gameDevProjList[0]);
+    } else if (isWebDev && !isWebDevProj) {
+      setParam4(webDevProjList[0]);
+    }
+  };
+
+  const checkProjectParams = () => {
+    let construct_URL = `/${param1}/${param2}/${param3}/${param4}`;
+    // booleans
+    let projectIsCurrent_URL = param4 === project;
+    let isSame_URL = construct_URL === location.pathname;
+    let isIntroduction_URL = param2 === "introduction";
+
+    if (param4 && !projectIsCurrent_URL && !isSame_URL && !isIntroduction_URL) {
+      navigate(construct_URL);
+    }
+  };
+
+  const validateURL = () => {
     let URLSegments = [landingOrHome, category1, gameOrWeb, project];
     let paramArray = [param1_Opts, param2_Opts, param3_Opts, param4_Opts];
+    // verifies if this should be the landing page
     if (location.pathname === "/") {
       navigate("/landing");
       setIsLanding(true);
     } else if (location.pathname === "/landing") {
       setIsLanding(true);
     }
+    // compares segments of the URL against valid options
     for (let i = 0; i < URLSegments.length; i++) {
       if (URLSegments[i]) {
         let found = paramArray[i].find((item) => item === URLSegments[i]);
@@ -68,18 +95,29 @@ const HomeView = ({}: Props) => {
 
   // - - - - - useEffects - - - - -
   useEffect(() => {
-    setAllParamsObj({ param1, param2, param3, param4 });
-  }, [param1, param2, param3, param4]);
-
-  useEffect(() => {
     if (!isLanding) {
-      checkURL();
+      validateURL();
       if (hueRotation != AppConfig.hueAnimDuration_Slow) {
         setHueDuration(AppConfig.hueAnimDuration_Slow);
       }
     }
-    console.log(category1);
+    console.log("- - - - - - - -");
+
+    console.log(`individual params: /${param1}/${param2}/${param3}/${param4}`);
+    console.log(
+      `params object: /${allParamsObj.param1}/${allParamsObj.param2}/${allParamsObj.param3}/${allParamsObj.param4}`
+    );
+    console.log(`current URL: ${location.pathname}`);
+    console.log("- - - - - - - -");
   }, [location]);
+
+  useEffect(() => {
+    setAllParamsObj({ param1, param2, param3, param4 });
+  }, [param1, param2, param3, param4]);
+
+  useEffect(() => {
+    checkDefaultProject();
+  }, [allParamsObj]);
 
   // - - - - - JSX - - - - -
   return (
@@ -95,12 +133,11 @@ const HomeView = ({}: Props) => {
       <HomeViewHeader
         subtitle={subtitle}
         subEmoji={subEmoji}
-        currentContent={currentContent}
-        allParamsObj={allParamsObj}
+        allParams={allParamsObj}
         isLanding={isLanding}
       />
-      <Outlet />
-      <HomeViewFooter currentContent={"deerfall"} allParamsObj={allParamsObj} />
+      <HomeViewContent currentContent={param4} />
+      <HomeViewFooter allParams={allParamsObj} />
     </div>
   );
 };

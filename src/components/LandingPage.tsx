@@ -26,12 +26,11 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
   const navigate = useNavigate();
 
   // - - - - - CONTEXT - - - - -
-  const { currentPathContext, setCurrentPathContext } = useContext(AuthContext);
+  const { setCurrentPathContext } = useContext(AuthContext);
   const { hueRotation, setHueDuration } = useContext(AppContext);
 
   // - - - - - BG TRANSITION - - - - -
   const [hideLP, setHideLP] = useState<string>("");
-  const [hideHV, setHideHV] = useState<string>("hide");
   const [isActivePage, setIsActivePage] = useState<boolean>(true);
   const [currBG, setCurrBG] = useState<string>(pixelBG);
 
@@ -65,7 +64,6 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
     ) {
       setCurrBG(pixelFadeBG);
       setIsActivePage(false);
-      setHideHV("");
       setTimeout(() => setIsLanding(false), 1500);
       setParamsArray[0]("home");
       setHueDuration(AppConfig.hueAnimDuration_Slow);
@@ -75,7 +73,6 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
       navigate("/landing");
       setCurrBG(pixelBG);
       setIsActivePage(true);
-      setHideHV("hide");
       setHideLP("");
       setHueDuration(4000);
     } else if (currentPath === "/landing") {

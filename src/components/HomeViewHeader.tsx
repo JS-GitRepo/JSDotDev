@@ -7,9 +7,8 @@ import "./styles/HomeViewHeader.css";
 interface Props {
   subtitle: string;
   subEmoji: string;
-  currentContent: string;
   isLanding: boolean;
-  allParamsObj: {
+  allParams: {
     param1: string;
     param2: string;
     param3: string;
@@ -20,9 +19,8 @@ interface Props {
 const HomeViewHeader = ({
   subtitle,
   subEmoji,
-  currentContent,
   isLanding,
-  allParamsObj,
+  allParams,
 }: Props) => {
   // GENERAL
   const { hueRotation } = useContext(AppContext);
@@ -30,12 +28,12 @@ const HomeViewHeader = ({
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
-    if (allParamsObj.param2 === "introduction") {
+    if (allParams.param2 === "introduction") {
       setIsIntro(true);
     } else {
       setIsIntro(false);
     }
-  }, [allParamsObj.param2]);
+  }, [allParams.param2]);
 
   useEffect(() => {
     forceUpdate();
@@ -54,8 +52,8 @@ const HomeViewHeader = ({
             {`${isIntro ? "?" : "'s"} `}
           </animated.span>
           <animated.span style={hueRotation} className='highlighted-link'>
-            {isIntro ? "" : `${allParamsObj.param3}`}
-            {isIntro ? "" : ` ${allParamsObj.param2}`}
+            {isIntro ? "" : `${allParams.param3}`}
+            {isIntro ? "" : ` ${allParams.param2}`}
           </animated.span>
         </h1>
         <p className='subtitle'>
@@ -67,18 +65,18 @@ const HomeViewHeader = ({
       <div className='project-nav-ctr'>
         <div className='project-nav'>
           <span className='material-symbols-outlined'>chevron_left</span>
-          <h2>{currentContent}</h2>
+          <h2>{allParams.param4}</h2>
           <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
         <div className='project-nav-type-cat'>
           <NavLink
-            to={`/${allParamsObj.param1}/${allParamsObj.param2}/gamedev`}
+            to={`/${allParams.param1}/${allParams.param2}/gamedev`}
             className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
             <animated.p style={hueRotation}>gamedev</animated.p>
           </NavLink>
           <NavLink
-            to={`/${allParamsObj.param1}/${allParamsObj.param2}/webdev`}
+            to={`/${allParams.param1}/${allParams.param2}/webdev`}
             className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
             <animated.p style={hueRotation}>webdev</animated.p>
           </NavLink>
@@ -89,7 +87,7 @@ const HomeViewHeader = ({
         <ul>
           <li>
             <NavLink
-              to={`/${allParamsObj.param1}/${allParamsObj.param2}/gamedev`}
+              to={`/${allParams.param1}/${allParams.param2}/gamedev`}
               className={({ isActive }) =>
                 isActive ? "highlighted-link" : ""
               }>
@@ -98,7 +96,7 @@ const HomeViewHeader = ({
           </li>
           <li>
             <NavLink
-              to={`/${allParamsObj.param1}/${allParamsObj.param2}/webdev`}
+              to={`/${allParams.param1}/${allParams.param2}/webdev`}
               className={({ isActive }) =>
                 isActive ? "highlighted-link" : ""
               }>
