@@ -54,12 +54,10 @@ const LandingPage = ({ setIsLanding }: Props) => {
 
   useEffect(() => {
     setCurrentPathContext(currentPath);
-    if (firstRender) {
-      setFirstRender(false);
-    } else if (
+    if (
       // If current path is 'complete', transition to HomeView
-      currentPath.endsWith("/gamedev") ||
-      currentPath.endsWith("/webdev")
+      currentPath.includes("/gamedev") ||
+      currentPath.includes("/webdev")
     ) {
       setCurrBG(pixelFadeBG);
       setIsActivePage(false);

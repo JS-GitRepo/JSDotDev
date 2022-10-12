@@ -57,8 +57,6 @@ const HomeView = ({}: Props) => {
     } else if (landingOrHome === "landing") {
       tempParams = ["/landing"];
       setIsLanding(true);
-    } else {
-      setIsLanding(false);
     }
     // loops through each segment and validates it individually
     for (let i = 0; i < URLSegments.length; i++) {
