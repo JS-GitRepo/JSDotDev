@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/LandingPage.css";
 import LandingPageLink from "./LandingPageLink";
 import { animated, useTransition } from "react-spring";
-import AuthContext from "../contexts/AuthContext";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
 import AppContext from "../contexts/AppContext";
@@ -54,9 +53,7 @@ const LandingPage = ({ setIsLanding }: Props) => {
 
   useEffect(() => {
     setCurrentPathContext(currentPath);
-    if (
-      // If current path is 'complete', transition to HomeView
-      currentPath.includes("/gamedev") ||
+    if (currentPath.includes("/gamedev") ||
       currentPath.includes("/webdev")
     ) {
       setCurrBG(pixelFadeBG);
