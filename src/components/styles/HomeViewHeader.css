@@ -1,3 +1,14 @@
+/* - - - RESETS - - -*/
+.HomeViewHeader h1,
+.HomeViewHeader h2,
+.HomeViewHeader a,
+.HomeViewHeader p,
+.HomeViewHeader ul,
+.HomeViewHeader li {
+  margin: 0px;
+  padding: 0px;
+}
+
 /* - - - GENERAL - - -*/
 .HomeViewHeader {
   /* Position and Sizing */
@@ -30,33 +41,14 @@
 
 .HomeViewHeader .project-nav-ctr {
   display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.HomeViewHeader .project-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.HomeViewHeader .project-nav-type-cat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.HomeViewHeader .project-nav-type-cat a {
-  margin: 6px 6px 0px 6px;
-}
-
-.HomeViewHeader .nav-ctr {
+.HomeViewHeader .nav-category-ctr {
   display: flex;
   justify-content: center;
 }
 
-.HomeViewHeader .nav-ctr ul {
+.HomeViewHeader .nav-category-ctr ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +56,7 @@
   padding: 0px;
 }
 
-.HomeViewHeader .nav-ctr ul li {
+.HomeViewHeader .nav-category-ctr ul li {
   margin: 0px 10px;
 }
 
@@ -83,14 +75,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+  }
+
+  .HomeViewHeader .project-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
   }
 
   .HomeViewHeader .nav-ctr {
-    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .HomeViewHeader .nav-ctr a {
+    font-size: 20px;
+  }
+
+  .HomeViewHeader .nav-ctr ul {
+    display: flex;
+    list-style: none;
   }
 
   .HomeViewHeader .nav-ctr ul li {
     margin: 0px 10px;
+    height: 30px;
   }
 }

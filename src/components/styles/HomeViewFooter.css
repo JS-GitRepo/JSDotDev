@@ -15,7 +15,8 @@
   position: absolute;
   bottom: 5%;
   width: 75vw;
-  height: 100px;
+  max-width: 350px;
+  height: 110px;
   /* Flex */
   display: flex;
   flex-direction: column;
@@ -78,7 +79,11 @@
 
 @media only screen and (min-width: 768px) {
   .HomeViewFooter {
-    height: 80px;
+    height: 20px;
+    bottom: 10px;
+    border: none;
+    background-color: transparent;
+    backdrop-filter: none;
   }
 
   .HomeViewFooter .project-nav-ctr {
