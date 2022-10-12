@@ -24,7 +24,6 @@ const LandingPage = ({ setIsLanding }: Props) => {
   const navigate = useNavigate();
 
   // - - - - - CONTEXT - - - - -
-  const { setCurrentPathContext } = useContext(AuthContext);
   const { hueRotation, setHueDuration } = useContext(AppContext);
 
   // - - - - - BG TRANSITION - - - - -
@@ -52,8 +51,9 @@ const LandingPage = ({ setIsLanding }: Props) => {
   // - - - - - useEffects - - - - -
 
   useEffect(() => {
-    setCurrentPathContext(currentPath);
-    if (currentPath.includes("/gamedev") ||
+    if (
+      // If current path is 'complete', transition to HomeView
+      currentPath.includes("/gamedev") ||
       currentPath.includes("/webdev")
     ) {
       setCurrBG(pixelFadeBG);
