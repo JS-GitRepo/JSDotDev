@@ -5,12 +5,7 @@ import AppContext from "../contexts/AppContext";
 import "./styles/HomeViewFooter.css";
 
 interface Props {
-  allParams: {
-    param1: string;
-    param2: string;
-    param3: string;
-    param4: string;
-  };
+  allParams: string[];
 }
 
 const HomeViewFooter = ({ allParams }: Props) => {
@@ -22,7 +17,7 @@ const HomeViewFooter = ({ allParams }: Props) => {
       <div className='project-nav-ctr'>
         <div className='project-nav'>
           <span className='material-symbols-outlined'>chevron_left</span>
-          <h2>{allParams.param4}</h2>
+          <h2>{allParams[3]}</h2>
           <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
@@ -30,7 +25,7 @@ const HomeViewFooter = ({ allParams }: Props) => {
           <ul>
             <li>
               <NavLink
-                to={`/${allParams.param1}/portfolio/${allParams.param3}`}
+                to={`/${allParams[0]}/portfolio/${allParams[2]}`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>
@@ -39,7 +34,7 @@ const HomeViewFooter = ({ allParams }: Props) => {
             </li>
             <li>
               <NavLink
-                to={`/${allParams.param1}/blog/${allParams.param3}`}
+                to={`/${allParams[0]}/blog/${allParams[2]}`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>
@@ -48,7 +43,7 @@ const HomeViewFooter = ({ allParams }: Props) => {
             </li>
             <li>
               <NavLink
-                to={`/${allParams.param1}/introduction`}
+                to={`/${allParams[0]}/introduction`}
                 className={({ isActive }) =>
                   isActive ? "highlighted-link" : ""
                 }>

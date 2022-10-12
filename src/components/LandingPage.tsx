@@ -11,10 +11,9 @@ import AppConfig from "../AppConfig.json";
 
 interface Props {
   setIsLanding: React.Dispatch<React.SetStateAction<boolean>>;
-  setParamsArray: React.Dispatch<React.SetStateAction<string>>[];
 }
 
-const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
+const LandingPage = ({ setIsLanding }: Props) => {
   // - - - - - LINK FUNCTIONALITY - - - - -
   const [currentDisplay, setCurrentDisplay] = useState<string>("");
   const [firstRender, setFirstRender] = useState<boolean>(true);
@@ -65,7 +64,6 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
       setCurrBG(pixelFadeBG);
       setIsActivePage(false);
       setTimeout(() => setIsLanding(false), 1500);
-      setParamsArray[0]("home");
       setHueDuration(AppConfig.hueAnimDuration_Slow);
     }
 
@@ -77,14 +75,12 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
       setHueDuration(4000);
     } else if (currentPath === "/landing") {
       setCurrentDisplay("jakesnyder.dev");
-      setParamsArray[0]("landing");
       setLink1Text("Portfolio");
       setLink1Path("/landing/portfolio");
       setLink2Text("Blog");
       setLink2Path("/landing/blog");
       setHueDuration(AppConfig.hueAnimDuration);
     } else if (currentPath === "/landing/portfolio") {
-      setParamsArray[1]("portfolio");
       setCurrentDisplay("Portfolio");
       setLink1Text("Web Dev");
       setLink1Path("/home/portfolio/webdev");
@@ -92,17 +88,12 @@ const LandingPage = ({ setIsLanding, setParamsArray }: Props) => {
       setLink2Path("/home/portfolio/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
     } else if (currentPath === "/landing/blog") {
-      setParamsArray[1]("blog");
       setCurrentDisplay("Blog");
       setLink1Text("Web Dev");
       setLink1Path("/home/blog/webdev");
       setLink2Text("Game Dev");
       setLink2Path("/home/blog/gamedev");
       setHueDuration(AppConfig.hueAnimDuration);
-    } else if (currentPath.endsWith("/gamedev")) {
-      setParamsArray[2]("gamedev");
-    } else if (currentPath.endsWith("/webdev")) {
-      setParamsArray[2]("webdev");
     }
   }, [currentPath]);
 
