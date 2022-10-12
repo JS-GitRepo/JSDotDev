@@ -3,25 +3,27 @@ import { animated, useTransition } from "react-spring";
 import "./styles/HomeViewContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-  currentContent: string;
+  currentContent: string | undefined;
 }
 
 const HomeViewContent = ({ currentContent }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
+  const navigate = useNavigate();
   // - - - - Projects - - - -
   const allProjList = {
-    Deerfall: <Deerfall isPortfolio={true} />,
-    MediaMatchup: <MediaMatchup isPortfolio={true} />,
+    deerfall: <Deerfall isPortfolio={true} />,
+    mediamatchup: <MediaMatchup isPortfolio={true} />,
   };
   const gameDevProjList = {
-    Deerfall: <Deerfall isPortfolio={true} />,
+    deerfall: <Deerfall isPortfolio={true} />,
   };
   const webDevProjList = {
-    MediaMatchup: <MediaMatchup isPortfolio={true} />,
+    mediamatchup: <MediaMatchup isPortfolio={true} />,
   };
   const [currProjArray, setCurrProjArray] = useState<JSX.Element[]>([]);
   // - - - - Transitions - - - -
@@ -34,7 +36,9 @@ const HomeViewContent = ({ currentContent }: Props) => {
   });
 
   useEffect(() => {
-    setCurrProjArray([eval(`allProjList.${currentContent}`)]);
+    if (currentContent) {
+      setCurrProjArray([eval(`allProjList.${currentContent}`)]);
+    }
   }, [currentContent]);
 
   return (
