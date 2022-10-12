@@ -1,1 +1,1 @@
-# jakesnyder.dev - Blog and Portfolio
+# jakesnyder.dev - Professional Blog and Portfolio
