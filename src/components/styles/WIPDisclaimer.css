@@ -41,8 +41,8 @@
 /* - - - - MEDIA QUERIES - - - - */
 @media only screen and (min-width: 768px) {
   .WIPDisclaimer {
-    bottom: 100px;
     padding: 10px;
     width: 80%;
+    bottom: 50px;
   }
 }

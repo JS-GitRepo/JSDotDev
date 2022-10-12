@@ -12,7 +12,6 @@ interface Props {
 
 const HomeViewHeader = ({ subtitle, subEmoji, allParams }: Props) => {
   // GENERAL
-  const location = useLocation();
   const { hueRotation } = useContext(AppContext);
   const [isIntro, setIsIntro] = useState<boolean>(false);
 
@@ -54,21 +53,40 @@ const HomeViewHeader = ({ subtitle, subEmoji, allParams }: Props) => {
           <span className='material-symbols-outlined'>chevron_right</span>
         </div>
 
-        <div className='project-nav-type-cat'>
-          <NavLink
-            to={`/${allParams[0]}/${allParams[1]}/gamedev`}
-            className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
-            <animated.p style={hueRotation}>gamedev</animated.p>
-          </NavLink>
-          <NavLink
-            to={`/${allParams[0]}/${allParams[1]}/webdev`}
-            className={({ isActive }) => (isActive ? "highlighted-link" : "")}>
-            <animated.p style={hueRotation}>webdev</animated.p>
-          </NavLink>
+        <div className='nav-ctr'>
+          <ul>
+            <li>
+              <NavLink
+                to={`/${allParams[0]}/portfolio/${allParams[2]}`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>portfolio</animated.p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`/${allParams[0]}/blog/${allParams[2]}`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>blog</animated.p>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`/${allParams[0]}/introduction`}
+                className={({ isActive }) =>
+                  isActive ? "highlighted-link" : ""
+                }>
+                <animated.p style={hueRotation}>intro</animated.p>
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className='nav-ctr'>
+      <div className='nav-category-ctr'>
         <ul>
           <li>
             <NavLink
