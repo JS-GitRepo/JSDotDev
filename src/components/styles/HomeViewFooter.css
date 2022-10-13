@@ -14,9 +14,10 @@
   /* Position and Sizing */
   position: absolute;
   bottom: 5%;
-  width: 75vw;
+  width: 65vw;
   max-width: 350px;
   height: 110px;
+  border-radius: 20px;
   /* Flex */
   display: flex;
   flex-direction: column;
