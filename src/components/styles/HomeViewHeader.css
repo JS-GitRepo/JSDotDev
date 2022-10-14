@@ -54,10 +54,15 @@
   align-items: center;
   list-style: none;
   padding: 0px;
+  width: 181px;
 }
 
 .HomeViewHeader .nav-category-ctr ul li {
   margin: 0px 10px;
+}
+
+.HomeViewHeader .hidden {
+  display: none;
 }
 
 /* - - - MEDIA QUERIES - - -*/
@@ -104,5 +109,11 @@
   .HomeViewHeader .nav-ctr ul li {
     margin: 0px 10px;
     height: 30px;
+  }
+
+  .HomeViewHeader .hidden {
+    display: flex;
+    visibility: hidden;
+    width: 181px;
   }
 }

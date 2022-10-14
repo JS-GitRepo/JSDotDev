@@ -15,6 +15,7 @@
   position: absolute;
   bottom: 5%;
   width: 65vw;
+  min-width: 225px;
   max-width: 350px;
   height: 110px;
   border-radius: 20px;

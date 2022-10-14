@@ -16,11 +16,14 @@ const HomeViewHeader = ({ subtitle, subEmoji, allParams }: Props) => {
   const [isIntro, setIsIntro] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(allParams[1]);
+
     if (allParams[1] === "introduction") {
       setIsIntro(true);
     } else {
       setIsIntro(false);
     }
+    console.log(isIntro);
   }, [allParams]);
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
@@ -85,8 +88,7 @@ const HomeViewHeader = ({ subtitle, subEmoji, allParams }: Props) => {
           </ul>
         </div>
       </div>
-
-      <div className='nav-category-ctr'>
+      <div className={isIntro ? "hidden" : "nav-category-ctr"}>
         <ul>
           <li>
             <NavLink
