@@ -8,23 +8,12 @@ interface Props {
   subtitle: string;
   subEmoji: string;
   allParams: string[];
+  isIntro: boolean;
 }
 
-const HomeViewHeader = ({ subtitle, subEmoji, allParams }: Props) => {
+const HomeViewHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
   // GENERAL
   const { hueRotation } = useContext(AppContext);
-  const [isIntro, setIsIntro] = useState<boolean>(false);
-
-  useEffect(() => {
-    console.log(allParams[1]);
-
-    if (allParams[1] === "introduction") {
-      setIsIntro(true);
-    } else {
-      setIsIntro(false);
-    }
-    console.log(isIntro);
-  }, [allParams]);
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
   return (

@@ -6,16 +6,17 @@ import "./styles/HomeViewFooter.css";
 
 interface Props {
   allParams: string[];
+  isIntro: boolean;
 }
 
-const HomeViewFooter = ({ allParams }: Props) => {
+const HomeViewFooter = ({ allParams, isIntro }: Props) => {
   const currentYear = new Date();
   const { hueRotation } = useContext(AppContext);
 
   return (
     <div className='HomeViewFooter'>
       <div className='project-nav-ctr'>
-        <div className='project-nav'>
+        <div className={isIntro ? "project-nav hidden" : "project-nav"}>
           <span className='material-symbols-outlined'>chevron_left</span>
           <h2>{allParams[3]}</h2>
           <span className='material-symbols-outlined'>chevron_right</span>
