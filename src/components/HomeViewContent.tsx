@@ -4,18 +4,21 @@ import "./styles/HomeViewContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 import { useNavigate } from "react-router-dom";
+import PersonalIntro from "./projects/PersonalIntro";
 
 interface Props {
   currentContent: string | undefined;
+  isIntro: boolean;
 }
 
-const HomeViewContent = ({ currentContent }: Props) => {
+const HomeViewContent = ({ currentContent, isIntro }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
   const navigate = useNavigate();
   // - - - - Projects - - - -
   const allProjList = {
+    intro: <PersonalIntro />,
     deerfall: <Deerfall isPortfolio={true} />,
     mediamatchup: <MediaMatchup isPortfolio={true} />,
   };
@@ -36,10 +39,12 @@ const HomeViewContent = ({ currentContent }: Props) => {
   });
 
   useEffect(() => {
-    if (currentContent) {
+    if (currentContent && !isIntro) {
       setCurrProjArray([eval(`allProjList.${currentContent}`)]);
+    } else if (isIntro) {
+      setCurrProjArray([eval("allProjList.intro")]);
     }
-  }, [currentContent]);
+  }, [currentContent, isIntro]);
 
   return (
     <div className='HomeViewContent'>

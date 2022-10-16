@@ -72,22 +72,6 @@
   z-index: 1;
 }
 
-.LandingPage .lp-content-ctr .PersonalIntro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  margin-bottom: 0%;
-  width: 100%;
-  z-index: 1;
-}
-
-.LandingPage .lp-content-ctr .PersonalIntro img {
-  border: 10px ridge rgba(0, 255, 221, 0.767);
-  padding: 3px;
-  width: 250px;
-}
-
 .LandingPage .lp-content-ctr .nav-ctr {
   display: flex;
   flex: 5;

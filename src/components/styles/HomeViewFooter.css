@@ -15,7 +15,8 @@
   position: absolute;
   bottom: 5%;
   width: 65vw;
-  max-width: 350px;
+  min-width: 235px;
+  max-width: 375px;
   height: 110px;
   border-radius: 20px;
   /* Flex */
@@ -74,6 +75,11 @@
 
 .HomeViewFooter .rights-ctr {
   font-size: 10px;
+}
+
+.HomeViewFooter .hidden {
+  margin: -3px;
+  visibility: hidden;
 }
 
 /* - - - MEDIA QUERIES - - -*/

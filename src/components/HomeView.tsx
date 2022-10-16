@@ -33,6 +33,7 @@ const HomeView = ({}: Props) => {
   const paramStateSet = [setParam1, setParam2, setParam3, setParam4];
   // check if this is the landing page
   const [isLanding, setIsLanding] = useState<boolean>(false);
+  const [isIntro, setIsIntro] = useState<boolean>(false);
   // - - - - CONTEXT - - - -
   const { hueRotation, setHueDuration } = useContext(AppContext);
   // - - - - - TITLES AND TEXT - - - - -
@@ -84,7 +85,13 @@ const HomeView = ({}: Props) => {
       setParam4(webDevProjList[0]);
       tempParams[3] = webDevProjList[0];
     }
-
+    // Checks for introduction page
+    if (tempParams[1] === "introduction") {
+      setIsIntro(true);
+    } else {
+      setIsIntro(false);
+    }
+    // Reroutes to default project / current project based on current route
     let construct_URL = `/${tempParams[0]}/${tempParams[1]}/${tempParams[2]}/${tempParams[3]}`;
     let isSame_URL = construct_URL === location.pathname;
     let isIntroduction_URL = tempParams[1] === "introduction";
@@ -117,9 +124,10 @@ const HomeView = ({}: Props) => {
         subtitle={subtitle}
         subEmoji={subEmoji}
         allParams={allParamsArray}
+        isIntro={isIntro}
       />
-      <HomeViewContent currentContent={param4} />
-      <HomeViewFooter allParams={allParamsArray} />
+      <HomeViewContent currentContent={param4} isIntro={isIntro} />
+      <HomeViewFooter allParams={allParamsArray} isIntro={isIntro} />
     </div>
   );
 };

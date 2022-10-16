@@ -2,7 +2,6 @@ import AppContext from "./AppContext";
 import { ReactNode, useEffect, useState } from "react";
 import { useSpring } from "react-spring";
 import AppConfig from "../AppConfig.json";
-import { useLocation, useParams } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
