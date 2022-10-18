@@ -26,6 +26,16 @@ const AppContextProvider = ({ children }: Props) => {
     },
     config: { duration: hueDuration, precision: 0.001 },
   });
+  const hueRotation_Inv = useSpring({
+    loop: { reverse: true, config: { duration: hueDuration } },
+    to: {
+      filter: "hue-rotate(0deg) saturate(100%) sepia(0%)",
+    },
+    from: {
+      filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
+    },
+    config: { duration: hueDuration, precision: 0.001 },
+  });
 
   const checkWindowSize = () => {
     if (window.matchMedia("(min-width: 768px)").matches && isMobile) {
@@ -42,7 +52,8 @@ const AppContextProvider = ({ children }: Props) => {
   });
 
   return (
-    <AppContext.Provider value={{ isMobile, hueRotation, setHueDuration }}>
+    <AppContext.Provider
+      value={{ isMobile, hueRotation, hueRotation_Inv, setHueDuration }}>
       {children}
     </AppContext.Provider>
   );

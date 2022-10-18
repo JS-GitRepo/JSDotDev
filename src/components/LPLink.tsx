@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { animated, SpringValue, useSpring } from "react-spring";
 import AppContext from "../contexts/AppContext";
-import "./styles/LandingPageLink.css";
+import "./styles/LPLink.css";
 
 interface Props {
   currentDisplay: string;
@@ -11,12 +11,7 @@ interface Props {
   isH1: boolean;
 }
 
-const LandingPageLink = ({
-  currentDisplay,
-  linkText,
-  pathName,
-  isH1,
-}: Props) => {
+const LPLink = ({ currentDisplay, linkText, pathName, isH1 }: Props) => {
   const { isMobile } = useContext(AppContext);
   const opacityRef = useRef(0);
   const hoverOn: any = useSpring({
@@ -84,4 +79,4 @@ const LandingPageLink = ({
   );
 };
 
-export default LandingPageLink;
+export default LPLink;

@@ -1,0 +1,145 @@
+/* RESETS */
+p {
+  margin: 10px 3%;
+}
+
+/* GENERAL */
+.Introduction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  margin-bottom: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* background images */
+.Introduction .bg-img-ctr {
+  /* position */
+  display: flex;
+  align-items: center; /* vertical */
+  justify-content: center; /* horizontal */
+  position: absolute;
+  z-index: 0;
+  /* sizing */
+  height: 100%;
+  max-height: 100%;
+  width: 100vw;
+}
+
+.Introduction .bg-img {
+  height: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  /* . . . Image Rendering . . . */
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Chrome / Safari */
+  image-rendering: pixelated; /* Chrome as of 2019 */
+  image-rendering: optimize-contrast; /* CSS3 Proposed */
+  -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+  z-index: -1;
+}
+
+/* content */
+.Introduction .content-ctr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  max-height: 63%;
+  overflow: scroll;
+  z-index: 1;
+  color: rgb(250, 250, 250);
+  padding: 6vh 0%;
+}
+
+.Introduction .img-ctr {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  padding: 5px;
+  margin: 15px;
+}
+.Introduction .headshot {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 250px;
+  max-height: 250px;
+  width: 45vw;
+  height: auto;
+}
+.Introduction .img-bg-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: 10px ridge rgba(0, 255, 225, 0.767);
+}
+
+.Introduction .text-ctr {
+  max-width: 100%;
+  height: auto;
+}
+
+.Introduction .text-ctr .technologies {
+  font-weight: 600;
+  font-size: 17px;
+  text-shadow: 0 0 1.5px rgba(255, 255, 255, 1),
+    0 0 1.5px rgba(255, 255, 255, 1), 0 0 1.5px rgba(255, 255, 255, 1),
+    0 0 1.5px rgba(255, 255, 255, 1);
+  color: rgb(34, 176, 150);
+}
+
+@media only screen and (min-width: 768px) {
+  .Introduction {
+    justify-content: center;
+  }
+
+  .Introduction .content-ctr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: none;
+    overflow: hidden;
+  }
+
+  .Introduction .content-ctr p {
+    text-align: center;
+    width: 300px;
+  }
+
+  .Introduction .content-ctr h1 {
+    font-size: 26px;
+  }
+
+  .Introduction .content-ctr h2 {
+    font-size: 22px;
+  }
+
+  .Introduction .text-ctr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Introduction .text-ctr .technologies {
+    font-size: 30px;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 4px rgba(255, 255, 255, 0.8), 0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 4px rgba(255, 255, 255, 0.8);
+    color: rgb(34, 176, 150);
+  }
+
+  .Introduction .technologies p {
+    margin: 0px 0px 5px 0px;
+    width: 100%;
+  }
+}

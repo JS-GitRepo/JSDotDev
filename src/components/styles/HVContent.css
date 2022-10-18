@@ -1,0 +1,36 @@
+/* - - - - GENERAL - - - -*/
+.HVContent {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.HVContent video {
+  height: 100%;
+  object-fit: cover;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  min-width: 100%;
+}
+
+.HVContent img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.HVContent .media-ctr {
+  height: 100%;
+  width: 100%;
+}
+
+/* - - - - MEDIA QUERIES - - - -*/
+@media only screen and (min-width: 768px) {
+  .HVContent video {
+    height: 110%;
+  }
+}

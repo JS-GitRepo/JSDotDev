@@ -2,19 +2,19 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { animated } from "react-spring";
 import AppContext from "../contexts/AppContext";
-import "./styles/HomeViewFooter.css";
+import "./styles/HVFooter.css";
 
 interface Props {
   allParams: string[];
   isIntro: boolean;
 }
 
-const HomeViewFooter = ({ allParams, isIntro }: Props) => {
+const HVFooter = ({ allParams, isIntro }: Props) => {
   const currentYear = new Date();
   const { hueRotation } = useContext(AppContext);
 
   return (
-    <div className='HomeViewFooter'>
+    <div className='HVFooter'>
       <div className='project-nav-ctr'>
         <div className={isIntro ? "project-nav hidden" : "project-nav"}>
           <span className='material-symbols-outlined'>chevron_left</span>
@@ -68,4 +68,4 @@ const HomeViewFooter = ({ allParams, isIntro }: Props) => {
   );
 };
 
-export default HomeViewFooter;
+export default HVFooter;

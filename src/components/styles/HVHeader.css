@@ -1,16 +1,16 @@
 /* - - - RESETS - - -*/
-.HomeViewHeader h1,
-.HomeViewHeader h2,
-.HomeViewHeader a,
-.HomeViewHeader p,
-.HomeViewHeader ul,
-.HomeViewHeader li {
+.HVHeader h1,
+.HVHeader h2,
+.HVHeader a,
+.HVHeader p,
+.HVHeader ul,
+.HVHeader li {
   margin: 0px;
   padding: 0px;
 }
 
 /* - - - GENERAL - - -*/
-.HomeViewHeader {
+.HVHeader {
   /* Position and Sizing */
   width: 100vw;
   height: 90px;
@@ -24,31 +24,31 @@
   text-decoration: none;
 }
 
-.HomeViewHeader h1 {
+.HVHeader h1 {
   margin: 2px 0px;
 }
 
-.HomeViewHeader a {
+.HVHeader a {
   color: rgb(58, 58, 58);
 }
 
-.HomeViewHeader .title-ctr {
+.HVHeader .title-ctr {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 175px;
 }
 
-.HomeViewHeader .project-nav-ctr {
+.HVHeader .project-nav-ctr {
   display: none;
 }
 
-.HomeViewHeader .nav-category-ctr {
+.HVHeader .nav-category-ctr {
   display: flex;
   justify-content: center;
 }
 
-.HomeViewHeader .nav-category-ctr ul {
+.HVHeader .nav-category-ctr ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,61 +57,61 @@
   width: 181px;
 }
 
-.HomeViewHeader .nav-category-ctr ul li {
+.HVHeader .nav-category-ctr ul li {
   margin: 0px 10px;
 }
 
-.HomeViewHeader .hidden {
+.HVHeader .hidden {
   display: none;
 }
 
 /* - - - MEDIA QUERIES - - -*/
 @media only screen and (min-width: 768px) {
-  .HomeViewHeader {
+  .HVHeader {
     justify-content: space-around;
     height: 100px;
   }
 
-  .HomeViewHeader .title-ctr {
+  .HVHeader .title-ctr {
     width: 200px;
   }
 
-  .HomeViewHeader .project-nav-ctr {
+  .HVHeader .project-nav-ctr {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
   }
 
-  .HomeViewHeader .project-nav {
+  .HVHeader .project-nav {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 5px;
   }
 
-  .HomeViewHeader .nav-ctr {
+  .HVHeader .nav-ctr {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
   }
 
-  .HomeViewHeader .nav-ctr a {
+  .HVHeader .nav-ctr a {
     font-size: 20px;
   }
 
-  .HomeViewHeader .nav-ctr ul {
+  .HVHeader .nav-ctr ul {
     display: flex;
     list-style: none;
   }
 
-  .HomeViewHeader .nav-ctr ul li {
+  .HVHeader .nav-ctr ul li {
     margin: 0px 10px;
     height: 30px;
   }
 
-  .HomeViewHeader .hidden {
+  .HVHeader .hidden {
     display: flex;
     visibility: hidden;
     width: 181px;

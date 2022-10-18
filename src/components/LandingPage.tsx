@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./styles/LandingPage.css";
-import LandingPageLink from "./LandingPageLink";
+import LPLink from "./LPLink";
 import { animated, useTransition } from "react-spring";
 import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
@@ -98,7 +98,7 @@ const LandingPage = ({ setIsLanding }: Props) => {
         {fadeOut((style: any, item: any) =>
           item ? (
             <animated.div className={"header-ctr"} style={style}>
-              <LandingPageLink
+              <LPLink
                 currentDisplay={currentDisplay}
                 linkText={currentDisplay}
                 pathName={"/"}
@@ -109,17 +109,17 @@ const LandingPage = ({ setIsLanding }: Props) => {
             ""
           )
         )}
-        {/* <PersonalIntro /> */}
+        {/* <Introduction /> */}
         {fadeOut((style: any, item: any) =>
           item ? (
             <animated.div className='nav-ctr' style={style}>
-              <LandingPageLink
+              <LPLink
                 currentDisplay={currentDisplay}
                 linkText={link1Text}
                 pathName={link1Path}
                 isH1={false}
               />
-              <LandingPageLink
+              <LPLink
                 currentDisplay={currentDisplay}
                 linkText={link2Text}
                 pathName={link2Path}

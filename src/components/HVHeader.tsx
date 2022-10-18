@@ -2,7 +2,7 @@ import { useContext, useEffect, useReducer, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { animated } from "react-spring";
 import AppContext from "../contexts/AppContext";
-import "./styles/HomeViewHeader.css";
+import "./styles/HVHeader.css";
 
 interface Props {
   subtitle: string;
@@ -11,13 +11,13 @@ interface Props {
   isIntro: boolean;
 }
 
-const HomeViewHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
+const HVHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
   // GENERAL
   const { hueRotation } = useContext(AppContext);
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
   return (
-    <div className='HomeViewHeader'>
+    <div className='HVHeader'>
       <Link className='title-ctr' to={{ pathname: "/landing" }}>
         <h1>
           {`${isIntro ? "who is " : ""}`}
@@ -103,4 +103,4 @@ const HomeViewHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
   );
 };
 
-export default HomeViewHeader;
+export default HVHeader;

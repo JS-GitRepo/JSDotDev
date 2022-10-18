@@ -8,10 +8,8 @@ interface Props {
 const ProjDescPortfolio = ({ title, desc }: Props) => {
   return (
     <div
-      className="ProjDescPortfolio
-  ">
-      {title}
-    </div>
+      className='ProjDescPortfolio
+  '></div>
   );
 };
 

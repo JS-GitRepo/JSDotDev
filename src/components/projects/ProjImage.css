@@ -1,11 +1,21 @@
 .ProjImage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  align-items: center;
+  /* height: 50%; */
+  width: 100%;
   height: 100%;
-  max-width: 100%;
+  margin: 0px;
 }
 
 .ProjImage .img-ctr {
-  max-width: 100%;
+  max-width: 70%;
+  max-height: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+  .ProjImage {
+    justify-content: center;
+  }
 }
