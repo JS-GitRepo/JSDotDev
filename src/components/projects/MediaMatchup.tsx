@@ -1,6 +1,7 @@
 import ProjImage from "./ProjImage";
-import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
-import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
+// import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
+// import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
+import matchupImg from "../../img/Projects/MediaMatchup/ST4vsArt.jpg";
 import { animated } from "react-spring";
 
 interface Props {
@@ -29,8 +30,8 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
   return (
     <animated.div className='MediaMatchup media-ctr'>
       <ProjImage
-        imgSrc={mediaMatchupMainJPG}
-        imgSrc_Fallback={mediaMatchupMainJPG}
+        imgSrc={matchupImg}
+        imgSrc_Fallback={matchupImg}
         isPortfolio={isPortfolio}
         imgAltTxt={"MediaMatchup Demo"}
         tech={technologies}

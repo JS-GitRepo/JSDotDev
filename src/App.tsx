@@ -5,9 +5,9 @@ import WIPDisclaimer from "./components/WIPDisclaimer";
 import ErrorNotFound from "./components/ErrorNotFound";
 
 // 9-28-22
-// Refactoring routes, and general way this 'web app' works. Making HomeView the default route, with a 'modal' over it which will be Landing Page. Instead of all this weird routing form Landing Page to Homeview, landing page will be an overlay that exists within HomeView, that is only present when the user is at /landing. Thinking of actually making the LandingPage an option for "HomeViewContent" that steels the entire viewport, so that HomeView is always there behind it.
+// Refactoring routes, and general way this 'web app' works. Making HomeView the default route, with a 'modal' over it which will be Landing Page. Instead of all this weird routing form Landing Page to Homeview, landing page will be an overlay that exists within HomeView, that is only present when the user is at /landing. Thinking of actually making the LandingPage an option for "HVContent" that steels the entire viewport, so that HomeView is always there behind it.
 
-// This would effectively make "App" into what is currently HomeView, and turn HomeView into HomeViewContent which can then be routed between
+// This would effectively make "App" into what is currently HomeView, and turn HomeView into HVContent which can then be routed between
 
 // jakesnyder.dev/:landingOrHome/:category1/:gameOrWeb/:project
 // jakesnyder.dev/:landingOrHome/:category1/introduction

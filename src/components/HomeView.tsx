@@ -1,12 +1,12 @@
 import "./styles/HomeView.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import HomeViewHeader from "./HomeViewHeader";
-import HomeViewFooter from "./HomeViewFooter";
+import HVHeader from "./HVHeader";
+import HVFooter from "./HVFooter";
 import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
 import LandingPage from "./LandingPage";
-import HomeViewContent from "./HomeViewContent";
+import HVContent from "./HVContent";
 
 interface Props {}
 
@@ -120,14 +120,14 @@ const HomeView = ({}: Props) => {
   return (
     <div className='HomeView'>
       {isLanding ? <LandingPage setIsLanding={setIsLanding} /> : ""}
-      <HomeViewHeader
+      <HVHeader
         subtitle={subtitle}
         subEmoji={subEmoji}
         allParams={allParamsArray}
         isIntro={isIntro}
       />
-      <HomeViewContent currentContent={param4} isIntro={isIntro} />
-      <HomeViewFooter allParams={allParamsArray} isIntro={isIntro} />
+      <HVContent currentContent={param4} isIntro={isIntro} />
+      <HVFooter allParams={allParamsArray} isIntro={isIntro} />
     </div>
   );
 };

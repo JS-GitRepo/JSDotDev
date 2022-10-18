@@ -1,8 +1,8 @@
 /* - - - - RESETS - - - -*/
-.HomeViewHeader h1,
-.HomeViewHeader h2,
-.HomeViewHeader a,
-.HomeViewHeader p {
+.HVHeader h1,
+.HVHeader h2,
+.HVHeader a,
+.HVHeader p {
   margin: 0px;
   padding: 0px;
 }
@@ -55,6 +55,9 @@
 
 .HomeView .highlighted-link {
   color: rgb(0, 175, 166);
+  /* text-shadow: -0.5px -0.5px 0 rgb(250, 250, 250),
+    0.5px -0.5px 0 rgb(250, 250, 250), -0.5px 0.5px 0 rgb(250, 250, 250),
+    0.5px 0.5px 0 rgb(250, 250, 250); */
 }
 
 .HomeView .emoji {

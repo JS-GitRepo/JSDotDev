@@ -1,5 +1,10 @@
 {
   "hueAnimDuration": 7000,
   "hueAnimDuration_Slow": 10000,
-  "projectURL_Params": ["deerfall", "mediamatchup"]
+  "projectURL_Params": ["deerfall", "mediamatchup"],
+  "intro_txt_p1": "Hi! I'm Jake.",
+  "intro_txt_p2": "Life long tinkerer, learner, IT enthusiast... and the one that built this website!",
+  "intro_txt_p3": "I love figuring out how things work, how people work, and how the two (things and people) interact.",
+  "intro_txt_p4": "I'll be creating a contact form here soon, but in the meantime please reachout via LinkedIn!",
+  "built_using_txt": "REACT JS | REACT SPRING | TYPESCRIPT | FIREBASE"
 }

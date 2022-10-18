@@ -1,23 +1,23 @@
 /* - - - RESETS - - -*/
-.HomeViewFooter h1,
-.HomeViewFooter h2,
-.HomeViewFooter a,
-.HomeViewFooter p,
-.HomeViewFooter ul,
-.HomeViewFooter li {
+.HVFooter h1,
+.HVFooter h2,
+.HVFooter a,
+.HVFooter p,
+.HVFooter ul,
+.HVFooter li {
   margin: 0px;
   padding: 0px;
 }
 
 /* - - - GENERAL - - -*/
-.HomeViewFooter {
+.HVFooter {
   /* Position and Sizing */
   position: absolute;
   bottom: 5%;
-  width: 65vw;
   min-width: 235px;
   max-width: 375px;
-  height: 110px;
+  width: 65vw;
+  height: 100px;
   border-radius: 20px;
   /* Flex */
   display: flex;
@@ -32,19 +32,19 @@
   font-size: 16px;
 }
 
-.HomeViewFooter h2 {
+.HVFooter h2 {
   font-size: 26px;
   font-weight: 400;
 }
 
-.HomeViewFooter .project-nav-ctr {
+.HVFooter .project-nav-ctr {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.HomeViewFooter .project-nav {
+.HVFooter .project-nav {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -52,32 +52,32 @@
   margin-bottom: 5px;
 }
 
-.HomeViewFooter .nav-ctr {
+.HVFooter .nav-ctr {
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
 }
 
-.HomeViewFooter .nav-ctr a {
+.HVFooter .nav-ctr a {
   font-size: 22px;
 }
 
-.HomeViewFooter .nav-ctr ul {
+.HVFooter .nav-ctr ul {
   display: flex;
   list-style: none;
 }
 
-.HomeViewFooter .nav-ctr ul li {
+.HVFooter .nav-ctr ul li {
   margin: 0px 10px;
   height: 30px;
 }
 
-.HomeViewFooter .rights-ctr {
+.HVFooter .rights-ctr {
   font-size: 10px;
 }
 
-.HomeViewFooter .hidden {
+.HVFooter .hidden {
   margin: -3px;
   visibility: hidden;
 }
@@ -85,7 +85,7 @@
 /* - - - MEDIA QUERIES - - -*/
 
 @media only screen and (min-width: 768px) {
-  .HomeViewFooter {
+  .HVFooter {
     height: 20px;
     bottom: 10px;
     border: none;
@@ -93,11 +93,11 @@
     backdrop-filter: none;
   }
 
-  .HomeViewFooter .project-nav-ctr {
+  .HVFooter .project-nav-ctr {
     display: none;
   }
 
-  .HomeViewFooter .rights-ctr {
+  .HVFooter .rights-ctr {
     font-size: 14px;
   }
 }

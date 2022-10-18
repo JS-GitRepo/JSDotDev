@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
-import "./styles/HomeViewContent.css";
+import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 import { useNavigate } from "react-router-dom";
-import PersonalIntro from "./projects/PersonalIntro";
+import Introduction from "./projects/Introduction";
 
 interface Props {
   currentContent: string | undefined;
   isIntro: boolean;
 }
 
-const HomeViewContent = ({ currentContent, isIntro }: Props) => {
+const HVContent = ({ currentContent, isIntro }: Props) => {
   // - - - - States - - - -
   // toggleQueue false = projQueue1, toggleQueue true = projQueue2
   const [toggleQueue, setToggleQueue] = useState(false);
   const navigate = useNavigate();
   // - - - - Projects - - - -
   const allProjList = {
-    intro: <PersonalIntro />,
+    intro: <Introduction />,
     deerfall: <Deerfall isPortfolio={true} />,
     mediamatchup: <MediaMatchup isPortfolio={true} />,
   };
@@ -47,7 +47,7 @@ const HomeViewContent = ({ currentContent, isIntro }: Props) => {
   }, [currentContent, isIntro]);
 
   return (
-    <div className='HomeViewContent'>
+    <div className='HVContent'>
       {transition(
         (styles, item) =>
           item && (
@@ -60,4 +60,4 @@ const HomeViewContent = ({ currentContent, isIntro }: Props) => {
   );
 };
 
-export default HomeViewContent;
+export default HVContent;

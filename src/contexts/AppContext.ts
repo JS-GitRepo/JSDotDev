@@ -5,12 +5,14 @@ import { SpringValue } from "react-spring";
 export interface AppContextModel {
   isMobile: boolean;
   hueRotation: any;
+  hueRotation_Inv: any;
   setHueDuration: any;
 }
 
 const defaultValue: AppContextModel = {
   isMobile: true,
   hueRotation: undefined,
+  hueRotation_Inv: undefined,
   setHueDuration: undefined,
 };
 
