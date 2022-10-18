@@ -22,8 +22,8 @@ const HomeView = ({}: Props) => {
   const param4_Opts = AppConfig.projectURL_Params;
   const [param1, setParam1] = useState<string>("");
   const [param2, setParam2] = useState<string>("");
-  const [param3, setParam3] = useState<string>("");
-  const [param4, setParam4] = useState<string>("");
+  const [param3, setParam3] = useState<string>("gamedev");
+  const [param4, setParam4] = useState<string>("deerfall");
   const [allParamsArray, setAllParamsArray] = useState<string[]>([
     param1,
     param2,
