@@ -1,7 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import HomeView from "./components/HomeView";
-import WIPDisclaimer from "./components/WIPDisclaimer";
 import ErrorNotFound from "./components/ErrorNotFound";
 
 // 9-28-22
@@ -27,7 +26,6 @@ function App() {
         <Route path='404NotFound' element={<ErrorNotFound />} />
         <Route path='*' element={<ErrorNotFound />} />
       </Routes>
-      <WIPDisclaimer />
     </div>
   );
 }

@@ -3,56 +3,76 @@ import { animated, useTransition } from "react-spring";
 import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
-import { useNavigate } from "react-router-dom";
-import Introduction from "./projects/Introduction";
+import Introduction from "./Introduction";
 
 interface Props {
-  currentContent: string | undefined;
+  project: string;
   isIntro: boolean;
+  allParams: string[];
 }
 
-const HVContent = ({ currentContent, isIntro }: Props) => {
-  // - - - - States - - - -
-  // toggleQueue false = projQueue1, toggleQueue true = projQueue2
-  const [toggleQueue, setToggleQueue] = useState(false);
-  const navigate = useNavigate();
-  // - - - - Projects - - - -
+const HVContent = ({ project, isIntro, allParams }: Props) => {
+  // - - - - STATES - - - -
+  const [isPortfolio, setIsPortfolio] = useState<boolean>(true);
+  // - - - - PROJECTS - - - -
   const allProjList = {
     intro: <Introduction />,
-    deerfall: <Deerfall isPortfolio={true} />,
-    mediamatchup: <MediaMatchup isPortfolio={true} />,
+    deerfall: <Deerfall isPortfolio={isPortfolio} />,
+    mediamatchup: <MediaMatchup isPortfolio={isPortfolio} />,
   };
   const gameDevProjList = {
-    deerfall: <Deerfall isPortfolio={true} />,
+    deerfall: <Deerfall isPortfolio={isPortfolio} />,
   };
   const webDevProjList = {
-    mediamatchup: <MediaMatchup isPortfolio={true} />,
+    mediamatchup: <MediaMatchup isPortfolio={isPortfolio} />,
   };
-  const [currProjArray, setCurrProjArray] = useState<JSX.Element[]>([]);
-  // - - - - Transitions - - - -
-  const transition = useTransition(currProjArray, {
+  const [localProject, setLocalProject] = useState<string>("");
+  const [show, setShow] = useState<boolean>(true);
+  // - - - - TRANSITIONS - - - -
+  const transitionFade = useTransition(show, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: { duration: 300 },
-    exitBeforeEnter: true,
+    // exitBeforeEnter: true,
   });
 
-  useEffect(() => {
-    if (currentContent && !isIntro) {
-      setCurrProjArray([eval(`allProjList.${currentContent}`)]);
-    } else if (isIntro) {
-      setCurrProjArray([eval("allProjList.intro")]);
+  const checkAndSetProjComp = () => {
+    if (isIntro) {
+      setLocalProject("intro");
+    } else {
+      setLocalProject(project);
     }
-  }, [currentContent, isIntro]);
+  };
+
+  // - - - - - USE EFFECTS - - - - -
+  // Hide Project when it is Changed, then set the new project once hidden
+  useEffect(() => {
+    setShow(false);
+    setTimeout(() => checkAndSetProjComp(), 310);
+  }, [project, isIntro]);
+
+  // Once the new project is set, fade back in to display it
+  useEffect(() => {
+    setShow(true);
+  }, [localProject]);
+
+  // Check and set isPortfolio whenever params change
+  useEffect(() => {
+    if (allParams[1] === "portfolio") {
+      setIsPortfolio(true);
+    } else {
+      setIsPortfolio(false);
+    }
+  }, [allParams]);
 
   return (
     <div className='HVContent'>
-      {transition(
+      {transitionFade(
         (styles, item) =>
           item && (
             <animated.div className={`media-ctr`} style={styles}>
-              {item}
+              {allProjList[localProject as keyof typeof allProjList]}
             </animated.div>
           )
       )}

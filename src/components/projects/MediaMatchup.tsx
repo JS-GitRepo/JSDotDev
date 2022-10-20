@@ -1,4 +1,4 @@
-import ProjImage from "./ProjImage";
+import ProjImage from "./subComponents/ProjImage";
 // import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
 // import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
 import matchupImg from "../../img/Projects/MediaMatchup/ST4vsArt.jpg";
@@ -25,7 +25,7 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
     "Software Engineering",
     "Hosting",
   ];
-  const desc: string = "";
+  const desc: string = "A multi-media comparison app with a social twist. ";
 
   return (
     <animated.div className='MediaMatchup media-ctr'>
