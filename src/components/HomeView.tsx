@@ -14,7 +14,7 @@ const HomeView = ({}: Props) => {
   // - - - - - NAVIGATION - - - - -
   const location = useLocation();
   const navigate = useNavigate();
-  // Valid URL Parameter Options to check against
+  // - - - - - URL PARAMS - - - - -
   let { landingOrHome, category1, gameOrWeb, project } = useParams();
   const param1_Opts = ["landing", "home"];
   const param2_Opts = ["portfolio", "blog", "introduction", "intro"];
@@ -31,7 +31,7 @@ const HomeView = ({}: Props) => {
     param4,
   ]);
   const paramStateSet = [setParam1, setParam2, setParam3, setParam4];
-  // check if this is the landing page
+  // - - - - - LANDING PAGE - - - - -
   const [isLanding, setIsLanding] = useState<boolean>(false);
   const [isIntro, setIsIntro] = useState<boolean>(false);
   // - - - - CONTEXT - - - -
@@ -126,7 +126,11 @@ const HomeView = ({}: Props) => {
         allParams={allParamsArray}
         isIntro={isIntro}
       />
-      <HVContent currentContent={param4} isIntro={isIntro} />
+      <HVContent
+        project={param4}
+        isIntro={isIntro}
+        allParams={allParamsArray}
+      />
       <HVFooter allParams={allParamsArray} isIntro={isIntro} />
     </div>
   );

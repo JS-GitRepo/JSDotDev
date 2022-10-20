@@ -7,6 +7,7 @@ import pixelBG from "../img/pixelBG_LowRes.png";
 import pixelFadeBG from "../img/animated-14fps.png";
 import AppContext from "../contexts/AppContext";
 import AppConfig from "../AppConfig.json";
+import WIPDisclaimer from "./WIPDisclaimer";
 
 interface Props {
   setIsLanding: React.Dispatch<React.SetStateAction<boolean>>;
@@ -125,6 +126,7 @@ const LandingPage = ({ setIsLanding }: Props) => {
                 pathName={link2Path}
                 isH1={false}
               />
+              {/* <WIPDisclaimer /> */}
             </animated.div>
           ) : (
             ""

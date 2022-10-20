@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { animated } from "react-spring";
-import AppContext from "../../contexts/AppContext";
-import headshot from "../../img/Headshot-PurpleFlannel.png";
-import pixelBG from "../../img/pixelBG_LowRes.png";
-import AppConfig from "../../AppConfig.json";
-import "./Introduction.css";
+import AppContext from "../contexts/AppContext";
+import headshot from "../img/Headshot-PurpleFlannel.png";
+import pixelBG from "../img/pixelBG_LowRes.png";
+import AppConfig from "../AppConfig.json";
+import "./styles/Introduction.css";
 
 const Introduction = () => {
   const { hueRotation, hueRotation_Inv } = useContext(AppContext);

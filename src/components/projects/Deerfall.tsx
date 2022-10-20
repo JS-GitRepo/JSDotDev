@@ -1,4 +1,4 @@
-import ProjVideo from "./ProjVideo";
+import ProjVideo from "./subComponents/ProjVideo";
 import DeerfallVidAV1 from "../../img/Projects/Deerfall/DeerfallBanner_AV1.mp4";
 import DeerfallVidH265 from "../../img/Projects/Deerfall/DeerfallBanner_H265.mp4";
 import DeerfallVidH264 from "../../img/Projects/Deerfall/DeerfallBanner_H264.mp4";
@@ -28,7 +28,7 @@ const Deerfall = ({ isPortfolio }: Props) => {
   const desc: string = "";
 
   return (
-    <animated.div className="Deerfall media-ctr">
+    <animated.div className='Deerfall media-ctr'>
       <ProjVideo
         vidSrc={DeerfallVidH265}
         vidSrc_Fallback={DeerfallVidAV1}

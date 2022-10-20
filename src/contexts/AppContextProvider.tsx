@@ -12,7 +12,6 @@ const AppContextProvider = ({ children }: Props) => {
   const [isMobile, setIsMobile] = useState<boolean>(true);
 
   // ANIMATIONS / REACT SPRING
-  const [bgAnimOff, setBgAnimOff] = useState<boolean>(false);
   const [hueDuration, setHueDuration] = useState<number>(
     AppConfig.hueAnimDuration
   );

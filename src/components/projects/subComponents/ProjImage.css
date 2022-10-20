@@ -1,0 +1,76 @@
+.ProjImage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /* height: 50%; */
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.ProjImage .img-ctr {
+  max-width: 70%;
+  max-height: 75%;
+}
+
+.ProjImage .ProjDescBlog {
+  /* position */
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* size */
+  width: 65vw;
+  height: 100px;
+  /* style */
+  color: white;
+  border: solid white;
+  border-radius: 30px;
+  background-color: rgba(96, 96, 96, 0.5);
+  /* backdrop-filter: blur(10px); */
+}
+
+.ProjImage .ProjDescBlog p {
+  z-index: 2;
+}
+
+.ProjImage .ProjDescPortfolio {
+  /* position */
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* size */
+  width: 65vw;
+  height: 100px;
+  /* style */
+  color: white;
+  border: solid white;
+  border-radius: 30px;
+  background-color: rgba(96, 96, 96, 0.5);
+  /* backdrop-filter: blur(10px); */
+}
+
+.ProjImage .ProjDescPortfolio p {
+  z-index: 2;
+}
+
+@media only screen and (min-width: 768px) {
+  .ProjImage {
+    justify-content: center;
+  }
+}
