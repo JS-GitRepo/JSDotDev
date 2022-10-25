@@ -4,6 +4,11 @@ import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
 import MediaMatchup from "./projects/MediaMatchup";
 import Introduction from "./Introduction";
+import mediaIcon from "../img/navIcons/media.png";
+import techIcon from "../img/navIcons/tech.png";
+import aboutIcon from "../img/navIcons/about.png";
+import blogIcon from "../img/navIcons/blog.png";
+import HVSideNav from "./HVSideNav";
 
 interface Props {
   project: string;
@@ -67,7 +72,9 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   }, [allParams]);
 
   return (
-    <div className='HVContent'>
+    <main className='HVContent'>
+      {isIntro ? "" : <HVSideNav isPortfolio={isPortfolio} />}
+
       {transitionFade(
         (styles, item) =>
           item && (
@@ -76,7 +83,7 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
             </animated.div>
           )
       )}
-    </div>
+    </main>
   );
 };
 

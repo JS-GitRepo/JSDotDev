@@ -2,7 +2,7 @@ import ProjImage from "./subComponents/ProjImage";
 // import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
 // import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
 import matchupImg from "../../img/Projects/MediaMatchup/ST4vsArt.jpg";
-import { animated } from "react-spring";
+import Project from "./subComponents/Project";
 
 interface Props {
   isPortfolio: boolean;
@@ -28,18 +28,21 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
   const desc: string = "A multi-media comparison app with a social twist. ";
 
   return (
-    <animated.div className='MediaMatchup media-ctr'>
-      <ProjImage
-        imgSrc={matchupImg}
-        imgSrc_Fallback={matchupImg}
+    <>
+      <Project
+        mediaSrc={matchupImg}
+        mediaSrc_Fallback={matchupImg}
+        mediaSrc_Fallback2={undefined}
+        mediaAltTxt={"media matchup web application"}
+        vidPoster={undefined}
         isPortfolio={isPortfolio}
-        imgAltTxt={"MediaMatchup Demo"}
         tech={technologies}
         skills={skills}
-        title={"Media Matchup"}
+        title={"mediamatchup"}
         desc={desc}
+        isVideo={false}
       />
-    </animated.div>
+    </>
   );
 };
 

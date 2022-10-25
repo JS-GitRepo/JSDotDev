@@ -1,0 +1,40 @@
+.HVSideNav {
+  /* display */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* positioning */
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
+  /* sizing */
+  height: 150px;
+  width: 45px;
+  /* styling */
+  color: white;
+  background-color: rgba(96, 96, 96, 0.5);
+  backdrop-filter: blur(4px);
+  font-size: 40px;
+  border: 2px white solid;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.HVSideNav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.HVSideNav .nav-icon {
+  image-rendering: pixelated;
+  filter: invert();
+  margin: 8px;
+  width: 30px;
+}
+
+.HVSideNav .highlighted-icon {
+  background-color: red;
+}

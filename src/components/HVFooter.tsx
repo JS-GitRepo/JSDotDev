@@ -14,8 +14,8 @@ const HVFooter = ({ allParams, isIntro }: Props) => {
   const { hueRotation } = useContext(AppContext);
 
   return (
-    <div className='HVFooter'>
-      <div className='project-nav-ctr'>
+    <footer className='HVFooter'>
+      <nav className='project-nav-ctr'>
         <div className={isIntro ? "project-nav hidden" : "project-nav"}>
           <span className='material-symbols-outlined'>chevron_left</span>
           <h2>{allParams[3]}</h2>
@@ -53,7 +53,7 @@ const HVFooter = ({ allParams, isIntro }: Props) => {
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
 
       <div className='rights-ctr'>
         <p>
@@ -64,7 +64,7 @@ const HVFooter = ({ allParams, isIntro }: Props) => {
             }>{`© ${currentYear.getFullYear()} All Rights Reserved`}</animated.span>{" "}
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

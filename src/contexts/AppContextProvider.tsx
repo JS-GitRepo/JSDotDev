@@ -1,5 +1,5 @@
 import AppContext from "./AppContext";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useSpring } from "react-spring";
 import AppConfig from "../AppConfig.json";
 
@@ -10,6 +10,18 @@ interface Props {
 const AppContextProvider = ({ children }: Props) => {
   // GENERAL
   const [isMobile, setIsMobile] = useState<boolean>(true);
+
+  // SCROLL LOCATION REFERENCES
+  const media = useRef(null);
+  const tech = useRef(null);
+  const about = useRef(null);
+  const blog = useRef(null);
+  const [scrollRefs, setScrollRefs] = useState({
+    media,
+    tech,
+    about,
+    blog,
+  });
 
   // ANIMATIONS / REACT SPRING
   const [hueDuration, setHueDuration] = useState<number>(
@@ -50,9 +62,24 @@ const AppContextProvider = ({ children }: Props) => {
     window.addEventListener("resize", checkWindowSize);
   });
 
+  useEffect(() => {
+    setScrollRefs({
+      media,
+      tech,
+      about,
+      blog,
+    });
+  }, [media, tech, about, blog]);
+
   return (
     <AppContext.Provider
-      value={{ isMobile, hueRotation, hueRotation_Inv, setHueDuration }}>
+      value={{
+        isMobile,
+        hueRotation,
+        hueRotation_Inv,
+        setHueDuration,
+        scrollRefs,
+      }}>
       {children}
     </AppContext.Provider>
   );
