@@ -1,7 +1,8 @@
 import AppContext from "./AppContext";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { useSpring } from "react-spring";
+import { SpringValue, useSpring } from "react-spring";
 import AppConfig from "../AppConfig.json";
+import { HueRotation, ScrollRefs } from "../models/Models";
 
 interface Props {
   children: ReactNode;
@@ -16,7 +17,7 @@ const AppContextProvider = ({ children }: Props) => {
   const tech = useRef(null);
   const about = useRef(null);
   const blog = useRef(null);
-  const [scrollRefs, setScrollRefs] = useState({
+  const [scrollRefs, setScrollRefs] = useState<ScrollRefs>({
     media,
     tech,
     about,
@@ -27,7 +28,7 @@ const AppContextProvider = ({ children }: Props) => {
   const [hueDuration, setHueDuration] = useState<number>(
     AppConfig.hueAnimDuration
   );
-  const hueRotation = useSpring({
+  const hueRotation: HueRotation = useSpring({
     loop: { reverse: true, config: { duration: hueDuration } },
     to: {
       filter: "hue-rotate(130deg) saturate(80%) sepia(30%)",
@@ -37,7 +38,7 @@ const AppContextProvider = ({ children }: Props) => {
     },
     config: { duration: hueDuration, precision: 0.001 },
   });
-  const hueRotation_Inv = useSpring({
+  const hueRotation_Inv: HueRotation = useSpring({
     loop: { reverse: true, config: { duration: hueDuration } },
     to: {
       filter: "hue-rotate(0deg) saturate(100%) sepia(0%)",

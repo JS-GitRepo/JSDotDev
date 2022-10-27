@@ -8,7 +8,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import UserAccount from "../models/UserAcount";
+import { UserAccount } from "../models/Models";
 
 export const getUserById = async (
   userID: string

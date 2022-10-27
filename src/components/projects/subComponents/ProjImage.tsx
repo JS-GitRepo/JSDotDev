@@ -16,7 +16,7 @@ const ProjImage = ({
       <div className='content-section full-w-h'>
         <picture>
           <source srcSet={imgSrc} />
-          <img className='main-img' src={imgSrc_Fallback} alt={imgAltTxt} />
+          <img src={imgSrc_Fallback} alt={imgAltTxt} />
         </picture>
       </div>
     </section>

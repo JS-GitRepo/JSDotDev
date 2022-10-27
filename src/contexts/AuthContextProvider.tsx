@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import AuthContext from "./AuthContext";
 import { ReactNode, useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
-import UserAccount from "../models/UserAcount";
+import { UserAccount } from "../models/Models";
 import { createNewUser, getUserById } from "../services/userService";
 
 interface Props {

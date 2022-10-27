@@ -21,10 +21,10 @@ const ProjDescPortfolio = ({
       className='ProjDescPortfolio full-w-h
   '>
       <section ref={tech_ScrollRef} className='content-section tech-skills-ctr'>
-        Tech and Skills
+        <p>Tech and Skills</p>
       </section>
       <section ref={about_ScrollRef} className='content-section about-ctr'>
-        About Project
+        <p>About Project</p>
       </section>
     </animated.div>
   );

@@ -4,15 +4,25 @@ import techIcon from "../img/navIcons/tech.png";
 import aboutIcon from "../img/navIcons/about.png";
 import blogIcon from "../img/navIcons/blog.png";
 import { animated, useSpring } from "react-spring";
-import { useContext } from "react";
-import AppContext from "../contexts/AppContext";
+import { useEffect, useState } from "react";
+import { ScrollRefs, HueRotation } from "../models/Models";
 
 interface Props {
+  scrollRefs: ScrollRefs;
+  hueRotation: HueRotation;
   isPortfolio: boolean;
+  allParams: string[];
+  scrollToElement: (ref: React.MutableRefObject<any>) => void;
 }
 
-const HVSideNav = ({ isPortfolio }: Props) => {
-  const { scrollRefs } = useContext(AppContext);
+const HVSideNav = ({
+  isPortfolio,
+  allParams,
+  scrollRefs,
+  hueRotation,
+  scrollToElement,
+}: Props) => {
+  const [hlNav, setHLNav] = useState("media");
   const navSizeChange = useSpring({
     from: { height: "150px" },
     to: { height: "110px" },
@@ -20,34 +30,46 @@ const HVSideNav = ({ isPortfolio }: Props) => {
     reverse: isPortfolio,
   });
 
-  const handleScroll = (ref: any) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (
+    ref: React.MutableRefObject<any>,
+    navName: string
+  ) => {
+    scrollToElement(ref);
+    setHLNav(navName);
   };
+
+  useEffect(() => {
+    scrollRefs.media.current?.scrollIntoView({ behavior: "smooth" });
+    setHLNav("media");
+  }, [allParams[1]]);
 
   return (
     <animated.nav className='HVSideNav' style={navSizeChange}>
       {isPortfolio ? (
         <ul>
           <li>
-            <img
-              onClick={() => handleScroll(scrollRefs.media)}
+            <animated.img
+              onClick={() => handleNavClick(scrollRefs.media, "media")}
               className='nav-icon'
+              style={hlNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
             />
           </li>
           <li>
-            <img
-              onClick={() => handleScroll(scrollRefs.tech)}
+            <animated.img
+              onClick={() => handleNavClick(scrollRefs.tech, "tech")}
               className='nav-icon'
+              style={hlNav === "tech" ? hueRotation : {}}
               src={techIcon}
               alt='technologies and skills navigation icon'
             />
           </li>
           <li>
-            <img
-              onClick={() => handleScroll(scrollRefs.about)}
+            <animated.img
+              onClick={() => handleNavClick(scrollRefs.about, "about")}
               className='nav-icon'
+              style={hlNav === "about" ? hueRotation : {}}
               src={aboutIcon}
               alt='about project navigation icon'
             />
@@ -56,17 +78,19 @@ const HVSideNav = ({ isPortfolio }: Props) => {
       ) : (
         <ul>
           <li>
-            <img
-              onClick={() => handleScroll(scrollRefs.media)}
+            <animated.img
+              onClick={() => handleNavClick(scrollRefs.media, "media")}
               className='nav-icon'
+              style={hlNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
             />
           </li>
           <li>
-            <img
-              onClick={() => handleScroll(scrollRefs.blog)}
+            <animated.img
+              onClick={() => handleNavClick(scrollRefs.blog, "blog")}
               className='nav-icon'
+              style={hlNav === "blog" ? hueRotation : {}}
               src={blogIcon}
               alt='media navigation icon'
             />

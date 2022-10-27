@@ -53,6 +53,10 @@ li {
 }
 
 .Project .content-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -73,13 +77,11 @@ li {
   position: relative;
 }
 
-.Project .ProjImage .content-section {
-  box-sizing: border-box;
-  border: 1px black dashed;
-  /* padding-bottom: 35%; */
+.Project .ProjImage .content-section picture {
+  height: 100%;
 }
 
-.Project .ProjImage .content-section .main-img {
+.Project .ProjImage .content-section picture img {
   height: 75%;
 }
 

@@ -15,7 +15,7 @@
   width: 45px;
   /* styling */
   color: white;
-  background-color: rgba(96, 96, 96, 0.5);
+  background-color: rgba(96, 96, 96, 0.3);
   backdrop-filter: blur(4px);
   font-size: 40px;
   border: 2px white solid;
@@ -30,9 +30,13 @@
 
 .HVSideNav .nav-icon {
   image-rendering: pixelated;
-  filter: invert();
+  filter: saturate(0) brightness(100);
   margin: 8px;
   width: 30px;
+}
+
+.HVSideNav .highlighted-nav {
+  filter: none;
 }
 
 .HVSideNav .highlighted-icon {
