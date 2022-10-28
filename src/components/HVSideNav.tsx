@@ -6,6 +6,7 @@ import blogIcon from "../img/navIcons/blog.png";
 import { animated, useSpring } from "react-spring";
 import { useEffect, useState } from "react";
 import { ScrollRefs, HueRotation } from "../models/Models";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
   scrollRefs: ScrollRefs;
@@ -13,6 +14,7 @@ interface Props {
   isPortfolio: boolean;
   allParams: string[];
   scrollToElement: (ref: React.MutableRefObject<any>) => void;
+  setScrollIsBuffering: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const HVSideNav = ({
@@ -21,8 +23,11 @@ const HVSideNav = ({
   scrollRefs,
   hueRotation,
   scrollToElement,
+  setScrollIsBuffering,
 }: Props) => {
   const [hlNav, setHLNav] = useState("media");
+  const navigate = useNavigate();
+  const location = useLocation();
   const navSizeChange = useSpring({
     from: { height: "150px" },
     to: { height: "110px" },
@@ -30,16 +35,25 @@ const HVSideNav = ({
     reverse: isPortfolio,
   });
 
+  // const handleNavClick = (
+  //   ref: React.MutableRefObject<any>,
+  //   navName: string
+  // ) => {
+  //   scrollToElement(ref);
+  //   setHLNav(navName);
+  // };
+
   const handleNavClick = (
     ref: React.MutableRefObject<any>,
     navName: string
   ) => {
-    scrollToElement(ref);
+    navigate(`${location.pathname}#${navName}`);
+    setScrollIsBuffering(true);
     setHLNav(navName);
   };
 
   useEffect(() => {
-    scrollRefs.media.current?.scrollIntoView({ behavior: "smooth" });
+    navigate(`${location.pathname}#media`);
     setHLNav("media");
   }, [allParams[1]]);
 

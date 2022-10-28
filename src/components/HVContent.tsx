@@ -1,4 +1,10 @@
-import { MutableRefObject, useContext, useEffect, useState } from "react";
+import {
+  MutableRefObject,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { animated, useTransition } from "react-spring";
 import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
@@ -22,6 +28,7 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   const navigate = useNavigate();
   // - - - - CONTEXT - - - -
   const { scrollRefs, hueRotation } = useContext(AppContext);
+  const [scrollIsBuffering, setScrollIsBuffering] = useState(false);
   const observerOptions: IntersectionObserverInit = {
     threshold: 0.5,
     root: null,
@@ -107,25 +114,45 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   }, [allParams]);
 
   useEffect(() => {
-    if (mediaScrollObserver?.isIntersecting) {
+    if (mediaScrollObserver?.isIntersecting && !scrollIsBuffering) {
       navigate(`${location.pathname}#media`);
     }
   }, [mediaScrollObserver?.isIntersecting]);
 
   useEffect(() => {
-    if (techScrollObserver?.isIntersecting)
+    if (techScrollObserver?.isIntersecting && !scrollIsBuffering)
       navigate(`${location.pathname}#tech`);
   }, [techScrollObserver?.isIntersecting]);
 
   useEffect(() => {
-    if (blogScrollObserver?.isIntersecting)
+    if (blogScrollObserver?.isIntersecting && !scrollIsBuffering)
       navigate(`${location.pathname}#blog`);
   }, [blogScrollObserver?.isIntersecting]);
 
   useEffect(() => {
-    if (aboutScrollObserver?.isIntersecting)
+    if (aboutScrollObserver?.isIntersecting && !scrollIsBuffering)
       navigate(`${location.pathname}#about`);
   }, [aboutScrollObserver?.isIntersecting]);
+
+  useEffect(() => {
+    if (location.hash === "#media") {
+      scrollToElement(scrollRefs.media);
+    } else if (location.hash === "#tech") {
+      scrollToElement(scrollRefs.tech);
+    } else if (location.hash === "#about") {
+      scrollToElement(scrollRefs.about);
+    } else if (location.hash === "#blog") {
+      scrollToElement(scrollRefs.blog);
+    }
+    console.log(location.hash);
+  }, [location.hash]);
+
+  useEffect(() => {
+    if (scrollIsBuffering) {
+      setTimeout(() => setScrollIsBuffering(false), 800);
+    }
+    console.log(scrollIsBuffering);
+  }, [scrollIsBuffering]);
 
   return (
     <main className='HVContent'>
@@ -138,6 +165,7 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
           scrollRefs={scrollRefs}
           hueRotation={hueRotation}
           scrollToElement={scrollToElement}
+          setScrollIsBuffering={setScrollIsBuffering}
         />
       )}
 
