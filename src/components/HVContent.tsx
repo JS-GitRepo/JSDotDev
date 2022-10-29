@@ -1,10 +1,4 @@
-import {
-  MutableRefObject,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { SetStateAction, useContext, useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
 import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
@@ -22,13 +16,13 @@ interface Props {
 }
 
 const HVContent = ({ project, isIntro, allParams }: Props) => {
-  // - - - - STATES - - - -
+  // = = = = = NAVIGATION = = = = =
   const [isPortfolio, setIsPortfolio] = useState<boolean>(true);
+  const [currentNav, setCurrentNav] = useState<string>("media");
+  const [scrollIsBuffering, setScrollIsBuffering] = useState(false);
+  const { scrollRefs, hueRotation } = useContext(AppContext);
   const location = useLocation();
   const navigate = useNavigate();
-  // - - - - CONTEXT - - - -
-  const { scrollRefs, hueRotation } = useContext(AppContext);
-  const [scrollIsBuffering, setScrollIsBuffering] = useState(false);
   const observerOptions: IntersectionObserverInit = {
     threshold: 0.5,
     root: null,
@@ -55,7 +49,7 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
     false
   );
 
-  // - - - - PROJECTS - - - -
+  // = = = = = PROJECTS = = = = =
   const allProjList = {
     intro: <Introduction />,
     deerfall: <Deerfall isPortfolio={isPortfolio} />,
@@ -69,7 +63,7 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   };
   const [localProject, setLocalProject] = useState<string>("");
   const [show, setShow] = useState<boolean>(true);
-  // - - - - TRANSITIONS - - - -
+  // = = = = = TRANSITIONS = = = = =
   const transitionFade = useTransition(show, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -89,7 +83,10 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   };
 
   const scrollToElement = (ref: React.MutableRefObject<any>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+    console.log("scrollToElement Triggered");
   };
 
   // = = = = = USE EFFECTS = = = = =
@@ -116,42 +113,41 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
   useEffect(() => {
     if (mediaScrollObserver?.isIntersecting && !scrollIsBuffering) {
       navigate(`${location.pathname}#media`);
-    }
-  }, [mediaScrollObserver?.isIntersecting]);
-
-  useEffect(() => {
-    if (techScrollObserver?.isIntersecting && !scrollIsBuffering)
+    } else if (techScrollObserver?.isIntersecting && !scrollIsBuffering) {
       navigate(`${location.pathname}#tech`);
-  }, [techScrollObserver?.isIntersecting]);
-
-  useEffect(() => {
-    if (blogScrollObserver?.isIntersecting && !scrollIsBuffering)
+    } else if (blogScrollObserver?.isIntersecting && !scrollIsBuffering) {
       navigate(`${location.pathname}#blog`);
-  }, [blogScrollObserver?.isIntersecting]);
-
-  useEffect(() => {
-    if (aboutScrollObserver?.isIntersecting && !scrollIsBuffering)
+    } else if (aboutScrollObserver?.isIntersecting && !scrollIsBuffering) {
       navigate(`${location.pathname}#about`);
-  }, [aboutScrollObserver?.isIntersecting]);
+    }
+  }, [
+    mediaScrollObserver?.isIntersecting,
+    techScrollObserver?.isIntersecting,
+    blogScrollObserver?.isIntersecting,
+    aboutScrollObserver?.isIntersecting,
+  ]);
 
   useEffect(() => {
+    setScrollIsBuffering(true);
     if (location.hash === "#media") {
       scrollToElement(scrollRefs.media);
+      setCurrentNav("media");
     } else if (location.hash === "#tech") {
       scrollToElement(scrollRefs.tech);
+      setCurrentNav("tech");
     } else if (location.hash === "#about") {
       scrollToElement(scrollRefs.about);
+      setCurrentNav("about");
     } else if (location.hash === "#blog") {
       scrollToElement(scrollRefs.blog);
+      setCurrentNav("blog");
     }
-    console.log(location.hash);
   }, [location.hash]);
 
   useEffect(() => {
     if (scrollIsBuffering) {
-      setTimeout(() => setScrollIsBuffering(false), 800);
+      setTimeout(() => setScrollIsBuffering(false), 500);
     }
-    console.log(scrollIsBuffering);
   }, [scrollIsBuffering]);
 
   return (
@@ -162,9 +158,9 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
         <HVSideNav
           isPortfolio={isPortfolio}
           allParams={allParams}
-          scrollRefs={scrollRefs}
           hueRotation={hueRotation}
-          scrollToElement={scrollToElement}
+          currentNav={currentNav}
+          setCurrentNav={setCurrentNav}
           setScrollIsBuffering={setScrollIsBuffering}
         />
       )}

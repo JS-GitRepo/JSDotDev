@@ -5,27 +5,26 @@ import aboutIcon from "../img/navIcons/about.png";
 import blogIcon from "../img/navIcons/blog.png";
 import { animated, useSpring } from "react-spring";
 import { useEffect, useState } from "react";
-import { ScrollRefs, HueRotation } from "../models/Models";
+import { HueRotation } from "../models/Models";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
-  scrollRefs: ScrollRefs;
   hueRotation: HueRotation;
   isPortfolio: boolean;
   allParams: string[];
-  scrollToElement: (ref: React.MutableRefObject<any>) => void;
+  currentNav: string;
+  setCurrentNav: React.Dispatch<React.SetStateAction<string>>;
   setScrollIsBuffering: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const HVSideNav = ({
   isPortfolio,
   allParams,
-  scrollRefs,
   hueRotation,
-  scrollToElement,
+  currentNav,
+  setCurrentNav,
   setScrollIsBuffering,
 }: Props) => {
-  const [hlNav, setHLNav] = useState("media");
   const navigate = useNavigate();
   const location = useLocation();
   const navSizeChange = useSpring({
@@ -35,26 +34,14 @@ const HVSideNav = ({
     reverse: isPortfolio,
   });
 
-  // const handleNavClick = (
-  //   ref: React.MutableRefObject<any>,
-  //   navName: string
-  // ) => {
-  //   scrollToElement(ref);
-  //   setHLNav(navName);
-  // };
-
-  const handleNavClick = (
-    ref: React.MutableRefObject<any>,
-    navName: string
-  ) => {
-    navigate(`${location.pathname}#${navName}`);
+  const navigateToSection = (navName: string) => {
     setScrollIsBuffering(true);
-    setHLNav(navName);
+    navigate(`${location.pathname}#${navName}`);
+    setCurrentNav(navName);
   };
 
   useEffect(() => {
-    navigate(`${location.pathname}#media`);
-    setHLNav("media");
+    navigateToSection("media");
   }, [allParams[1]]);
 
   return (
@@ -63,27 +50,27 @@ const HVSideNav = ({
         <ul>
           <li>
             <animated.img
-              onClick={() => handleNavClick(scrollRefs.media, "media")}
+              onClick={() => navigateToSection("media")}
               className='nav-icon'
-              style={hlNav === "media" ? hueRotation : {}}
+              style={currentNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
             />
           </li>
           <li>
             <animated.img
-              onClick={() => handleNavClick(scrollRefs.tech, "tech")}
+              onClick={() => navigateToSection("tech")}
               className='nav-icon'
-              style={hlNav === "tech" ? hueRotation : {}}
+              style={currentNav === "tech" ? hueRotation : {}}
               src={techIcon}
               alt='technologies and skills navigation icon'
             />
           </li>
           <li>
             <animated.img
-              onClick={() => handleNavClick(scrollRefs.about, "about")}
+              onClick={() => navigateToSection("about")}
               className='nav-icon'
-              style={hlNav === "about" ? hueRotation : {}}
+              style={currentNav === "about" ? hueRotation : {}}
               src={aboutIcon}
               alt='about project navigation icon'
             />
@@ -93,18 +80,18 @@ const HVSideNav = ({
         <ul>
           <li>
             <animated.img
-              onClick={() => handleNavClick(scrollRefs.media, "media")}
+              onClick={() => navigateToSection("media")}
               className='nav-icon'
-              style={hlNav === "media" ? hueRotation : {}}
+              style={currentNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
             />
           </li>
           <li>
             <animated.img
-              onClick={() => handleNavClick(scrollRefs.blog, "blog")}
+              onClick={() => navigateToSection("blog")}
               className='nav-icon'
-              style={hlNav === "blog" ? hueRotation : {}}
+              style={currentNav === "blog" ? hueRotation : {}}
               src={blogIcon}
               alt='media navigation icon'
             />

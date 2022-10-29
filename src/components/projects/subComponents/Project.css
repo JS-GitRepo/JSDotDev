@@ -13,6 +13,7 @@ li {
   width: 100%;
   height: 100%;
   overflow: scroll;
+  scroll-snap-type: y proximity;
 }
 
 .Project .proj-nav {
@@ -53,13 +54,17 @@ li {
 }
 
 .Project .content-section {
+  /* display */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  scroll-snap-align: start;
+  /* sizing */
   height: 100%;
   width: 100%;
+  /* style */
   border: 1px black dashed;
   /* padding-bottom: 35%; */
 }
