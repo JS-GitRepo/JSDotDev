@@ -17,7 +17,7 @@ const HVHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
 
   // Some elements in the return will be hidden by media query CSS, to allow UI elements in the header or footer depending on mobile / Desktop. This is why there are some "redundant" elements
   return (
-    <div className='HVHeader'>
+    <header className='HVHeader'>
       <Link className='title-ctr' to={{ pathname: "/landing" }}>
         <h1>
           {`${isIntro ? "who is " : ""}`}
@@ -77,7 +77,7 @@ const HVHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
           </ul>
         </div>
       </div>
-      <div className={isIntro ? "hidden" : "nav-category-ctr"}>
+      <nav className={isIntro ? "hidden" : "nav-category-ctr"}>
         <ul>
           <li>
             <NavLink
@@ -98,8 +98,8 @@ const HVHeader = ({ subtitle, subEmoji, allParams, isIntro }: Props) => {
             </NavLink>
           </li>
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 

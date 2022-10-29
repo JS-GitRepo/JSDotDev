@@ -1,17 +1,21 @@
 import { animated } from "react-spring";
-import "./ProjDescBlog.css";
 
 interface Props {
   title: string;
   desc: string;
   transStyle: any;
+  blog_ScrollRef: React.MutableRefObject<null>;
 }
 
-const ProjDescBlog = ({ title, desc, transStyle }: Props) => {
+const ProjDescBlog = ({ title, desc, transStyle, blog_ScrollRef }: Props) => {
   return (
-    <animated.div style={transStyle} className='ProjDescBlog'>
-      <p>Blog functionality is currently WIP!</p>
-      <p>Coming Soon</p>
+    <animated.div
+      ref={blog_ScrollRef}
+      style={transStyle}
+      className='ProjDescBlog full-w-h'>
+      <section className='content-section blog-ctr'>
+        Blog posts will someday live here!
+      </section>
     </animated.div>
   );
 };

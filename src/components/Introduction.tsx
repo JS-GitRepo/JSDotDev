@@ -15,7 +15,7 @@ const Introduction = () => {
   const introP5 = AppConfig.built_using_txt;
 
   return (
-    <div className='Introduction'>
+    <section className='Introduction'>
       <div className='bg-img-ctr'>
         <animated.img
           className={`bg-img`}
@@ -42,7 +42,7 @@ const Introduction = () => {
           </animated.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
