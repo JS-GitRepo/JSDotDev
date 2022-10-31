@@ -4,9 +4,10 @@ import techIcon from "../img/navIcons/tech.png";
 import aboutIcon from "../img/navIcons/about.png";
 import blogIcon from "../img/navIcons/blog.png";
 import { animated, useSpring } from "react-spring";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { HueRotation } from "../models/Models";
 import { useLocation, useNavigate } from "react-router-dom";
+import AppContext from "../contexts/AppContext";
 
 interface Props {
   hueRotation: HueRotation;
@@ -27,9 +28,10 @@ const HVSideNav = ({
 }: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { isMobile } = useContext(AppContext);
   const navSizeChange = useSpring({
-    from: { height: "150px" },
-    to: { height: "110px" },
+    from: { height: isMobile ? "150px" : "200px" },
+    to: { height: isMobile ? "110px" : "135px" },
     config: { mass: 1, tension: 200, friction: 15 },
     reverse: isPortfolio,
   });
@@ -42,7 +44,7 @@ const HVSideNav = ({
 
   useEffect(() => {
     navigateToSection("media");
-  }, [allParams[1]]);
+  }, [allParams[1], allParams[2]]);
 
   return (
     <animated.nav className='HVSideNav' style={navSizeChange}>

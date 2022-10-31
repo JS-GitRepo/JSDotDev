@@ -25,7 +25,14 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
     "Software Engineering",
     "Hosting",
   ];
-  const desc: string = "A multi-media comparison app with a social twist. ";
+  const about: string =
+    "An 'apples to oranges' comparison app where various forms of media battle for your vote. These comparisons pit different categories of media against one another such as film, musical albums, video games, artwork, and television.";
+  const links = {
+    github: "https://github.com/JS-GitRepo/MediaMatchup_frontend",
+    demo: "https://mediamatchup.app",
+  };
+  const techDesc: string =
+    "MediaMatchup leverages 5 REST API's, 4 external and 1 internal, to generate a 'Matchup' on demand. Users are authenticated via Firebase Google Auth and have their Matchup choices saved to MongoDB Atlas Cloud. Users can add friends and view their feeds via MongoDB aggregation.";
 
   return (
     <>
@@ -33,14 +40,16 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
         mediaSrc={matchupImg}
         mediaSrc_Fallback={matchupImg}
         mediaSrc_Fallback2={undefined}
-        mediaAltTxt={"media matchup web application"}
+        mediaAltTxt={"media matchup react application"}
         vidPoster={undefined}
+        isVideo={false}
         isPortfolio={isPortfolio}
         tech={technologies}
         skills={skills}
         title={"mediamatchup"}
-        desc={desc}
-        isVideo={false}
+        about={about}
+        techDesc={techDesc}
+        projLinks={links}
       />
     </>
   );

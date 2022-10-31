@@ -42,3 +42,13 @@
 .HVSideNav .highlighted-icon {
   background-color: red;
 }
+
+@media only screen and (min-width: 768px) {
+  .HVSideNav {
+    width: 70px;
+  }
+
+  .HVSideNav .nav-icon {
+    width: 40px;
+  }
+}

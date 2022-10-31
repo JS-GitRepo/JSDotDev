@@ -6,6 +6,7 @@ import ProjImage from "./ProjImage";
 import ProjVideo from "./ProjVideo";
 import { useContext } from "react";
 import AppContext from "../../../contexts/AppContext";
+import { ProjectLinks } from "../../../models/Models";
 
 interface Props {
   mediaSrc: string;
@@ -13,12 +14,14 @@ interface Props {
   mediaSrc_Fallback2: string | undefined;
   mediaAltTxt: string;
   vidPoster: string | undefined;
+  isVideo: boolean;
   isPortfolio: boolean;
   tech: string[];
   skills: string[];
   title: string;
-  desc: string;
-  isVideo: boolean;
+  about: string;
+  techDesc: string;
+  projLinks: ProjectLinks;
 }
 
 const Project = ({
@@ -27,12 +30,14 @@ const Project = ({
   mediaSrc_Fallback2,
   mediaAltTxt,
   vidPoster,
+  isVideo,
   isPortfolio,
   tech,
   skills,
   title,
-  desc,
-  isVideo,
+  about,
+  techDesc,
+  projLinks,
 }: Props) => {
   const { scrollRefs } = useContext(AppContext);
   const fadeTransition = useTransition(isPortfolio, {
@@ -66,15 +71,19 @@ const Project = ({
         item ? (
           <ProjDescPortfolio
             title={title}
-            desc={desc}
+            about={about}
+            tech={tech}
+            skills={skills}
+            techDesc={techDesc}
             transStyle={styles}
             tech_ScrollRef={scrollRefs.tech}
             about_ScrollRef={scrollRefs.about}
+            projLinks={projLinks}
           />
         ) : (
           <ProjDescBlog
             title={title}
-            desc={desc}
+            about={about}
             transStyle={styles}
             blog_ScrollRef={scrollRefs.blog}
           />
