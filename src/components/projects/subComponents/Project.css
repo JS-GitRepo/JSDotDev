@@ -9,9 +9,11 @@ li {
 
 /* GENERAL */
 .Project {
+  /* sizing */
   position: relative;
   width: 100%;
   height: 100%;
+  /* scroll */
   overflow: scroll;
   scroll-snap-type: y proximity;
 }
@@ -56,17 +58,17 @@ li {
 .Project .content-section {
   /* display */
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
   scroll-snap-align: start;
   /* sizing */
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   /* style */
-  border: 1px black dashed;
-  /* padding-bottom: 35%; */
+  overflow: scroll;
 }
 
 .Project .ProjVideo {
@@ -90,13 +92,88 @@ li {
   height: 75%;
 }
 
+.Project .content-ctr {
+  /* display */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* sizing */
+  box-sizing: border-box;
+  max-height: 100%;
+  width: 80%;
+  margin-bottom: 150px;
+  /* styling */
+  overflow: scroll;
+}
+
+.Project .content-ctr h1 {
+  font-size: 24px;
+  margin: 4px;
+}
+
+.Project .content-ctr .tech-p,
+.Project .content-ctr .skill-p {
+  margin: 8px;
+}
+
+.Project .proj-link {
+  color: rgb(0, 175, 166);
+  padding: 8px;
+  margin: 10px;
+  font-size: 20px;
+  border: solid rgb(0, 175, 166) 3px;
+  border-radius: 10px;
+}
+
+.Project .proj-link:hover {
+  border: solid rgb(64, 210, 236) 3px;
+}
+
 /* DESKTOP MEDIA QUERY */
 @media only screen and (min-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+    /* width: 5px;
+    background-color: white; */
+  }
+
+  /* ::-webkit-scrollbar-thumb {
+    background: rgb(27, 27, 27);
+  } */
+
   .Project {
     justify-content: center;
+    overflow: auto;
+    scrollbar-width: none;
   }
 
   .Project .ProjImage {
     justify-content: center;
+  }
+
+  .Project .content-section {
+    padding-left: 5px;
+    overflow: auto;
+  }
+
+  .Project .ProjImage .content-section picture {
+    display: flex;
+    align-items: center;
+  }
+
+  .Project .content-ctr {
+    overflow: auto;
+    margin-bottom: 0px;
+    width: 50%;
+  }
+
+  .Project .content-ctr h1 {
+    font-size: 26px;
+    margin: 15px;
+  }
+
+  .Project .content-ctr .tech-p,
+  .Project .content-ctr .skill-p {
+    margin: 15px;
   }
 }

@@ -108,6 +108,7 @@ p {
     justify-content: center;
     max-height: none;
     overflow: hidden;
+    margin-bottom: 0px;
   }
 
   .Introduction .content-ctr p {

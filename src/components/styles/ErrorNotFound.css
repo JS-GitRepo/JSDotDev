@@ -1,7 +1,56 @@
 .ErrorNotFound {
+  /* display */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* sizing */
+  box-sizing: border-box;
   height: 100%;
+  border: 7px dashed rgb(71, 71, 71);
+  /* font */
+  font-family: "munro";
+  font-weight: 300;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  letter-spacing: 1px;
+  color: rgb(71, 71, 71);
+}
+
+.ErrorNotFound p {
+  font-size: 18px;
+}
+
+.ErrorNotFound button {
+  color: rgb(0, 175, 166);
+  padding: 8px;
+  margin: 10px;
+  font-size: 20px;
+  border: solid rgb(0, 175, 166) 3px;
+  border-radius: 10px;
+}
+
+.ErrorNotFound button:hover {
+  color: rgb(64, 210, 236);
+  cursor: pointer;
+  border: solid rgb(64, 210, 236) 3px;
+}
+
+.ErrorNotFound .content-ctr {
+  width: 95%;
+}
+
+@media only screen and (min-width: 768px) {
+  .ErrorNotFound {
+    /* display */
+    border: 10px dashed rgb(71, 71, 71);
+  }
+
+  .ErrorNotFound p {
+    font-size: 20px;
+  }
+
+  .ErrorNotFound .content-ctr {
+    width: 60%;
+  }
 }

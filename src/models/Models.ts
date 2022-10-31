@@ -24,3 +24,8 @@ export interface UserAccount {
 export interface HueRotation {
   filter: SpringValue<string>;
 }
+
+export interface ProjectLinks {
+  github: string;
+  demo: string;
+}

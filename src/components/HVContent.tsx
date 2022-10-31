@@ -1,4 +1,4 @@
-import { SetStateAction, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
 import "./styles/HVContent.css";
 import Deerfall from "./projects/Deerfall";
@@ -86,7 +86,6 @@ const HVContent = ({ project, isIntro, allParams }: Props) => {
     ref.current?.scrollIntoView({
       behavior: "smooth",
     });
-    console.log("scrollToElement Triggered");
   };
 
   // = = = = = USE EFFECTS = = = = =

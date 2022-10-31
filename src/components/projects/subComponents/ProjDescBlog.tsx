@@ -2,12 +2,12 @@ import { animated } from "react-spring";
 
 interface Props {
   title: string;
-  desc: string;
+  about: string;
   transStyle: any;
   blog_ScrollRef: React.MutableRefObject<null>;
 }
 
-const ProjDescBlog = ({ title, desc, transStyle, blog_ScrollRef }: Props) => {
+const ProjDescBlog = ({ title, about, transStyle, blog_ScrollRef }: Props) => {
   return (
     <animated.div
       ref={blog_ScrollRef}

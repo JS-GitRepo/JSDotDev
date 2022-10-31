@@ -1,4 +1,3 @@
-import ProjVideo from "./subComponents/ProjVideo";
 import DeerfallVidAV1 from "../../img/Projects/Deerfall/DeerfallBanner_AV1.mp4";
 import DeerfallVidH265 from "../../img/Projects/Deerfall/DeerfallBanner_H265.mp4";
 import DeerfallVidH264 from "../../img/Projects/Deerfall/DeerfallBanner_H264.mp4";
@@ -13,8 +12,8 @@ const Deerfall = ({ isPortfolio }: Props) => {
   // - - - - Tech and Skills - - - -
   const technologies: string[] = [
     "Unreal Engine",
+    "UE Blueprints",
     "C++",
-    "Blueprints",
     "Blender",
   ];
   const skills: string[] = [
@@ -22,10 +21,14 @@ const Deerfall = ({ isPortfolio }: Props) => {
     "3D Modeling",
     "Textures and Materials",
     "Automatic Landscape Materials",
-    "Locomotion",
+    "Inverse Kinematics and Locomotion",
     "Inventory Systems",
   ];
-  const desc: string = "";
+  const about: string =
+    "A game that began with the idea of 'Rimworld meets Daggerfall'; a simulation game focused on story generation rather than experiencing a crafted story.";
+  const links = { github: "n/a", demo: "n/a" };
+  const techDesc: string =
+    "Built with Unreal Engine 5 from scratch. Most time up to this point spent learning materials somewhat deeply, and reversing IK / locomotion within the 'Advanced Locomotion v4' UE Plugin.";
 
   return (
     <>
@@ -35,12 +38,14 @@ const Deerfall = ({ isPortfolio }: Props) => {
         mediaSrc_Fallback2={DeerfallVidH264}
         mediaAltTxt={"deerfall videogame project"}
         vidPoster={DeerfallPosterJPG}
-        isPortfolio={isPortfolio}
-        tech={[]}
-        skills={[]}
-        title={"deerfall"}
-        desc={desc}
         isVideo={true}
+        isPortfolio={isPortfolio}
+        tech={technologies}
+        skills={skills}
+        title={"deerfall"}
+        about={about}
+        techDesc={techDesc}
+        projLinks={links}
       />
     </>
   );
