@@ -97,18 +97,19 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   /* sizing */
   box-sizing: border-box;
   max-height: 100%;
   width: 80%;
   margin-bottom: 150px;
   /* styling */
-  overflow: scroll;
+  overflow: visible;
 }
 
-.Project .content-ctr h1 {
-  font-size: 24px;
-  margin: 4px;
+.Project .content-ctr h1 span {
+  display: inline-block;
+  transform: rotate(270deg);
 }
 
 .Project .content-ctr .tech-p,
@@ -116,10 +117,44 @@ li {
   margin: 8px;
 }
 
+.Project .about-ctr {
+  overflow: hidden;
+  margin-bottom: 0px;
+}
+
+.Project .about-ctr .content-ctr {
+  margin-bottom: 0px;
+}
+
+.Project .about-ctr .content-ctr h1 {
+  font-size: 24px;
+  margin: 0px;
+  padding: 5px 15px;
+  border: 2.5px rgb(71, 71, 71, 0.8) solid;
+  border-radius: 5px;
+}
+
+.Project .about-ctr .content-ctr p {
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Project .about-ctr .link-list {
+  overflow: hidden;
+}
+
+.Project .about-ctr .link-list li {
+  box-sizing: border-box;
+  margin: 30px;
+}
+
 .Project .proj-link {
+  box-sizing: border-box;
   color: rgb(0, 175, 166);
   padding: 8px;
-  margin: 10px;
+  margin: 3px;
   font-size: 20px;
   border: solid rgb(0, 175, 166) 3px;
   border-radius: 10px;
