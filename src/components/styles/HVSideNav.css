@@ -15,7 +15,7 @@
   width: 45px;
   /* styling */
   color: white;
-  background-color: rgba(96, 96, 96, 0.3);
+  background-color: rgba(96, 96, 96, 0.35);
   backdrop-filter: blur(4px);
   font-size: 40px;
   border: 2px white solid;
@@ -45,7 +45,7 @@
 
 @media only screen and (min-width: 768px) {
   .HVSideNav {
-    width: 70px;
+    width: 55px;
   }
 
   .HVSideNav .nav-icon {
