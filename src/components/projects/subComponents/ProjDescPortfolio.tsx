@@ -108,7 +108,9 @@ const ProjDescPortfolio = ({
         <div className='content-ctr'>
           <h1
             className='prevent-selection'
-            onClick={() => handleToggle(setToggleAbout, toggleAbout, false)}
+            onClick={() =>
+              isMobile ? handleToggle(setToggleAbout, toggleAbout, false) : ""
+            }
             onMouseEnter={() =>
               isMobile ? "" : handleToggle(setToggleAbout, toggleAbout, true)
             }>
@@ -123,7 +125,9 @@ const ProjDescPortfolio = ({
 
           <h1
             className='prevent-selection'
-            onClick={() => handleToggle(setToggleTD, toggleTechDesc, false)}
+            onClick={() =>
+              isMobile ? handleToggle(setToggleTD, toggleTechDesc, false) : ""
+            }
             onMouseEnter={() =>
               isMobile ? "" : handleToggle(setToggleTD, toggleTechDesc, true)
             }>
@@ -138,7 +142,9 @@ const ProjDescPortfolio = ({
 
           <h1
             className='prevent-selection'
-            onClick={() => handleToggle(setToggleLinks, toggleLinks, false)}
+            onClick={() =>
+              isMobile ? handleToggle(setToggleLinks, toggleLinks, false) : ""
+            }
             onMouseEnter={() =>
               isMobile ? "" : handleToggle(setToggleLinks, toggleLinks, true)
             }>
