@@ -26,7 +26,7 @@ const MediaMatchup = ({ isPortfolio }: Props) => {
     "Hosting",
   ];
   const about: string =
-    "An 'apples to oranges' comparison app where various forms of media battle for your vote. These comparisons pit different categories of media against one another such as film, musical albums, video games, artwork, and television.";
+    "An 'apples to oranges' comparison app where various forms of media battle head-to-head for your vote. These comparisons pit various forms of media against one another such as film, musical albums, video games, artwork, and television. There is a social element to this game, including the ability to add friends and a feed of their matchup choices. More social features like comments and matchup sharing are planned.";
   const links = {
     github: "https://github.com/JS-GitRepo/MediaMatchup_frontend",
     demo: "https://mediamatchup.app",
