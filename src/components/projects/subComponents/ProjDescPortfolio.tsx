@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { animated, config, useSpring } from "react-spring";
+import { animated, useSpring } from "react-spring";
 import AppContext from "../../../contexts/AppContext";
 import { ProjectLinks } from "../../../models/Models";
 
@@ -30,49 +30,57 @@ const ProjDescPortfolio = ({
   const [toggleAbout, setToggleAbout] = useState(true);
   const [toggleTechDesc, setToggleTD] = useState(false);
   const [toggleLinks, setToggleLinks] = useState(false);
-  const [maxHeight, setMaxHeight] = useState("175px");
+  const [maxHeight, setMaxHeight] = useState("225px");
+  const springConfig = { mass: 1, tension: 140, friction: 28 };
   const aboutH1Spring = useSpring({
     to: { transform: toggleAbout ? "rotate(360deg)" : "rotate(270deg)" },
-    config: config.default,
+    config: springConfig,
   });
   const techDescH1Spring = useSpring({
     to: { transform: toggleTechDesc ? "rotate(360deg)" : "rotate(270deg)" },
-    config: config.default,
+    config: springConfig,
   });
   const linksH1Spring = useSpring({
     to: { transform: toggleLinks ? "rotate(360deg)" : "rotate(270deg)" },
-    config: config.default,
+    config: springConfig,
   });
   const aboutPSpring = useSpring({
     to: { height: toggleAbout ? maxHeight : "0px" },
-    config: config.default,
+    config: springConfig,
   });
   const techDescPSpring = useSpring({
     to: { height: toggleTechDesc ? maxHeight : "0px" },
-    config: config.default,
+    config: springConfig,
   });
   const linksULSpring = useSpring({
     to: { height: toggleLinks ? "175px" : "0px" },
-    config: config.default,
+    config: springConfig,
   });
 
   const closeAllAbout = async (
     set: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
-    if (set != setToggleAbout) setToggleAbout(false);
-    if (set != setToggleTD) setToggleTD(false);
-    if (set != setToggleLinks) setToggleLinks(false);
+    if (set !== setToggleAbout) setToggleAbout(false);
+    if (set !== setToggleTD) setToggleTD(false);
+    if (set !== setToggleLinks) setToggleLinks(false);
   };
 
   const handleToggle = async (
     set: React.Dispatch<React.SetStateAction<boolean>>,
-    toggle: boolean
+    toggle: boolean,
+    isHover: boolean
   ) => {
-    closeAllAbout(set).then(() => set(!toggle));
+    if (isHover) {
+      if (!toggle) {
+        closeAllAbout(set).then(() => set(!toggle));
+      }
+    } else {
+      closeAllAbout(set).then(() => set(!toggle));
+    }
   };
 
   useEffect(() => {
-    isMobile ? setMaxHeight("180px") : setMaxHeight("125px");
+    isMobile ? setMaxHeight("225px") : setMaxHeight("125px");
   }, [isMobile]);
 
   return (
@@ -98,7 +106,14 @@ const ProjDescPortfolio = ({
       </section>
       <section ref={about_ScrollRef} className='content-section about-ctr'>
         <div className='content-ctr'>
-          <h1 onClick={() => handleToggle(setToggleAbout, toggleAbout)}>
+          <h1
+            className='prevent-selection'
+            onClick={() =>
+              isMobile ? handleToggle(setToggleAbout, toggleAbout, false) : ""
+            }
+            onMouseEnter={() =>
+              isMobile ? "" : handleToggle(setToggleAbout, toggleAbout, true)
+            }>
             {`About Project `}
             <animated.span className='about-expand' style={aboutH1Spring}>
               v
@@ -108,7 +123,14 @@ const ProjDescPortfolio = ({
             {about}
           </animated.p>
 
-          <h1 onClick={() => handleToggle(setToggleTD, toggleTechDesc)}>
+          <h1
+            className='prevent-selection'
+            onClick={() =>
+              isMobile ? handleToggle(setToggleTD, toggleTechDesc, false) : ""
+            }
+            onMouseEnter={() =>
+              isMobile ? "" : handleToggle(setToggleTD, toggleTechDesc, true)
+            }>
             {`Technical Description `}
             <animated.span style={techDescH1Spring} className='tech-expand'>
               v
@@ -118,7 +140,14 @@ const ProjDescPortfolio = ({
             {techDesc}
           </animated.p>
 
-          <h1 onClick={() => handleToggle(setToggleLinks, toggleLinks)}>
+          <h1
+            className='prevent-selection'
+            onClick={() =>
+              isMobile ? handleToggle(setToggleLinks, toggleLinks, false) : ""
+            }
+            onMouseEnter={() =>
+              isMobile ? "" : handleToggle(setToggleLinks, toggleLinks, true)
+            }>
             {`Links `}
             <animated.span className='links-expand' style={linksH1Spring}>
               v

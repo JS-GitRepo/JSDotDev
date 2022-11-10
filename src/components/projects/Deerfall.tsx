@@ -25,10 +25,10 @@ const Deerfall = ({ isPortfolio }: Props) => {
     "Inventory Systems",
   ];
   const about: string =
-    "A game that began with the idea of 'Rimworld meets Daggerfall'; a simulation game focused on story generation rather than experiencing a crafted story.";
+    "Deerfall began with the idea of 'Rimworld meets Daggerfall'; emergent story generation experienced from the viewpoint of a lone traveller. World simulation is the centerpiece here, creating stories dynamically as characters live their daily lives (in a way very similar to Dwarf Fortress or Rimworld). Players find their place in the world entirely through their relationship with these NPC's.";
   const links = { github: "n/a", demo: "n/a" };
   const techDesc: string =
-    "Built with Unreal Engine 5 from scratch. Most time up to this point spent learning materials somewhat deeply, and reversing IK / locomotion within the 'Advanced Locomotion v4' UE Plugin.";
+    "Built with Unreal Engine 5 from scratch. Most time up to this point spent learning materials fairly deeply, and reverse engineering IK / locomotion within the 'Advanced Locomotion v4' UE Plugin. Development is on pause while I have been pursuing a career in web development.";
 
   return (
     <>
