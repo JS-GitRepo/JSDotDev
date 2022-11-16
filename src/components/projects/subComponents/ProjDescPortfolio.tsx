@@ -91,19 +91,25 @@ const ProjDescPortfolio = ({
       <section ref={tech_ScrollRef} className='content-section tech-skills-ctr'>
         <div className='content-ctr'>
           <h1>Technologies Leveraged</h1>
-          {tech.map((tech, i) => (
-            <p className='tech-p' key={`technology #${i}`}>
-              {tech.toUpperCase()}
-            </p>
-          ))}
+          <div className='technologies-ctr'>
+            {tech.map((tech, i) => (
+              <p className='tech-p' key={`technology #${i}`}>
+                {tech.toUpperCase()}
+              </p>
+            ))}
+          </div>
+
           <h1>Skills Developed</h1>
-          {skills.map((skill, i) => (
-            <p className='skill-p' key={`skill #${i}`}>
-              {skill}
-            </p>
-          ))}
+          <div className='skills-ctr'>
+            {skills.map((skill, i) => (
+              <p className='skill-p' key={`skill #${i}`}>
+                {skill}
+              </p>
+            ))}
+          </div>
         </div>
       </section>
+
       <section ref={about_ScrollRef} className='content-section about-ctr'>
         <div className='content-ctr'>
           <h1
