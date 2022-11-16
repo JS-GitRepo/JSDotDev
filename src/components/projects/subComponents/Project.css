@@ -112,9 +112,38 @@ li {
   transform: rotate(270deg);
 }
 
-.Project .content-ctr .tech-p,
+.Project .content-ctr .technologies-ctr {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 2.5px solid rgb(71, 71, 71, 0.8);
+  border-radius: 6px;
+  width: 90%;
+}
+.Project .content-ctr .skills-ctr {
+  border: 2.5px solid rgb(71, 71, 71, 0.8);
+  border-radius: 6px;
+  width: 90%;
+}
+
+.Project .content-ctr .tech-p {
+  /* Display */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* Sizing */
+  margin: 5px 5px;
+  padding: 5px 5px;
+  text-align: center;
+  border: 2px solid rgb(71, 71, 71, 0.8);
+  border-radius: 5px;
+}
 .Project .content-ctr .skill-p {
-  margin: 8px;
+  /* border: 2px solid rgb(71, 71, 71, 0.8);
+  margin: 10px 40px;
+  padding: 10px 0px;
+  border-radius: 5px; */
+  text-align: center;
 }
 
 .Project .about-ctr {

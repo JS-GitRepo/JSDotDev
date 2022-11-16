@@ -23,7 +23,7 @@
 
 .ErrorNotFound button {
   color: rgb(0, 175, 166);
-  background-color: none;
+  background-color: transparent;
   padding: 8px;
   margin: 10px;
   font-size: 20px;
