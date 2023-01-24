@@ -1,3 +1,5 @@
+@import "ThemeVariables.css";
+
 /* - - - RESETS - - -*/
 .HVHeader h1,
 .HVHeader h2,
@@ -29,7 +31,7 @@
 }
 
 .HVHeader a {
-  color: rgb(58, 58, 58);
+  color: var(--softBlack);
 }
 
 .HVHeader .title-ctr {

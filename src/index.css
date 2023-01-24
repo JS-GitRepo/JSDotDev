@@ -23,7 +23,24 @@ code {
     monospace;
 }
 
+/* GLOBAL CLASSES */
+
 .full-w-h {
   width: 100%;
   height: 100%;
+}
+
+.prevent-selection {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.hide {
+  display: none;
+}
+
+.emoji {
+  font-family: "Noto Emoji", sans-serif;
+  font-style: normal;
 }

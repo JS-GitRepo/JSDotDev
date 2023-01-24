@@ -89,7 +89,7 @@ const ProjDescPortfolio = ({
       className='ProjDescPortfolio full-w-h
   '>
       <section ref={tech_ScrollRef} className='content-section tech-skills-ctr'>
-        <div className='content-ctr'>
+        <div className='content-ctr tech-skills-content-ctr'>
           <h1>Technologies Leveraged</h1>
           <div className='technologies-ctr'>
             {tech.map((tech, i) => (
@@ -99,7 +99,7 @@ const ProjDescPortfolio = ({
             ))}
           </div>
 
-          <h1>Skills Developed</h1>
+          <h1 id={`skills-h1`}>Skills Developed</h1>
           <div className='skills-ctr'>
             {skills.map((skill, i) => (
               <p className='skill-p' key={`skill #${i}`}>

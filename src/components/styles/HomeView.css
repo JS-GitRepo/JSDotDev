@@ -1,3 +1,5 @@
+@import "ThemeVariables.css";
+
 /* - - - - RESETS - - - -*/
 .HVHeader h1,
 .HVHeader h2,
@@ -24,7 +26,7 @@
   font-smooth: never;
   -webkit-font-smoothing: none;
   letter-spacing: 1px;
-  color: rgb(71, 71, 71);
+  color: var(--softBlack);
 }
 
 .HomeView h1 {
@@ -39,7 +41,7 @@
 
 .HomeView a {
   text-decoration: none;
-  color: white;
+  color: var(--softBlack);
 }
 
 .HomeView a:hover {

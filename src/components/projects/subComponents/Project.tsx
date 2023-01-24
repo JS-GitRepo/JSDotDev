@@ -1,5 +1,5 @@
 import ProjDescBlog from "./ProjDescBlog";
-import "./Project.css";
+import "../../styles/Project.css";
 import ProjDescPortfolio from "./ProjDescPortfolio";
 import { useTransition, config, animated } from "react-spring";
 import ProjImage from "./ProjImage";

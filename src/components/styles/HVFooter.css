@@ -1,3 +1,5 @@
+@import "ThemeVariables.css";
+
 /* - - - RESETS - - -*/
 .HVFooter h1,
 .HVFooter h2,
@@ -24,11 +26,11 @@
   align-items: center;
   justify-content: space-evenly;
   /* Style */
-  color: white;
-  border: solid white 2px;
-  border-radius: 20px;
-  background-color: rgba(96, 96, 96, 0.35);
-  backdrop-filter: blur(2px);
+  color: var(--softBlack);
+  border: var(--navBorder);
+  border-radius: var(--borderRadius1);
+  background-color: var(--navBG1);
+  backdrop-filter: var(--navBackdrop);
   font-size: 16px;
 }
 

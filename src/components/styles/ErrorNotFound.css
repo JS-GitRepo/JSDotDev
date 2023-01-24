@@ -1,3 +1,5 @@
+@import "ThemeVariables.css";
+
 .ErrorNotFound {
   /* display */
   display: flex;
@@ -7,7 +9,7 @@
   /* sizing */
   box-sizing: border-box;
   height: 100%;
-  border: 7px dashed rgb(71, 71, 71);
+  border: 7px dashed var(--softBlack);
   /* font */
   font-family: "munro";
   font-weight: 300;
@@ -44,7 +46,7 @@
 @media only screen and (min-width: 768px) {
   .ErrorNotFound {
     /* display */
-    border: 10px dashed rgb(71, 71, 71);
+    border: 10px dashed var(--softBlack);
   }
 
   .ErrorNotFound p {
