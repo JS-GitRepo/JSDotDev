@@ -40,21 +40,6 @@
   font-size: 14px;
 }
 
-.hide {
-  display: none;
-}
-
-.emoji {
-  font-family: "Noto Emoji", sans-serif;
-  font-style: normal;
-}
-
-.prevent-selection {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
-
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }

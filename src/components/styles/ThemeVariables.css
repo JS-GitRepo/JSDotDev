@@ -1,0 +1,8 @@
+html {
+  --softBlack: rgba(71, 71, 71);
+  --softWhite: rgb(250, 250, 250);
+  --navBG1: rgba(255, 255, 255, 0);
+  --navBorder: 2px var(--softBlack) solid;
+  --borderRadius1: 20px;
+  --navBackdrop: saturate(80%) blur(20px) brightness(180%);
+}

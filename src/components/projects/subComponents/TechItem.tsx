@@ -1,7 +1,7 @@
-import "./TechItem.css";
+import "../../styles/TechItem.css";
 
 const TechItem = () => {
-  return <li className="TechItem">Tech Item Works</li>;
+  return <li className='TechItem'>Tech Item Works</li>;
 };
 
 export default TechItem;

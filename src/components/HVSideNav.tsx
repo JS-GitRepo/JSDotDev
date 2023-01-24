@@ -30,11 +30,12 @@ const HVSideNav = ({
   const location = useLocation();
   const { isMobile } = useContext(AppContext);
   const navSizeChange = useSpring({
-    from: { height: isMobile ? "150px" : "200px" },
-    to: { height: isMobile ? "110px" : "135px" },
+    from: { height: isMobile ? "130px" : "170px" },
+    to: { height: isMobile ? "100px" : "125px" },
     config: { mass: 1, tension: 200, friction: 15 },
     reverse: isPortfolio,
   });
+  const { hueRotation_Inv } = useContext(AppContext);
 
   const navigateToSection = (navName: string) => {
     setScrollIsBuffering(true);
@@ -53,7 +54,7 @@ const HVSideNav = ({
           <li>
             <animated.img
               onClick={() => navigateToSection("media")}
-              className='nav-icon'
+              className={`nav-icon`}
               style={currentNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
@@ -62,7 +63,7 @@ const HVSideNav = ({
           <li>
             <animated.img
               onClick={() => navigateToSection("tech")}
-              className='nav-icon'
+              className={`nav-icon`}
               style={currentNav === "tech" ? hueRotation : {}}
               src={techIcon}
               alt='technologies and skills navigation icon'
@@ -71,7 +72,7 @@ const HVSideNav = ({
           <li>
             <animated.img
               onClick={() => navigateToSection("about")}
-              className='nav-icon'
+              className={`nav-icon`}
               style={currentNav === "about" ? hueRotation : {}}
               src={aboutIcon}
               alt='about project navigation icon'
@@ -83,7 +84,7 @@ const HVSideNav = ({
           <li>
             <animated.img
               onClick={() => navigateToSection("media")}
-              className='nav-icon'
+              className={`nav-icon`}
               style={currentNav === "media" ? hueRotation : {}}
               src={mediaIcon}
               alt='media navigation icon'
@@ -92,7 +93,7 @@ const HVSideNav = ({
           <li>
             <animated.img
               onClick={() => navigateToSection("blog")}
-              className='nav-icon'
+              className={`nav-icon`}
               style={currentNav === "blog" ? hueRotation : {}}
               src={blogIcon}
               alt='media navigation icon'

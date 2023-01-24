@@ -1,3 +1,5 @@
+@import "ThemeVariables.css";
+
 .HVSideNav {
   /* display */
   display: flex;
@@ -11,15 +13,15 @@
   transform: translate(0, -50%);
   z-index: 1;
   /* sizing */
-  height: 150px;
   width: 45px;
   /* styling */
   color: white;
-  background-color: rgba(96, 96, 96, 0.35);
-  backdrop-filter: blur(4px);
+  background-color: var(--navBG1);
+  backdrop-filter: var(--navBackdrop);
   font-size: 40px;
-  border: 2px white solid;
-  border-radius: 20px 0px 0px 20px;
+  border: var(--navBorder);
+  border-right: 0;
+  border-radius: 15px 0px 0px 15px;
 }
 
 .HVSideNav ul li {
@@ -30,9 +32,11 @@
 
 .HVSideNav .nav-icon {
   image-rendering: pixelated;
-  filter: saturate(0) brightness(100);
-  margin: 8px;
-  width: 30px;
+  filter: saturate(0) brightness(0.6);
+  margin: 6px 0px 6px 0px;
+  width: 28px;
+  border: 2px solid rgb(0, 192, 186);
+  border-radius: 8px;
 }
 
 .HVSideNav .highlighted-nav {
@@ -45,9 +49,10 @@
 
 @media only screen and (min-width: 768px) {
   .HVSideNav {
-    right: 3%;
+    right: 1%;
     width: 55px;
     border-radius: 10px 10px;
+    border-right: 2px var(--softBlack) solid;
   }
 
   .HVSideNav .nav-icon {
