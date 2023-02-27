@@ -1,3 +1,5 @@
+@import "../src/components/styles/ThemeVariables.css";
+
 /* - - - - - lINKS AND FONTS - - - - - - - - */
 @font-face {
   font-family: "munro";
@@ -11,33 +13,7 @@
   max-height: 100%;
   width: 100%;
   text-align: center;
-  background-color: rgb(250, 250, 250);
-}
-
-.App .wip-disclaimer {
-  font-family: "munro";
-  color: white;
-  position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translate(-50%);
-  z-index: 100;
-  border: solid white 2px;
-  background-color: rgba(96, 96, 96, 0.348);
-  padding: 0px 10px;
-  width: 90%;
-}
-
-.App .wip-disclaimer h2 {
-  margin: 10px;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-}
-
-.App .wip-disclaimer p {
-  margin: 10px;
-  font-size: 14px;
+  background-color: var(--softWhite);
 }
 
 .material-symbols-outlined {

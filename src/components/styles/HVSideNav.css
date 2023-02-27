@@ -16,7 +16,6 @@
   width: 45px;
   /* styling */
   color: white;
-  background-color: var(--navBG1);
   backdrop-filter: var(--navBackdrop);
   font-size: 40px;
   border: var(--navBorder);
@@ -32,7 +31,7 @@
 
 .HVSideNav .nav-icon {
   image-rendering: pixelated;
-  filter: saturate(0) brightness(0.6);
+  filter: saturate(0) brightness(0.7);
   margin: 6px 0px 6px 0px;
   width: 28px;
   border: 2px solid rgb(0, 192, 186);
