@@ -230,7 +230,7 @@ li {
   .Project .tech-skills-content-ctr {
     /* display */
     /* sizing */
-    width: 65%;
+    width: 50%;
     /* styling */
     border: var(--navBorder);
     border-radius: var(--borderRadius1);
@@ -244,5 +244,14 @@ li {
   .Project .content-ctr .tech-p,
   .Project .content-ctr .skill-p {
     margin: 15px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .Project .tech-skills-content-ctr {
+    /* display */
+    /* sizing */
+    width: 30%;
+    /* styling */
   }
 }

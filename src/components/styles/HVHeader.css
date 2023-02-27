@@ -22,7 +22,7 @@
   flex-direction: row;
   justify-content: space-around;
   /* Style */
-  background-color: rgb(250, 250, 250);
+  background-color: var(--softWhite);
   text-decoration: none;
 }
 

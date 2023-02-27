@@ -1,7 +1,7 @@
 import ProjImage from "./subComponents/ProjImage";
 // import mediaMatchupMainAVIF from "../../img/Projects/MediaMatchup/MediaMatchupMain.avif";
 // import mediaMatchupMainJPG from "../../img/Projects/MediaMatchup/MediaMatchupMain.jpg";
-import matchupImg from "../../img/Projects/MediaMatchup/ST4vsArt.jpg";
+import matchupImg from "../../img/Projects/MediaMatchup/artVJediKnight.jpg";
 import Project from "./subComponents/Project";
 
 interface Props {
