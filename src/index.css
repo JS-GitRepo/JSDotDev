@@ -44,3 +44,17 @@ code {
   font-family: "Noto Emoji", sans-serif;
   font-style: normal;
 }
+
+.hue-rotation {
+  animation: 15s ease-in-out infinite alternate hueRotation;
+}
+
+@keyframes hueRotation {
+  from {
+    filter: hue-rotate(0deg) saturate(100%) sepia(0%);
+  }
+
+  to {
+    filter: hue-rotate(130deg) saturate(80%) sepia(30%);
+  }
+}
