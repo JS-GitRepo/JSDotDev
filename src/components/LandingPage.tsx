@@ -133,9 +133,8 @@ const LandingPage = ({ setIsLanding }: Props) => {
           )
         )}
         <div className='bg-img-ctr'>
-          <animated.img
-            style={hueRotation}
-            className={`bg-img`}
+          <img
+            className={`bg-img hue-rotation`}
             src={currBG}
             alt='pixelart background image'
           />
